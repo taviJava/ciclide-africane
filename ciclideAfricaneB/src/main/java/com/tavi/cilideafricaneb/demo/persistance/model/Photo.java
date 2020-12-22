@@ -22,6 +22,10 @@ public class Photo {
     @JsonIgnoreProperties("photos")
     private SpeciesModel species;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("photos")
+    private GaleryModel galery;
+
     public Photo( String name, String type, byte[] data) {
         this.name = name;
         this.type = type;
