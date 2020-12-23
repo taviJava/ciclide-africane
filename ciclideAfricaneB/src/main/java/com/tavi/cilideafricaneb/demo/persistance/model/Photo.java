@@ -77,4 +77,12 @@ public class Photo {
     public void setSpecies(SpeciesModel species) {
         this.species = species;
     }
+
+    public GaleryModel getGalery() {
+        return galery;
+    }
+
+    public void setGalery(GaleryModel galery) {
+        this.galery = galery;
+    }
 }
