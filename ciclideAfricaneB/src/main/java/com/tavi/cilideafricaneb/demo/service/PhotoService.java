@@ -50,17 +50,17 @@ public class PhotoService {
         return photoRepository.findAll().stream();
     }
 
-    public Stream<Photo> getAllSpeciesphotos(SpeciesDto speciesDto) {
+    public Stream<Photo> getAllSpeciesphotos(long id) {
         SpeciesModel speciesModel = new SpeciesModel();
-        Optional<SpeciesModel> speciesModelOptional = speciesRepository.findById(speciesDto.getId());
+        Optional<SpeciesModel> speciesModelOptional = speciesRepository.findById(id);
         if (speciesModelOptional.isPresent()) {
             speciesModel = speciesModelOptional.get();
         }
         return speciesModel.getPhotos().stream();
     }
-    public Stream<Photo> getAllGaleryphotos(GaleryDto galeryDto) {
+    public Stream<Photo> getAllGaleryphotos(long id) {
         GaleryModel galeryModel = new GaleryModel();
-        Optional<GaleryModel> galeryModelOptional = galeryRepository.findById(galeryDto.getId());
+        Optional<GaleryModel> galeryModelOptional = galeryRepository.findById(id);
         if (galeryModelOptional.isPresent()) {
             galeryModel = galeryModelOptional.get();
         }
