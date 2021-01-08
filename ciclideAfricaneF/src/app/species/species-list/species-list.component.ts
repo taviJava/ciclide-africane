@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Species} from '../model/species';
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Router} from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import {SpeciesService} from "../service/species.service";
+import {SpeciesService} from '../service/species.service';
 
 @Component({
   selector: 'app-species-list',
@@ -24,7 +24,15 @@ export class SpeciesListComponent implements OnInit {
     this.speciesService.findAll().subscribe(result => {
       this.species = [];
       this.species = result;
+      this.chargePhotos(this.species);
     });
+  }
+
+  // tslint:disable-next-line:typedef
+  chargePhotos(species: Species[]){
+    for (const spec of species){
+      spec.photos = this.speciesService.getSpeciesphotos(spec.idSpecies);
+    }
   }
 
 }

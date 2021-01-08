@@ -11,7 +11,7 @@ export class SpeciesService {
   private photoUrl: string;
   constructor(private http: HttpClient) {
     this.speciesUrl = 'http://localhost:8080/species';
-    this.photoUrl = 'http://localhost:8080/photo';
+    this.photoUrl = 'http://localhost:8080/photos';
   }
   public findAll(): Observable<any> {
     return this.http.get<any>(this.speciesUrl);
@@ -48,4 +48,10 @@ export class SpeciesService {
     });
     return this.http.request(req);
   }
+  getFiles(): Observable<any> {
+    return this.http.get(this.photoUrl); }
+
+getSpeciesphotos(id: number): Observable<any> {
+  return this.http.get(`${this.speciesUrl}/photos/${id}`);
+}
 }
