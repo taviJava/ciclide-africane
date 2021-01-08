@@ -12,23 +12,23 @@ public class GaleryController {
     @Autowired
     private GaleryService galeryService;
 
-    @PostMapping("/species")
+    @PostMapping("/galery")
     public void save(@RequestBody GaleryDto galeryDto){
         galeryService.save(galeryDto);
     }
-    @PutMapping("/species")
+    @PutMapping("/galery")
     public void update(@RequestBody GaleryDto galeryDto){
         galeryService.update(galeryDto);
     }
-    @DeleteMapping("/species{id}")
+    @DeleteMapping("/galery{id}")
     public void delete(@PathVariable(name = "id") long id){
         galeryService.delete(id);
     }
-    @GetMapping("/species")
+    @GetMapping("/galery")
     public List<GaleryDto> getAll(){
         return galeryService.getAll();
     }
-    @GetMapping("/species{id}")
+    @GetMapping("/galery{id}")
     public GaleryDto getOne(@PathVariable(name = "id") long id){
         return galeryService.getOne(id);
     }
