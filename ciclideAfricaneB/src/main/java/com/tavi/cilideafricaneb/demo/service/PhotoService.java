@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
@@ -25,22 +26,20 @@ public class PhotoService {
     @Autowired
     private PhotoRepository photoRepository;
 
-    public Photo storePhotosSpecies(MultipartFile file, long id) throws IOException {
+    public Photo storePhotosSpecies(MultipartFile file) throws IOException {
+        List<SpeciesModel> clientModelList = speciesRepository.findAll();
+        SpeciesModel speciesModel = clientModelList.get(clientModelList.size() - 1);
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         Photo photo = new Photo(fileName, file.getContentType(), file.getBytes());
-        Optional<SpeciesModel> speciesModelOptional = speciesRepository.findById(id);
-        if (speciesModelOptional.isPresent()) {
-            photo.setSpecies(speciesModelOptional.get());
-        }
+            photo.setSpecies(speciesModel);
+
         return photoRepository.save(photo);
     }
-    public Photo storePhotosGalery(MultipartFile file, long id) throws IOException {
+    public Photo storePhotosGalery(MultipartFile file) throws IOException {
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+        GaleryModel galeryModel = galeryRepository.findAll().get(galeryRepository.findAll().size()-1);
         Photo photo = new Photo(fileName, file.getContentType(), file.getBytes());
-        Optional<GaleryModel> galeryModelOptional = galeryRepository.findById(id);
-        if (galeryModelOptional.isPresent()) {
-            photo.setGalery(galeryModelOptional.get());
-        }
+            photo.setGalery(galeryModel);
         return photoRepository.save(photo);
     }
     public Photo getPhoto(String id) {
