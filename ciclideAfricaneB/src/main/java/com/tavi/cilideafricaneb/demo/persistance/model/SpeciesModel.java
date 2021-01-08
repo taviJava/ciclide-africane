@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "species")
 public class SpeciesModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
