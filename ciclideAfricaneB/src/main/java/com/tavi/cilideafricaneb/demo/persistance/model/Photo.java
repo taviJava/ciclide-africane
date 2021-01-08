@@ -26,7 +26,11 @@ public class Photo {
     @JsonIgnoreProperties("photos")
     private GaleryModel galery;
 
-    public Photo( String name, String type, byte[] data) {
+    @OneToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("photo")
+    private HomePageModel homePage;
+
+    public Photo(String name, String type, byte[] data) {
         this.name = name;
         this.type = type;
         this.data = data;
@@ -37,6 +41,13 @@ public class Photo {
 
     }
 
+    public HomePageModel getHomePage() {
+        return homePage;
+    }
+
+    public void setHomePage(HomePageModel homePage) {
+        this.homePage = homePage;
+    }
 
     public String getId() {
         return id;
