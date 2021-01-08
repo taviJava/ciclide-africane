@@ -11,7 +11,7 @@ public class SpeciesDto {
     private String aquarium;
     private String feed;
     private String reproduction;
-    private List<PhotoDto> photos;
+
 
     public long getId() {
         return id;
@@ -83,13 +83,7 @@ public class SpeciesDto {
 
     public void setReproduction(String reproduction) {
         this.reproduction = reproduction;
-    }
 
-    public List<PhotoDto> getPhotos() {
-        return photos;
-    }
 
-    public void setPhotos(List<PhotoDto> photos) {
-        this.photos = photos;
     }
 }
