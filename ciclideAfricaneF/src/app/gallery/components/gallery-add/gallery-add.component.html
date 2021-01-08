@@ -1,0 +1,13 @@
+<div class="card my-5">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #bookAdd="ngForm">
+      <div class="form-group">
+        <label for="title">Name</label>
+        <input type="text" [(ngModel)]="galery.description"
+               class="form-control"
+               id="title"
+               name="title"
+               placeholder="Enter title"
+               required #description="ngModel">
+      </div>
+      <div [hidden]="!description.pristine" class="alert alert-danger">Name is required</div>
