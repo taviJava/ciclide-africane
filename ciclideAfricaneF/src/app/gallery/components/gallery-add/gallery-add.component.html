@@ -1,6 +1,6 @@
 <div class="card my-5">
   <div class="card-body">
-    <form (ngSubmit)="onSubmit()" #bookAdd="ngForm">
+    <form (ngSubmit)="onSubmit()" #galleryAdd="ngForm">
       <div class="form-group">
         <label for="title">Name</label>
         <input type="text" [(ngModel)]="galery.description"
@@ -11,3 +11,14 @@
                required #description="ngModel">
       </div>
       <div [hidden]="!description.pristine" class="alert alert-danger">Name is required</div>
+      <div class="btn-group">
+        <a (click)="getGallery()"
+           class="btn btn-secondary mx-1">Back
+        </a>
+        <button type="submit" [disabled]="!galleryAdd.form.valid"
+                class="btn btn-info">Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
