@@ -11,6 +11,8 @@ import { GalleryAddComponent } from './gallery/components/gallery-add/gallery-ad
 import {FormsModule} from '@angular/forms';
 import { AddSpeciesComponent } from './species/add-species/add-species.component';
 import {HttpClientModule} from '@angular/common/http';
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import {HttpClientModule} from '@angular/common/http';
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2SearchPipeModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

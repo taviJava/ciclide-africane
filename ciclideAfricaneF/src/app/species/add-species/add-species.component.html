@@ -1,1 +1,141 @@
-<p>add-species works!</p>
+<div class="container" style="margin-top: 20px">
+  <div class="row">
+    <div class="col-md-3" style="padding-top: 40px">
+      <div class="text-center">
+
+        <div class="text-center">
+          <div *ngIf="!previewUrl">
+            <img src="https://www.hopkinsmedicine.org/-/media/feature/noimageavailable.ashx" class="avatar img-circle" alt="avatar">
+          </div>
+          <div *ngIf="previewUrl">
+            <div *ngFor="let file of previewsUrl">
+            <img [src]="file"  class="avatar img-circle" alt="avatar" />
+            </div>
+          </div>
+          <p></p>
+          <p *ngIf="!previewUrl"  class="stea2" >*</p>
+          <p *ngIf="!previewUrl" >Trebuie sa selectezi cel putin o fotografie...</p>
+          <h6 *ngIf="previewUrl">Fotografii selectate...</h6>
+          <div class="btn-group">
+            <label class="btn btn-danger mr-1" > Choose File
+              <input  type="file" name="image" multiple (change)="selectFile($event)" />
+            </label>
+          </div>
+
+        </div>
+        <div *ngFor="let progressInfo of progressInfos" class="mb-2">
+          <span>{{ progressInfo.fileName }}</span>
+          <div class="progress">
+            <div
+              class="progress-bar progress-bar-info progress-bar-striped"
+              role="progressbar"
+              attr.aria-valuenow="{{ progressInfo.percentage }}"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              [ngStyle]="{ width: progressInfo.percentage + '%' }"
+            >
+              {{ progressInfo.percentage }}%
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+
+
+    <div class="card md-9 personal-info" style="width: 800px">
+      <div class="card-body">
+        <form (ngSubmit)="onSubmit()" #speciesForm="ngForm">
+          <div class="form-group">
+            <label for="name">Nume</label>
+            <input type="text" [(ngModel)]="species.name"
+                   class="form-control"
+                   id="name"
+                   name="name"
+                   placeholder="Introduceti numele speciei"
+                   required #name="ngModel">
+          </div>
+          <div [hidden]="!name.pristine" class="alert alert-danger">Numele este obligatoriu</div>
+          <div class="form-group">
+            <label for="aquarium">Marimea acvariului</label>
+            <input type="text" [(ngModel)]="species.aquarium"
+                   class="form-control"
+                   id="aquarium"
+                   name="aquarium"
+                   placeholder="Introduceti marimea acvariului"
+                   required #aquarium="ngModel">
+          </div>
+          <div [hidden]="!aquarium.pristine" class="alert alert-danger">Marimea acvariului este obligatorie</div>
+          <div class="form-group">
+            <label for="associate">Specii cu care se pot asocia</label>
+            <input type="text" [(ngModel)]="species.associate"
+                   class="form-control"
+                   id="associate"
+                   name="associate"
+                   placeholder="Introduceti specile cu care se pot asocia"
+                   required #associate="ngModel">
+          </div>
+          <div [hidden]="!associate.pristine" class="alert alert-danger">Comportament</div>
+          <div class="form-group">
+            <label for="behavior">Comportamentul speciei</label>
+            <input type="text" [(ngModel)]="species.behavior"
+                   class="form-control"
+                   id="behavior"
+                   name="behavior"
+                   placeholder="Introduceti tipologia de comportament a speciei"
+                   required #behavior="ngModel">
+          </div>
+          <div [hidden]="!behavior.pristine" class="alert alert-danger">Comportamentul speciei este obligatoriu</div>
+          <div class="form-group">
+            <label for="feed">Tipul de hrana</label>
+            <input type="text" [(ngModel)]="species.feed"
+                   class="form-control"
+                   id="feed"
+                   name="feed"
+                   placeholder="Introduceti tipul de hrana"
+                   required #aquarium="ngModel">
+          </div>
+          <div [hidden]="!aquarium.pristine" class="alert alert-danger">Tipul de hrana este obligatoriu</div>
+
+          <div class="form-group">
+            <label for="group">Grupa</label>
+            <input type="text" [(ngModel)]="species.group"
+                   class="form-control"
+                   id="group"
+                   name="group"
+                   placeholder="Introduceti grupa din care face parte specia"
+                   required #group="ngModel">
+          </div>
+          <div [hidden]="!group.pristine" class="alert alert-danger">Grupa este obligatorie</div>
+
+          <div class="form-group">
+            <label for="size">Dimensiunea speciei</label>
+            <input type="text" [(ngModel)]="species.size"
+                   class="form-control"
+                   id="size"
+                   name="size"
+                   placeholder="Introduceti dimensiunea maxima a speciei"
+                   required #size="ngModel">
+          </div>
+          <div [hidden]="!size.pristine" class="alert alert-danger">Dimensiunea este obligatorie</div>
+          <div class="form-group">
+          <label for="reproduction">Reproducerea speciei</label>
+          <input type="text" [(ngModel)]="species.reproduction"
+                 class="form-control"
+                 id="reproduction"
+                 name="reproduction"
+                 placeholder="Introduceti modul de reproducere al speciei"
+                 required #size="ngModel">
+      </div>
+      <div [hidden]="!size.pristine" class="alert alert-danger">Modul de reproducere este obligatoriu</div>
+
+          <button (click)="goToSpeciesList()"
+                  class="btn btn-secondary mx-1">Inapoi
+          </button>
+          <button type="submit" [disabled]="!speciesForm.form.valid"
+                  class="btn btn-info">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

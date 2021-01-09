@@ -17,26 +17,20 @@ export class SpeciesService {
     return this.http.get<any>(this.speciesUrl);
   }
 
-  public save(species: Species, token: string): Observable<any> {
-    const tokenStr = 'Bearer ' + token;
-    const headers = new HttpHeaders().set('Authorization', tokenStr);
-    return this.http.post<any>(this.speciesUrl, species , { headers, responseType: 'text' as 'json' });
+  public save(species: Species): Observable<any> {
+    return this.http.post<any>(this.speciesUrl, species);
   }
 
-  public update(species: Species, token: string): Observable<any> {
-    const tokenStr = 'Bearer ' + token;
-    const headers = new HttpHeaders().set('Authorization', tokenStr);
-    return this.http.put<any>(this.speciesUrl, species , { headers, responseType: 'text' as 'json' });
+  public update(species: Species): Observable<any> {
+    return this.http.put<any>(this.speciesUrl, species );
   }
 
   public getById(id: number): Observable<any> {
     return this.http.get(`${this.speciesUrl}/${id}` );
   }
   // tslint:disable-next-line:typedef
-  public delete(id: number , token: string) {
-    const tokenStr = 'Bearer ' + token;
-    const headers = new HttpHeaders().set('Authorization', tokenStr);
-    return this.http.delete(`${this.speciesUrl}/${id}` , { headers, responseType: 'text' as 'json' });
+  public delete(id: number ) {
+    return this.http.delete(`${this.speciesUrl}/${id}`);
   }
 
   public upload(photo: File): Observable<HttpEvent<any>> {
