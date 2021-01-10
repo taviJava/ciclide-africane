@@ -1,0 +1,49 @@
+package com.tavi.cilideafricaneb.demo.persistance.dto;
+
+public class ContactDto {
+    private long id;
+    private String companyInformation;
+    private String address;
+    private String email;
+    private String description;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getCompanyInformation() {
+        return companyInformation;
+    }
+
+    public void setCompanyInformation(String companyInformation) {
+        this.companyInformation = companyInformation;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+}

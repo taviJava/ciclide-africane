@@ -22,13 +22,13 @@
           </nav>
 
           <div class="row" style="margin-top: 20px">
-            <div class="col-sm-4"  *ngFor="let spec of species | filter: searchValue | paginate : {itemsPerPage: numberOfItemsPerP, currentPage: p}">
+            <div class="col-sm-4"  *ngFor="let spec of species | filter: searchValue  | paginate : {itemsPerPage: numberOfItemsPerP, currentPage: p}">
               <div class="card text-black-50 bg-light mb-4">
                 <div class="card-body" >
                   <img *ngIf=" spec.photos | async as photos " [src]=photos[0].url  height="250px"  class="card-img-top" alt="...">
                   <div style="height: 100px">
                     <h5 class="card-title">{{spec.name}}</h5>
-                    <p  class="card-text">{{spec.description}}</p>
+                    <p  class="card-text">{{spec.behavior}}</p>
                   </div>
                   <div class="btn-group">
                     <button (click)="open(content, spec.id)" class="btn btn-danger"> Delete

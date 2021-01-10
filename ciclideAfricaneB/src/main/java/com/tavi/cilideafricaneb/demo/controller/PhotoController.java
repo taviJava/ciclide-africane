@@ -47,24 +47,23 @@ public class PhotoController {
         }
     }
 
-    @GetMapping("/photos")
-    public ResponseEntity<List<ResponseFile>> getListFiles() {
-        List<ResponseFile> files = photoService.getAllphotos().map(dbFile -> {
+    @GetMapping("/species/photos/{id}")
+    public ResponseEntity<List<ResponseFile>> getListFiles(@PathVariable(name = "id") Long id) {
+        List<ResponseFile> files = photoService.getAllSpeciesphotos(id).map(dbFile -> {
             String fileDownloadUri = ServletUriComponentsBuilder
                     .fromCurrentContextPath()
-                    .path("/photos")
+                    .path("/photos/")
                     .path(dbFile.getId())
                     .toUriString();
-
             return new ResponseFile(
                     dbFile.getName(),
                     fileDownloadUri,
                     dbFile.getType(),
                     dbFile.getData().length);
         }).collect(Collectors.toList());
-
         return ResponseEntity.status(HttpStatus.OK).body(files);
     }
+
 
     @GetMapping("/photos/{id}")
     public ResponseEntity<byte[]> getFile(@PathVariable String id) {

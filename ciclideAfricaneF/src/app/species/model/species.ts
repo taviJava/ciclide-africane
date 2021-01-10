@@ -1,5 +1,7 @@
+import {Observable} from "rxjs";
+
 export class Species {
-  idSpecies: number;
+  id: number;
   name: string;
   group: string;
   size: string;

@@ -6,11 +6,10 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "species")
 public class SpeciesModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long idSpecies;
     private String name;
     private String group;
     private String size;
@@ -23,12 +22,12 @@ public class SpeciesModel {
     @JsonIgnoreProperties("species")
     private List<Photo> photos;
 
-    public long getId() {
-        return id;
+    public long getIdSpecies() {
+        return idSpecies;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setIdSpecies(long idSpecies) {
+        this.idSpecies = idSpecies;
     }
 
     public String getName() {

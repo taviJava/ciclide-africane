@@ -3,6 +3,7 @@ import {Species} from '../model/species';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {SpeciesService} from '../service/species.service';
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-species-list',
@@ -10,7 +11,7 @@ import {SpeciesService} from '../service/species.service';
   styleUrls: ['./species-list.component.css']
 })
 export class SpeciesListComponent implements OnInit {
-  species: Species[] = [];
+  species: Species[];
   closeResult = '';
   searchValue = '';
   p = 1;            // pt paginare si urmatoarea la fel
@@ -30,7 +31,7 @@ export class SpeciesListComponent implements OnInit {
       this.species = [];
       this.species = result;
       for (const spec of this.species){
-        spec.photos = this.speciesService.getSpeciesphotos(spec.idSpecies);
+        spec.photos = this.speciesService.getSpeciesphotos(spec.id);
       }
     });
   }
@@ -44,7 +45,6 @@ export class SpeciesListComponent implements OnInit {
       this.ngOnInit();
     });
   }
-
   // tslint:disable-next-line:typedef
   open(content, id) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {

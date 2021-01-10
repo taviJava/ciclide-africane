@@ -1,19 +1,27 @@
 package com.tavi.cilideafricaneb.demo.service;
 
 import com.tavi.cilideafricaneb.demo.persistance.dto.SpeciesDto;
+import com.tavi.cilideafricaneb.demo.persistance.files.ResponseFile;
 import com.tavi.cilideafricaneb.demo.persistance.model.SpeciesModel;
 import com.tavi.cilideafricaneb.demo.repository.SpeciesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class SpeciesService {
     @Autowired
     private SpeciesRepository speciesRepository;
+    @Autowired
+    private PhotoService photoService;
 
     public void save(SpeciesDto speciesDto){
         speciesRepository.save(getModel(speciesDto));
@@ -23,7 +31,7 @@ public class SpeciesService {
         Optional<SpeciesModel> speciesModelOptional = speciesRepository.findById(speciesDto.getId());
         if (speciesModelOptional.isPresent()){
             SpeciesModel speciesModel = getModel(speciesDto);
-            speciesModel.setId(speciesDto.getId());
+            speciesModel.setIdSpecies(speciesDto.getId());
             speciesRepository.save(speciesModel);
         }
     }
@@ -66,7 +74,7 @@ public class SpeciesService {
 
     private SpeciesDto getDto(SpeciesModel speciesModel){
         SpeciesDto speciesDto = new SpeciesDto();
-        speciesDto.setId(speciesModel.getId());
+        speciesDto.setId(speciesModel.getIdSpecies());
         speciesDto.setAquarium(speciesModel.getAquarium());
         speciesDto.setAssociate(speciesModel.getAssociate());
         speciesDto.setBehavior(speciesModel.getBehavior());
@@ -77,4 +85,5 @@ public class SpeciesService {
         speciesDto.setSize(speciesModel.getSize());
         return speciesDto;
     }
+
 }

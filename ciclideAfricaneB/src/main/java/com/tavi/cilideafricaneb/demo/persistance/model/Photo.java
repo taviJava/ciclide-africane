@@ -29,6 +29,9 @@ public class Photo {
     @OneToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties("photo")
     private HomePageModel homePage;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("photo")
+    private ContactModel contactModel;
 
     public Photo(String name, String type, byte[] data) {
         this.name = name;
@@ -95,5 +98,13 @@ public class Photo {
 
     public void setGalery(GaleryModel galery) {
         this.galery = galery;
+    }
+
+    public ContactModel getContactModel() {
+        return contactModel;
+    }
+
+    public void setContactModel(ContactModel contactModel) {
+        this.contactModel = contactModel;
     }
 }

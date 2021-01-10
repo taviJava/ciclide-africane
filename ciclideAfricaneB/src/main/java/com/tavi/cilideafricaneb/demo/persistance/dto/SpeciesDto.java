@@ -1,5 +1,4 @@
 package com.tavi.cilideafricaneb.demo.persistance.dto;
-import java.util.List;
 
 public class SpeciesDto {
     private long id;
@@ -83,7 +82,6 @@ public class SpeciesDto {
 
     public void setReproduction(String reproduction) {
         this.reproduction = reproduction;
-
-
     }
+
 }
