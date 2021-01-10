@@ -13,8 +13,8 @@ public class ContactModel {
     private String address;
     private String email;
     private String description;
-    @OneToOne(fetch = FetchType.EAGER, mappedBy = "contactmodel", cascade = CascadeType.ALL)
-    @JsonIgnoreProperties("contactmodel")
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "contactModel", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("contactModel")
     private Photo photo;
 
     public long getId() {
