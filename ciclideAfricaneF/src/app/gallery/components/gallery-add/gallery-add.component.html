@@ -2,12 +2,12 @@
   <div class="card-body">
     <form (ngSubmit)="onSubmit()" #galleryAdd="ngForm">
       <div class="form-group">
-        <label for="title">Name</label>
+        <label for="description">description</label>
         <input type="text" [(ngModel)]="galery.description"
                class="form-control"
-               id="title"
-               name="title"
-               placeholder="Enter title"
+               id="description"
+               name="description"
+               placeholder="Enter description"
                required #description="ngModel">
       </div>
       <div [hidden]="!description.pristine" class="alert alert-danger">Name is required</div>

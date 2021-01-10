@@ -1,1 +1,18 @@
-<p>gallery-list works!</p>
+<div class="btn-group" style="padding-right: 300px">
+  <button (click)="save()" class="btn btn-success "> Adauga</button>
+</div>
+<div class="row">
+  <div class="col-sm-3"
+       *ngFor="let gallery of galleryList ">
+    <div class="card text-black-30  mb-5" style="background-color: lightsteelblue">
+
+      <div class="card-body">
+        <div class="btn-group" style="margin-left: 120px">
+          <div style=" height: 130px">
+            <h5 class="card-title">Name: {{gallery.description}}</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
