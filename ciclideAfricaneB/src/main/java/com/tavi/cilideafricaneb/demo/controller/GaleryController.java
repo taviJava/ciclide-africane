@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin("http://localhost:8080")
+@CrossOrigin
 public class GaleryController {
     @Autowired
     private GaleryService galeryService;
 
-    @PostMapping("/galery")
+    @PostMapping("/galery123")
     public void save(@RequestBody GaleryDto galeryDto){
         galeryService.save(galeryDto);
     }
@@ -24,7 +24,7 @@ public class GaleryController {
     public void delete(@PathVariable(name = "id") long id){
         galeryService.delete(id);
     }
-    @GetMapping("/galery")
+    @GetMapping("/galery123")
     public List<GaleryDto> getAll(){
         return galeryService.getAll();
     }

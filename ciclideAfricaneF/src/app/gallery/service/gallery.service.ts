@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpEvent, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Galery} from '../model/galery';
 
@@ -8,18 +8,19 @@ import {Galery} from '../model/galery';
 })
 export class GalleryService {
   private galleryUrl: string;
-
+  private photoUrl: string;
   constructor(private http: HttpClient) {
-    this.galleryUrl = 'http://localhost:8080/galery';
+    this.galleryUrl = 'http://localhost:8080/galery123';
+    this.photoUrl = 'http://localhost:8080/photos';
 
   }
-  public findAll(): Observable<Galery[]> {
-      return this.http.get<Galery[]>(this.galleryUrl);
+  public findAll(): Observable<any> {
+      return this.http.get<any>(this.galleryUrl);
     }
 
     // tslint:disable-next-line:typedef
-  public save(galery: Galery) {
-      return this.http.post<Galery>(this.galleryUrl, galery);
+  public save(galery: Galery): Observable<any> {
+      return this.http.post<any>(this.galleryUrl, galery);
     }
 
     // tslint:disable-next-line:typedef
@@ -35,5 +36,19 @@ export class GalleryService {
   public delete(id: number) {
       return this.http.delete(`${this.galleryUrl}/${id}`);
     }
+  public upload(photo: File): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+    formData.append('photo', photo);
+    const req = new HttpRequest('POST', this.photoUrl, formData, {
+      reportProgress: true,
+      responseType: 'json'
+    });
+    return this.http.request(req);
+  }
+  getFiles(): Observable<any> {
+    return this.http.get(this.photoUrl); }
 
+  getGalleryphotos(id: number): Observable<any> {
+    return this.http.get(`${this.galleryUrl}/photos/${id}`);
+  }
 }

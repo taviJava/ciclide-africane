@@ -1,24 +1,70 @@
-<div class="card my-5">
-  <div class="card-body">
-    <form (ngSubmit)="onSubmit()" #galleryAdd="ngForm">
-      <div class="form-group">
-        <label for="description">description</label>
-        <input type="text" [(ngModel)]="galery.description"
-               class="form-control"
-               id="description"
-               name="description"
-               placeholder="Enter description"
-               required #description="ngModel">
+<div class="container" style="margin-top: 20px">
+  <div class="row">
+    <div class="col-md-3" style="padding-top: 40px">
+      <div class="text-center">
+
+        <div class="text-center">
+          <div *ngIf="!previewUrl">
+            <img src="https://www.hopkinsmedicine.org/-/media/feature/noimageavailable.ashx" class="avatar img-circle" alt="avatar">
+          </div>
+          <div *ngIf="previewUrl">
+            <div *ngFor="let file of previewsUrl">
+              <img [src]="file"  class="avatar img-circle" alt="avatar" />
+            </div>
+          </div>
+          <p></p>
+          <p *ngIf="!previewUrl"  class="stea2" >*</p>
+          <p *ngIf="!previewUrl" >Trebuie sa selectezi cel putin o fotografie...</p>
+          <h6 *ngIf="previewUrl">Fotografii selectate...</h6>
+          <div class="btn-group">
+            <label class="btn btn-danger mr-1" > Choose File
+              <input  type="file" name="image" multiple (change)="selectFile($event)" />
+            </label>
+          </div>
+
+        </div>
+        <div *ngFor="let progressInfo of progressInfos" class="mb-2">
+          <span>{{ progressInfo.fileName }}</span>
+          <div class="progress">
+            <div
+              class="progress-bar progress-bar-info progress-bar-striped"
+              role="progressbar"
+              attr.aria-valuenow="{{ progressInfo.percentage }}"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              [ngStyle]="{ width: progressInfo.percentage + '%' }"
+            >
+              {{ progressInfo.percentage }}%
+            </div>
+          </div>
+        </div>
       </div>
-      <div [hidden]="!description.pristine" class="alert alert-danger">Name is required</div>
-      <div class="btn-group">
-        <a (click)="getGallery()"
-           class="btn btn-secondary mx-1">Back
-        </a>
-        <button type="submit" [disabled]="!galleryAdd.form.valid"
-                class="btn btn-info">Submit
-        </button>
+    </div>
+
+
+
+    <div class="card md-9 personal-info" style="width: 800px">
+      <div class="card-body">
+        <form (ngSubmit)="onSubmit()" #speciesForm="ngForm">
+          <div class="form-group">
+            <label for="description">Nume</label>
+            <input type="text" [(ngModel)]="galery.description"
+                   class="form-control"
+                   id="description"
+                   name="description"
+                   placeholder="Introduceti numele speciei"
+                   required #description="ngModel">
+          </div>
+          <div [hidden]="!description.pristine" class="alert alert-danger">Numele este obligatoriu</div>
+
+
+          <button (click)="getGallery()"
+                  class="btn btn-secondary mx-1">Inapoi
+          </button>
+          <button type="submit" [disabled]="!speciesForm.form.valid"
+                  class="btn btn-info">Submit</button>
+        </form>
       </div>
-    </form>
+    </div>
   </div>
 </div>

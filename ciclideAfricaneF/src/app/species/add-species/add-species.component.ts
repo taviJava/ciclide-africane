@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {SpeciesService} from "../service/species.service";
+import {ActivatedRoute, Router} from '@angular/router';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {SpeciesService} from '../service/species.service';
 import {Species} from '../model/species';
-import {Observable} from "rxjs";
-import {HttpEventType, HttpResponse} from "@angular/common/http";
+import {Observable} from 'rxjs';
+import {HttpEventType, HttpResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-add-species',
