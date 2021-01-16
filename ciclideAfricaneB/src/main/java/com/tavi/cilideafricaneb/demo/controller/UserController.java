@@ -15,22 +15,26 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/species")
+    @PostMapping("/users")
     public void save(@RequestBody UserDto userDto){ userService.add(userDto); }
-    @PutMapping("/species")
+    @PutMapping("/users")
     public void update(@RequestBody UserDto userDto){
         userService.update(userDto);
     }
-    @DeleteMapping("/species{id}")
+    @DeleteMapping("/users{id}")
     public void delete(@PathVariable(name = "id") long id){
         userService.delete(id);
     }
-    @GetMapping("/species")
+    @GetMapping("/users")
     public List<UserDto> getAll(){
         return userService.getAll();
     }
-    @GetMapping("/species{id}")
+    @GetMapping("/users{id}")
     public UserDto getOne(@PathVariable(name = "id") long id){
         return userService.getOne(id);
+    }
+    @GetMapping("/users{email}")
+    public UserDto getByEmail(@PathVariable(name = "email") String email){
+        return userService.getByEmail(email);
     }
 }

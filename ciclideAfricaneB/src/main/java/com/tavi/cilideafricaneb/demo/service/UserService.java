@@ -38,6 +38,15 @@ public class UserService {
         }
         return userDto;
     }
+    public UserDto getByEmail(String email){
+        Optional<UserModel> userModelOptional = userRepository.findByEmail(email);
+        UserDto userDto = new UserDto();
+        if (userModelOptional.isPresent()){
+            UserModel userModel = userModelOptional.get();
+            getDto(userModel,userDto);
+        }
+        return userDto;
+    }
 
     public List<UserDto>getAll(){
         List<UserModel> userModels = userRepository.findAll();
