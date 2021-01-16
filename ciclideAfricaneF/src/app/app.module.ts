@@ -13,6 +13,8 @@ import { AddSpeciesComponent } from './species/add-species/add-species.component
 import {HttpClientModule} from '@angular/common/http';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { UserLoginComponent } from './users/components/user-login/user-login.component';
+import { UserRegisterComponent } from './users/components/user-register/user-register.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
     SpeciesListComponent,
     GalleryListComponent,
     GalleryAddComponent,
-    AddSpeciesComponent
+    AddSpeciesComponent,
+    UserLoginComponent,
+    UserRegisterComponent
   ],
   imports: [
     BrowserModule,

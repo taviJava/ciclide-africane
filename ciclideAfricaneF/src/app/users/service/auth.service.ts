@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {User} from "../model/user";
-import {BehaviorSubject, Observable} from "rxjs";
-import {HttpClient} from "@angular/common/http";
-import {UserService} from "./user.service";
+import {User} from '../model/user';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {UserService} from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -38,9 +38,8 @@ export class AuthService {
     sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, username);
     sessionStorage.setItem(this.TOKEN_SESSION_ATTRIBUTE_NAME, this.createBasicAuthToken(username, password));
     this.userService.getByEmail(username, this.TOKEN_SESSION_ATTRIBUTE_NAME).subscribe(data => {
-      this.person = new Person();
-      this.person = JSON.parse(data) as Person;
-      console.log(this.person);
+      this.user = new User();
+      this.user = JSON.parse(data) as User;
       this.isLoggedIn.next(true);
     });
   }
