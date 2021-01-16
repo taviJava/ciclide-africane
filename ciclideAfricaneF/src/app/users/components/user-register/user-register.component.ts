@@ -1,4 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import {User} from '../../model/user';
+import {FormControl, FormGroup} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {UserService} from '../../service/user.service';
+import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {AuthService} from '../../service/auth.service';
+
+class AuthenticationService {
+}
 
 @Component({
   selector: 'app-user-register',
@@ -21,7 +30,7 @@ export class UserRegisterComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private router: Router,
               private userService: UserService,
-              private authService: AuthenticationService,
+              private authService: AuthService,
               private modalService: NgbModal) {
     this.currentUser = new User();
     this.currentUser.email = 'Please Log-in';
