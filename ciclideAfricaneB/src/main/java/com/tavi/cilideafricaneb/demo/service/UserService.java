@@ -4,6 +4,7 @@ import com.tavi.cilideafricaneb.demo.persistance.dto.UserDto;
 import com.tavi.cilideafricaneb.demo.persistance.model.Role;
 import com.tavi.cilideafricaneb.demo.persistance.model.UserModel;
 import com.tavi.cilideafricaneb.demo.repository.UserRepository;
+import com.tavi.cilideafricaneb.demo.security.UserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserService {
+public class UserService extends UserDetailService {
     @Autowired
     private UserRepository userRepository;
 

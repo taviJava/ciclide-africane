@@ -27,14 +27,12 @@ public class UserController {
     @Autowired
     private UserService userService;
     @Autowired
-    private UserDetailService userDetailService;
-    @Autowired
     private AuthenticationManager authenticationManager;
     @Autowired
     private TokenProvider jwtTokenUtil;
 
     @PostMapping("/register")
-    public void save(@RequestBody UserDto userDto){ userDetailService.register(userDto); }
+    public void save(@RequestBody UserDto userDto){ userService.register(userDto); }
     @PostMapping(value = "/basicauth")
     public ResponseEntity generateToken(@RequestBody UserDto userDto) throws AuthenticationException {
 
