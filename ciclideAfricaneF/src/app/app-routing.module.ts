@@ -5,12 +5,16 @@ import {GalleryAddComponent} from './gallery/components/gallery-add/gallery-add.
 import {SpeciesListComponent} from './species/species-list/species-list.component';
 import {AddSpeciesComponent} from './species/add-species/add-species.component';
 import {GalleryListComponent} from './gallery/components/gallery-list/gallery-list.component';
+import {UserRegisterComponent} from './users/components/user-register/user-register.component';
+import {UserLoginComponent} from './users/components/user-login/user-login.component';
 
 const routes: Routes = [{path: '', component: HomePageComponent},
   {path: 'addGallery', component: GalleryAddComponent},
   {path: 'speciesList', component: SpeciesListComponent},
   {path: 'addSpecies', component: AddSpeciesComponent},
-  {path: 'galleryList', component: GalleryListComponent}
+  {path: 'galleryList', component: GalleryListComponent},
+  {path: 'user/register', component: UserRegisterComponent},
+  {path: 'user/login', component: UserLoginComponent}
 ];
 
 @NgModule({

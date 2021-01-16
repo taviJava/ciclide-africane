@@ -1,0 +1,58 @@
+html {
+  background-color: deepskyblue;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.centered-form{
+  margin-top: 60px;
+}
+
+.centered-form .panel{
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+}
+
+label.label-floatlabel {
+  font-weight: bold;
+  color: #46b8da;
+  font-size: 11px;
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 113px;
+  height: 113px;
+  border-radius: 50%;
+}
+
+.file {
+  visibility: hidden;
+  position: absolute;
+}
+/*
+codul de mai jos ascunde inputul urat la choose file
+ */
+input[type="file"] {
+  display: none;
+}
+
+
+.stea  {
+  float: left;
+  content:"*";
+  color:red;
+  margin-right: 5px;
+  margin-bottom: 0px;
+}
+/*
+aici css pt font awsome
+ */
+fa.fa-upload.fa-3x.fa-check{
+  opacity: 0.75;                /* Opacity (Transparency) */
+  color: rgba(0, 0, 0, 0.75);   /* RGBA Color (Alternative Transparency) */
+  -webkit-filter: blur(2px);    /* Blur */
+  -moz-filter: blur(2px);
+  filter: blur(2px);
+}

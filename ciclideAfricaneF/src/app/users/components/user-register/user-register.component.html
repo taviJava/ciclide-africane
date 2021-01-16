@@ -1,1 +1,89 @@
-<p>user-register works!</p>
+<head>
+  <title></title>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<!------ Include the above in your HEAD tag
+---------->
+<html>
+<div class="container">
+  <div class="row centered-form">
+    <div class="col-xs-12 col-sm-8 col-md-5 col-sm-offset-2 col-md-offset-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Please sign up <small>It's free!</small></h3>
+        </div>
+        <div class="panel-body">
+          <form role="form" (ngSubmit)="onSubmit()" [formGroup]= myGroup>
+
+            <div class="form-group">
+              <p class="stea" >*</p>
+              <label for="email"></label>
+              <input type="email" name="email" id="email"
+                     class="form-control input-sm"
+                     formControlName="email"
+                     placeholder="Email Address">
+            </div>
+
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                  <p class="stea" >*</p>
+                  <label for="password"></label>
+                  <input type="password" name="password"
+                         id="password" class="form-control input-sm"
+                         formControlName="password"
+                         placeholder="Parola">
+                </div>
+              </div>
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                  <p class="stea" >*</p>
+                  <label for="password_confirmation"></label>
+                  <input type="password" name="password_confirmation"
+                         id="password_confirmation" class="form-control input-sm"
+                         formControlName="confirmPassword"
+                         placeholder="Confirm Parola">
+                </div>
+                <div [hidden]="matchPassword()"  class="alert alert-danger">Parolele nu se potrivesc</div>
+              </div>
+            </div>
+
+
+
+
+            <p class="stea" >*</p> <p>These fields are required</p>
+            <p></p>
+            <div class="btn-group">
+
+              <button *ngIf="!ifEmailExist()"  type="submit"  class="btn btn-primary " [disabled]="!formCompleted()">
+                Register
+              </button>
+              <button *ngIf="ifEmailExist()" class="btn btn-primary "
+                      (click)=open(content)
+                      [disabled]="!formCompleted()">
+                Register
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</html>
+<ng-template #content let-modal>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-12 text-center">
+        Your email is already registered!!! If you forgot your password please click on: Forgot password
+      </div>
+    </div>
+  </div>
+  <div class="btn-group">
+    <button type="button" class="btn btn-danger" (click)="modal.close('Delete click')">Ok</button>
+  </div>
+</ng-template>
+© 2021 GitHub, Inc.
