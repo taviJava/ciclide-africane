@@ -7,6 +7,7 @@ import com.tavi.cilideafricaneb.demo.persistance.dto.UserDto;
 import com.tavi.cilideafricaneb.demo.repository.UserRepository;
 import com.tavi.cilideafricaneb.demo.security.AuthTokenData;
 import com.tavi.cilideafricaneb.demo.security.TokenProvider;
+import com.tavi.cilideafricaneb.demo.security.UserDetailService;
 import com.tavi.cilideafricaneb.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -26,12 +27,14 @@ public class UserController {
     @Autowired
     private UserService userService;
     @Autowired
+    private UserDetailService userDetailService;
+    @Autowired
     private AuthenticationManager authenticationManager;
     @Autowired
     private TokenProvider jwtTokenUtil;
 
     @PostMapping("/register")
-    public void save(@RequestBody UserDto userDto){ userService.add(userDto); }
+    public void save(@RequestBody UserDto userDto){ userDetailService.register(userDto); }
     @PostMapping(value = "/basicauth")
     public ResponseEntity generateToken(@RequestBody UserDto userDto) throws AuthenticationException {
 
