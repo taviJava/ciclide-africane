@@ -16,7 +16,7 @@ export class UserService {
   }
 
   public save(user: User): Observable<any> {
-    return this.http.post<any>(this.userUrl, user);
+    return this.http.post<any>('http://localhost:8080/register', user);
   }
 
   public update(user: User): Observable<any> {
