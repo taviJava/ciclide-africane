@@ -4,6 +4,7 @@ import {GalleryService} from '../../service/gallery.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {HttpEventType, HttpResponse} from '@angular/common/http';
+import {AuthService} from '../../../users/service/auth.service';
 
 @Component({
   selector: 'app-gallery-add',
@@ -31,7 +32,8 @@ export class GalleryAddComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private galleryService: GalleryService) {
+              private galleryService: GalleryService,
+              private authService: AuthService) {
   }
 
   ngOnInit(): void {
@@ -45,7 +47,7 @@ export class GalleryAddComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   onSubmit() {
-    this.galleryService.save(this.galery).subscribe(data => {
+    this.galleryService.save(this.galery, this.authService.TOKEN_SESSION_ATTRIBUTE_NAME).subscribe(data => {
       this.uploadPhotos();
       setTimeout(() => {
           this.getGallery();
@@ -138,12 +140,12 @@ export class GalleryAddComponent implements OnInit {
   upload2(idx, file): void {
     this.progressInfos[idx] = {value: 0, fileName: file.name};
 
-    this.galleryService.upload(file).subscribe(
+    this.galleryService.upload(file, this.authService.TOKEN_SESSION_ATTRIBUTE_NAME).subscribe(
       event => {
         if (event.type === HttpEventType.UploadProgress) {
           this.progressInfos[idx].percentage = Math.round(100 * event.loaded / event.total);
         } else if (event instanceof HttpResponse) {
-          this.photos = this.galleryService.getFiles();
+          this.photos = this.galleryService.getFiles(this.authService.TOKEN_SESSION_ATTRIBUTE_NAME);
         }
       },
       err => {

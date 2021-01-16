@@ -3,6 +3,7 @@ import {Galery} from '../../model/galery';
 import {ActivatedRoute, Router} from '@angular/router';
 import {GalleryService} from '../../service/gallery.service';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {AuthService} from '../../../users/service/auth.service';
 
 @Component({
   selector: 'app-gallery-list',
@@ -15,10 +16,11 @@ export class GalleryListComponent implements OnInit {
   searchValue = '';
   p = 1;            // pt paginare si urmatoarea la fel
   numberOfItemsPerP = 10;
+
   constructor(private route: ActivatedRoute,
               private router: Router,
               private modalService: NgbModal,
-              private galleryService: GalleryService) {
+              private galleryService: GalleryService, private authService: AuthService) {
   }
 
   ngOnInit(): void {
@@ -33,17 +35,17 @@ export class GalleryListComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   findAll() {
-    this.galleryService.findAll().subscribe(data => {
-      this.galleryList = [];
-      this.galleryList = data;
-    });
+    this.galleryService.findAll(this.authService.TOKEN_SESSION_ATTRIBUTE_NAME).subscribe(data =>
+      this.galleryList = JSON.parse(data) as Galery[]);
   }
+
   // tslint:disable-next-line:typedef
   delete(id: number) {
-    this.galleryService.delete(id).subscribe(data => {
+    this.galleryService.delete(id, this.authService.TOKEN_SESSION_ATTRIBUTE_NAME).subscribe(data => {
       this.ngOnInit();
     });
   }
+
   // tslint:disable-next-line:typedef
   open(content, id) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
