@@ -30,7 +30,7 @@ export class UserLoginComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   handleLogin() {
-    this.authenticationService.authenticationService(this.user).subscribe(result => {
+    this.authenticationService.authentication(this.user).subscribe(result => {
       this.authenticationService.TOKEN_SESSION_ATTRIBUTE_NAME = result.token;
       this.authenticationService.registerSuccessfulLogin(this.user.email, this.user.password);
       this.userService.getByEmail(this.user.email, result.token).subscribe(data => {
@@ -39,7 +39,7 @@ export class UserLoginComponent implements OnInit {
       this.invalidLogin = false;
       this.loginSuccess = true;
       this.successMessage = 'Login Successful.';
-      this.router.navigate(['professors']);
+      this.router.navigate(['']);
     }, () => {
       this.invalidLogin = true;
       this.loginSuccess = false;

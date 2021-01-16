@@ -22,10 +22,8 @@ export class AuthService {
 
   constructor(private http: HttpClient, public userService: UserService) {
   }
-
-  // tslint:disable-next-line:typedef
-  authenticationService(user: User): Observable<any> {
-    return this.http.post<any>(`http://localhost:8080/basicauth`, user);
+  authentication(user: User): Observable<any> {
+    return this.http.post<any>(`http://localhost:8080/login`, user);
   }
 
   // tslint:disable-next-line:typedef
