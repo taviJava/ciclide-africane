@@ -18,11 +18,9 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @CrossOrigin
-@JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
+//@JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class UserController {
     @Autowired
     private UserService userService;
@@ -31,8 +29,8 @@ public class UserController {
     @Autowired
     private TokenProvider jwtTokenUtil;
 
-//    @PostMapping("/register")
-//    public void save(@RequestBody UserDto userDto){ userService.register(userDto); }
+    @PostMapping("/register")
+    public void save(@RequestBody UserDto userDto){ userService.register(userDto); }
     @PostMapping("/login")
     public ResponseEntity generateToken(@RequestBody UserDto userDto) throws AuthenticationException {
 
@@ -44,6 +42,7 @@ public class UserController {
         );
         SecurityContextHolder.getContext().setAuthentication(authentication);
         final String token = jwtTokenUtil.generateToken(authentication);
+        System.out.println(token);
         return ResponseEntity.ok(new AuthTokenData(token));
     }
 //    @PutMapping("/users")
