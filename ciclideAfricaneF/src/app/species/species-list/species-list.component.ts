@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {SpeciesService} from '../service/species.service';
 import {Observable} from "rxjs";
+import {AuthService} from "../../users/service/auth.service";
 
 @Component({
   selector: 'app-species-list',
@@ -19,7 +20,8 @@ export class SpeciesListComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private router: Router,
               private modalService: NgbModal,
-              private speciesService: SpeciesService) { }
+              private speciesService: SpeciesService,
+              private authService: AuthService) { }
 
   ngOnInit(): void {
     this.species = [];
@@ -27,11 +29,12 @@ export class SpeciesListComponent implements OnInit {
   }
   // tslint:disable-next-line:typedef
   getSpecies(){
-    this.speciesService.findAll().subscribe(result => {
+    this.speciesService.findAll(this.authService.TOKEN_SESSION_ATTRIBUTE_NAME).subscribe(result => {
       this.species = [];
-      this.species = result;
+      // JSON.parse(result) as Species[]
+      this.species = JSON.parse(result) as Species[];
       for (const spec of this.species){
-        spec.photos = this.speciesService.getSpeciesphotos(spec.id);
+        spec.photos = this.speciesService.getSpeciesphotos(spec.id, this.authService.TOKEN_SESSION_ATTRIBUTE_NAME);
       }
     });
   }
@@ -41,7 +44,7 @@ export class SpeciesListComponent implements OnInit {
   }
   // tslint:disable-next-line:typedef
   delete(id: number) {
-    this.speciesService.delete(id).subscribe(data => {
+    this.speciesService.delete(id , this.authService.TOKEN_SESSION_ATTRIBUTE_NAME).subscribe(data => {
       this.ngOnInit();
     });
   }

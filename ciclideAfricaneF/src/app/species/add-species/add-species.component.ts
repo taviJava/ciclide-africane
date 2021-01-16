@@ -5,6 +5,7 @@ import {SpeciesService} from '../service/species.service';
 import {Species} from '../model/species';
 import {Observable} from 'rxjs';
 import {HttpEventType, HttpResponse} from '@angular/common/http';
+import {AuthService} from "../../users/service/auth.service";
 
 @Component({
   selector: 'app-add-species',
@@ -31,14 +32,15 @@ export class AddSpeciesComponent implements OnInit {
   uploadedFilePath: string = null;
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private speciesService: SpeciesService) { }
+              private speciesService: SpeciesService,
+              private authService: AuthService) { }
 
   ngOnInit(): void {
     this.species = new Species();
   }
 // tslint:disable-next-line:typedef
 onSubmit(){
-    this.speciesService.save(this.species).subscribe(result => {
+    this.speciesService.save(this.species, this.authService.TOKEN_SESSION_ATTRIBUTE_NAME).subscribe(result => {
       this.uploadPhotos();
       setTimeout(() =>
         {
@@ -129,12 +131,12 @@ goToSpeciesList(){
   upload2(idx, file): void {
     this.progressInfos[idx] = { value: 0, fileName: file.name };
 
-    this.speciesService.upload(file).subscribe(
+    this.speciesService.upload(file, this.authService.TOKEN_SESSION_ATTRIBUTE_NAME).subscribe(
       event => {
         if (event.type === HttpEventType.UploadProgress) {
           this.progressInfos[idx].percentage = Math.round(100 * event.loaded / event.total);
         } else if (event instanceof HttpResponse) {
-          this.photos = this.speciesService.getFiles();
+          this.photos = this.speciesService.getFiles(this.authService.TOKEN_SESSION_ATTRIBUTE_NAME);
         }
       },
       err => {
