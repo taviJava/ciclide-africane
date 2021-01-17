@@ -21,7 +21,6 @@ export class GalleryAddComponent implements OnInit {
   progress = 0;
   message = '';
   photos: Observable<any>;
-  // o foto
   selectedFiles: FileList;
   currentFile: File;
   // preview photo
@@ -47,7 +46,7 @@ export class GalleryAddComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   onSubmit() {
-    this.galleryService.save(this.galery, this.authService.TOKEN_SESSION_ATTRIBUTE_NAME).subscribe(data => {
+    this.galleryService.save(this.galery).subscribe(data => {
       this.uploadPhotos();
       setTimeout(() => {
           this.getGallery();
@@ -140,12 +139,12 @@ export class GalleryAddComponent implements OnInit {
   upload2(idx, file): void {
     this.progressInfos[idx] = {value: 0, fileName: file.name};
 
-    this.galleryService.upload(file, this.authService.TOKEN_SESSION_ATTRIBUTE_NAME).subscribe(
+    this.galleryService.upload(file).subscribe(
       event => {
         if (event.type === HttpEventType.UploadProgress) {
           this.progressInfos[idx].percentage = Math.round(100 * event.loaded / event.total);
         } else if (event instanceof HttpResponse) {
-          this.photos = this.galleryService.getFiles(this.authService.TOKEN_SESSION_ATTRIBUTE_NAME);
+          this.photos = this.galleryService.getFiles();
         }
       },
       err => {
