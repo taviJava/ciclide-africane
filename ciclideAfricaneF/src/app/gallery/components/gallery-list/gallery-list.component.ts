@@ -35,13 +35,13 @@ export class GalleryListComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   findAll() {
-    this.galleryService.findAll(this.authService.TOKEN_SESSION_ATTRIBUTE_NAME).subscribe(data =>
+    this.galleryService.findAll().subscribe(data =>
       this.galleryList = JSON.parse(data) as Galery[]);
   }
 
   // tslint:disable-next-line:typedef
   delete(id: number) {
-    this.galleryService.delete(id, this.authService.TOKEN_SESSION_ATTRIBUTE_NAME).subscribe(data => {
+    this.galleryService.delete(id ).subscribe(data => {
       this.ngOnInit();
     });
   }

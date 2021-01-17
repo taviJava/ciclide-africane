@@ -36,7 +36,7 @@ export class GalleryService {
 
   // tslint:disable-next-line:typedef
   public delete(id: number) {
-    return this.http.delete(`${this.galleryUrl}/${id}`, {responseType: 'text' as 'json'});
+    return this.http.delete(`${this.galleryUrl}/${id}` , {responseType: 'text' as 'json'});
   }
 
   public upload(photo: File): Observable<HttpEvent<any>> {
