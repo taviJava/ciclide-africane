@@ -50,7 +50,7 @@ export class GalleryService {
   }
 
   getFiles(): Observable<any> {
-    return this.http.get<any>(this.galleryUrl);
+    return this.http.get(this.galleryUrl);
 
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -8,17 +8,24 @@ import {Router} from '@angular/router';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+  }
 
   ngOnInit(): void {
   }
 
   // tslint:disable-next-line:typedef
-  goToGalery(){
+  goToGalery() {
     this.router.navigate(['galleryList']);
   }
+
 // tslint:disable-next-line:typedef
-goToSpecies(){
+  goToSpecies() {
     this.router.navigate(['speciesList']);
-}
+  }
+
+  // tslint:disable-next-line:typedef
+  goToContact() {
+    this.router.navigate(['contact']);
+  }
 }
