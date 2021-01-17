@@ -30,13 +30,13 @@ export class GalleryService {
     return this.http.put<Galery>(this.galleryUrl, galery, {responseType: 'text' as 'json'});
   }
 
-  public getById(id: number, ): Observable<any> {
+  public getById(id: number ): Observable<any> {
     return this.http.get(`${this.galleryUrl}/${id}` , {responseType: 'text' as 'json'} );
   }
 
   // tslint:disable-next-line:typedef
   public delete(id: number) {
-    return this.http.delete(`${this.galleryUrl}/${id}` , {responseType: 'text' as 'json'});
+    return this.http.delete(`${this.galleryUrl}/${id}`);
   }
 
   public upload(photo: File): Observable<HttpEvent<any>> {

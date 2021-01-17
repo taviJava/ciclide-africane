@@ -20,7 +20,7 @@ public class SpeciesController {
     public void update(@RequestBody SpeciesDto speciesDto){
         speciesService.update(speciesDto);
     }
-    @DeleteMapping("/species{id}")
+    @DeleteMapping("/species/{id}")
     public void delete(@PathVariable(name = "id") long id){
         speciesService.delete(id);
     }
@@ -28,7 +28,7 @@ public class SpeciesController {
     public List<SpeciesDto> getAll(){
         return speciesService.getAll();
     }
-    @GetMapping("/species{id}")
+    @GetMapping("/species/{id}")
     public SpeciesDto getOne(@PathVariable(name = "id") long id){
         return speciesService.getOne(id);
     }

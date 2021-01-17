@@ -56,7 +56,7 @@ public class SpeciesService {
     }
 
     public void delete(long id){
-        speciesRepository.findById(id);
+        speciesRepository.deleteById(id);
     }
 
     private SpeciesModel getModel(SpeciesDto speciesDto){
