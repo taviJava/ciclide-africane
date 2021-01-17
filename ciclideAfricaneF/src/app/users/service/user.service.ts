@@ -16,23 +16,21 @@ export class UserService {
   }
 
   public save(user: User): Observable<any> {
-    return this.http.post<any>('http://localhost:8080/register', user);
+    return this.http.post<any>('http://localhost:8080/register', user , {responseType: 'text' as 'json' });
   }
 
   public update(user: User): Observable<any> {
-    return this.http.put<any>(this.userUrl, user );
+    return this.http.put<any>(this.userUrl, user, {responseType: 'text' as 'json' });
   }
 
   public getById(id: number): Observable<any> {
-    return this.http.get(`${this.userUrl}/${id}` );
+    return this.http.get(`${this.userUrl}/${id}` , {responseType: 'text' as 'json' });
   }
-  public getByEmail(email: string, token: string): Observable<any> {
-    const tokenStr = 'Bearer ' + token;
-    const headers = new HttpHeaders().set('Authorization', tokenStr);
-    return this.http.get(`${this.userUrl}/${email}`, { headers, responseType: 'text' as 'json' } );
+  public getByEmail(email: string): Observable<any> {
+    return this.http.get(`${this.userUrl}/${email}` , {responseType: 'text' as 'json' });
   }
   // tslint:disable-next-line:typedef
   public delete(id: number ) {
-    return this.http.delete(`${this.userUrl}/${id}`);
+    return this.http.delete(`${this.userUrl}/${id}` , {responseType: 'text' as 'json' });
   }
 }

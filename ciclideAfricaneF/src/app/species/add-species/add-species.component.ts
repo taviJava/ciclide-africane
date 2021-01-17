@@ -40,7 +40,7 @@ export class AddSpeciesComponent implements OnInit {
   }
 // tslint:disable-next-line:typedef
 onSubmit(){
-    this.speciesService.save(this.species, this.authService.TOKEN_SESSION_ATTRIBUTE_NAME).subscribe(result => {
+    this.speciesService.save(this.species).subscribe(result => {
       this.uploadPhotos();
       setTimeout(() =>
         {
@@ -131,12 +131,12 @@ goToSpeciesList(){
   upload2(idx, file): void {
     this.progressInfos[idx] = { value: 0, fileName: file.name };
 
-    this.speciesService.upload(file, this.authService.TOKEN_SESSION_ATTRIBUTE_NAME).subscribe(
+    this.speciesService.upload(file).subscribe(
       event => {
         if (event.type === HttpEventType.UploadProgress) {
           this.progressInfos[idx].percentage = Math.round(100 * event.loaded / event.total);
         } else if (event instanceof HttpResponse) {
-          this.photos = this.speciesService.getFiles(this.authService.TOKEN_SESSION_ATTRIBUTE_NAME);
+          this.photos = this.speciesService.getFiles();
         }
       },
       err => {

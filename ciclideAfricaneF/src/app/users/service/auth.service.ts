@@ -3,6 +3,7 @@ import {User} from '../model/user';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {UserService} from './user.service';
+import {map} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -26,16 +27,16 @@ export class AuthService {
     return this.http.post<any>(`http://localhost:8080/login`, user);
   }
 
-  // tslint:disable-next-line:typedef
-  createBasicAuthToken(username: string, password: string) {
-    return 'Basic ' + window.btoa(username + ':' + password);
-  }
 
   // tslint:disable-next-line:typedef
-  registerSuccessfulLogin(username, password) {
+  createBasicAuthToken() {
+    return 'Bearer ' + this.TOKEN_SESSION_ATTRIBUTE_NAME;
+  }
+  // tslint:disable-next-line:typedef
+  registerSuccessfulLogin(username) {
     sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, username);
-    sessionStorage.setItem(this.TOKEN_SESSION_ATTRIBUTE_NAME, this.createBasicAuthToken(username, password));
-    this.userService.getByEmail(username, this.TOKEN_SESSION_ATTRIBUTE_NAME).subscribe(data => {
+    sessionStorage.setItem(this.TOKEN_SESSION_ATTRIBUTE_NAME, this.TOKEN_SESSION_ATTRIBUTE_NAME);
+    this.userService.getByEmail(username).subscribe(data => {
       this.user = new User();
       this.user = JSON.parse(data) as User;
       this.isLoggedIn.next(true);

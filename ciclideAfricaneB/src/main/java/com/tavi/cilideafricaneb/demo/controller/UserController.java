@@ -18,6 +18,8 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin
 //@JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
@@ -45,24 +47,24 @@ public class UserController {
         System.out.println(token);
         return ResponseEntity.ok(new AuthTokenData(token));
     }
-//    @PutMapping("/users")
-//    public void update(@RequestBody UserDto userDto){
-//        userService.update(userDto);
-//    }
-//    @DeleteMapping("/users{id}")
-//    public void delete(@PathVariable(name = "id") long id){
-//        userService.delete(id);
-//    }
-//    @GetMapping("/users")
-//    public List<UserDto> getAll(){
-//        return userService.getAll();
-//    }
-//    @GetMapping("/users{id}")
-//    public UserDto getOne(@PathVariable(name = "id") long id){
-//        return userService.getOne(id);
-//    }
-//    @GetMapping("/users{email}")
-//    public UserDto getByEmail(@PathVariable(name = "email") String email){
-//        return userService.getByEmail(email);
-//    }
+    @PutMapping("/users")
+    public void update(@RequestBody UserDto userDto){
+        userService.update(userDto);
+    }
+    @DeleteMapping("/users{id}")
+    public void delete(@PathVariable(name = "id") long id){
+        userService.delete(id);
+    }
+    @GetMapping("/users")
+    public List<UserDto> getAll(){
+        return userService.getAll();
+    }
+    @GetMapping("/users{id}")
+    public UserDto getOne(@PathVariable(name = "id") long id){
+        return userService.getOne(id);
+    }
+    @GetMapping("/users{email}")
+    public UserDto getByEmail(@PathVariable(name = "email") String email){
+        return userService.getByEmail(email);
+    }
 }

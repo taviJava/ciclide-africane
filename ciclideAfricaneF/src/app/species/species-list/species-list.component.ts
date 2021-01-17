@@ -29,12 +29,12 @@ export class SpeciesListComponent implements OnInit {
   }
   // tslint:disable-next-line:typedef
   getSpecies(){
-    this.speciesService.findAll(this.authService.TOKEN_SESSION_ATTRIBUTE_NAME).subscribe(result => {
+    this.speciesService.findAll().subscribe(result => {
       this.species = [];
       // JSON.parse(result) as Species[]
       this.species = JSON.parse(result) as Species[];
       for (const spec of this.species){
-        spec.photos = this.speciesService.getSpeciesphotos(spec.id, this.authService.TOKEN_SESSION_ATTRIBUTE_NAME);
+        spec.photos = this.speciesService.getSpeciesphotos(spec.id);
       }
     });
   }
@@ -44,7 +44,7 @@ export class SpeciesListComponent implements OnInit {
   }
   // tslint:disable-next-line:typedef
   delete(id: number) {
-    this.speciesService.delete(id , this.authService.TOKEN_SESSION_ATTRIBUTE_NAME).subscribe(data => {
+    this.speciesService.delete(id ).subscribe(data => {
       this.ngOnInit();
     });
   }

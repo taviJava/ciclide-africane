@@ -7,15 +7,12 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class HttpInterceptorService {
-
-  constructor(private authenticationService: AuthService) { }
-
+  constructor(public auth: AuthService) {}
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (this.authenticationService.isUserLoggedIn() && req.url.indexOf('basicauth') === -1) {
+    if (this.auth.isUserLoggedIn() && req.url.indexOf('login') === -1) {
       const authReq = req.clone({
         headers: new HttpHeaders({
-          // 'Content-Type': 'application/json',
-          Authorization: sessionStorage.getItem(this.authenticationService.TOKEN_SESSION_ATTRIBUTE_NAME)
+          Authorization: `Bearer ${this.auth.TOKEN_SESSION_ATTRIBUTE_NAME}`
         })
       });
       return next.handle(authReq);

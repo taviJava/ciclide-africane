@@ -16,43 +16,31 @@ export class GalleryService {
 
   }
 
-  public findAll(token: string): Observable<any> {
-    const tokenStr = 'Bearer ' + token;
-    const headers = new HttpHeaders().set('Authorization', tokenStr);
-    return this.http.get<any>(this.galleryUrl, {headers, responseType: 'text' as 'json'});
+  public findAll(): Observable<any> {
+    return this.http.get<any>(this.galleryUrl, {responseType: 'text' as 'json'} );
   }
 
   // tslint:disable-next-line:typedef
-  public save(galery: Galery, token: string): Observable<any> {
-    const tokenStr = 'Bearer ' + token;
-    const headers = new HttpHeaders().set('Authorization', tokenStr);
-    return this.http.post<any>(this.galleryUrl, galery, {headers, responseType: 'text' as 'json'});
+  public save(galery: Galery): Observable<any> {
+    return this.http.post<any>(this.galleryUrl, galery, {responseType: 'text' as 'json'});
   }
 
   // tslint:disable-next-line:typedef
-  public update(galery: Galery, token: string) {
-    const tokenStr = 'Bearer ' + token;
-    const headers = new HttpHeaders().set('Authorization', tokenStr);
-    return this.http.put<Galery>(this.galleryUrl, galery, {headers, responseType: 'text' as 'json'});
+  public update(galery: Galery) {
+    return this.http.put<Galery>(this.galleryUrl, galery, {responseType: 'text' as 'json'});
   }
 
-  public getById(id: number, token: string): Observable<any> {
-    const tokenStr = 'Bearer ' + token;
-    const headers = new HttpHeaders().set('Authorization', tokenStr);
-    return this.http.get(`${this.galleryUrl}/${id}` , { headers, responseType: 'text' as 'json' } );
+  public getById(id: number, ): Observable<any> {
+    return this.http.get(`${this.galleryUrl}/${id}` , {responseType: 'text' as 'json'} );
   }
 
   // tslint:disable-next-line:typedef
-  public delete(id: number, token: string) {
-    const tokenStr = 'Bearer ' + token;
-    const headers = new HttpHeaders().set('Authorization', tokenStr);
-    return this.http.delete(`${this.galleryUrl}/${id}`, { headers, responseType: 'text' as 'json' });
+  public delete(id: number) {
+    return this.http.delete(`${this.galleryUrl}/${id}`, {responseType: 'text' as 'json'});
   }
 
-  public upload(photo: File, token: string): Observable<HttpEvent<any>> {
+  public upload(photo: File): Observable<HttpEvent<any>> {
     const formData: FormData = new FormData();
-    const tokenStr = 'Bearer ' + token;
-    const headers = new HttpHeaders().set('Authorization', tokenStr);
     formData.append('photo', photo);
     const req = new HttpRequest('POST', this.photoUrl,  formData, {
       reportProgress: true,
@@ -61,10 +49,8 @@ export class GalleryService {
     return this.http.request(req);
   }
 
-  getFiles( token: string): Observable<any> {
-    const tokenStr = 'Bearer ' + token;
-    const headers = new HttpHeaders().set('Authorization', tokenStr);
-    return this.http.get<any>(this.galleryUrl, {headers, responseType: 'text' as 'json'});
+  getFiles(): Observable<any> {
+    return this.http.get<any>(this.galleryUrl);
 
   }
 

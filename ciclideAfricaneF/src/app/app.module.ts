@@ -10,11 +10,13 @@ import { GalleryListComponent } from './gallery/components/gallery-list/gallery-
 import { GalleryAddComponent } from './gallery/components/gallery-add/gallery-add.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AddSpeciesComponent } from './species/add-species/add-species.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { UserLoginComponent } from './users/components/user-login/user-login.component';
 import { UserRegisterComponent } from './users/components/user-register/user-register.component';
+import {HttpInterceptorService} from "./users/service/http-interceptor.service";
+import {UserService} from "./users/service/user.service";
 
 @NgModule({
   declarations: [
@@ -38,7 +40,12 @@ import { UserRegisterComponent } from './users/components/user-register/user-reg
         NgxPaginationModule,
         ReactiveFormsModule
     ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
