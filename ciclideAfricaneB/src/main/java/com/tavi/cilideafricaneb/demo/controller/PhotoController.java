@@ -73,4 +73,20 @@ public class PhotoController {
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + photo.getName() + "\"")
                 .body(photo.getData());
     }
+    @GetMapping("/galery/photos/{id}")
+    public ResponseEntity<List<ResponseFile>> getListFilesGalery(@PathVariable(name = "id") Long id) {
+        List<ResponseFile> files = photoService.getAllGaleryphotos(id).map(dbFile -> {
+            String fileDownloadUri = ServletUriComponentsBuilder
+                    .fromCurrentContextPath()
+                    .path("/photos/")
+                    .path(dbFile.getId())
+                    .toUriString();
+            return new ResponseFile(
+                    dbFile.getName(),
+                    fileDownloadUri,
+                    dbFile.getType(),
+                    dbFile.getData().length);
+        }).collect(Collectors.toList());
+        return ResponseEntity.status(HttpStatus.OK).body(files);
+    }
 }

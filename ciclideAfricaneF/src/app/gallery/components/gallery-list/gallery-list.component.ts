@@ -35,13 +35,19 @@ export class GalleryListComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   findAll() {
-    this.galleryService.findAll().subscribe(data =>
-      this.galleryList = JSON.parse(data) as Galery[]);
+    this.galleryService.findAll().subscribe(data => {
+      this.galleryList = [];
+      this.galleryList = JSON.parse(data) as Galery[];
+      for (const gal of this.galleryList) {
+        gal.photos = this.galleryService.getGalleryphotos(gal.id);
+      }
+    } )
+    ;
   }
 
   // tslint:disable-next-line:typedef
   delete(id: number) {
-    this.galleryService.delete(id ).subscribe(data => {
+    this.galleryService.delete(id).subscribe(data => {
       this.ngOnInit();
     });
   }

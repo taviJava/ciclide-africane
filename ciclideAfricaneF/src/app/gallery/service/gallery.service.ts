@@ -12,7 +12,7 @@ export class GalleryService {
 
   constructor(private http: HttpClient) {
     this.galleryUrl = 'http://localhost:8080/galery123';
-    this.photoUrl = 'http://localhost:8080/photos';
+    this.photoUrl = 'http://localhost:8080/photos/galery';
 
   }
 
