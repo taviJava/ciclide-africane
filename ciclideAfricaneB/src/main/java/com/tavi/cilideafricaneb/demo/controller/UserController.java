@@ -59,11 +59,7 @@ public class UserController {
     public List<UserDto> getAll(){
         return userService.getAll();
     }
-    @GetMapping("/users{id}")
-    public UserDto getOne(@PathVariable(name = "id") long id){
-        return userService.getOne(id);
-    }
-    @GetMapping("/users{email}")
+    @GetMapping("/users/{email}")
     public UserDto getByEmail(@PathVariable(name = "email") String email){
         return userService.getByEmail(email);
     }
