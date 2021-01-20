@@ -34,6 +34,7 @@ export class SpeciesListComponent implements OnInit {
       // JSON.parse(result) as Species[]
       this.species = JSON.parse(result) as Species[];
       for (const spec of this.species){
+        console.log(spec);
         spec.photos = this.speciesService.getSpeciesphotos(spec.id);
       }
     });

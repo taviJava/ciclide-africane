@@ -17,6 +17,10 @@ import { UserLoginComponent } from './users/components/user-login/user-login.com
 import { UserRegisterComponent } from './users/components/user-register/user-register.component';
 import {HttpInterceptorService} from "./users/service/http-interceptor.service";
 import {UserService} from "./users/service/user.service";
+import { AboutusComponent } from './aboutus/aboutus/aboutus.component';
+import { TestComponent } from './test/test/test.component';
+import { Test2Component } from './test/test2/test2.component';
+import { Test3Component } from './test/test3/test3.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,11 @@ import {UserService} from "./users/service/user.service";
     GalleryAddComponent,
     AddSpeciesComponent,
     UserLoginComponent,
-    UserRegisterComponent
+    UserRegisterComponent,
+    AboutusComponent,
+    TestComponent,
+    Test2Component,
+    Test3Component
   ],
     imports: [
         BrowserModule,

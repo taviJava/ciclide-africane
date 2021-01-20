@@ -28,4 +28,8 @@ export class NavBarComponent implements OnInit {
   goToContact() {
     this.router.navigate(['contact']);
   }
+  // tslint:disable-next-line:typedef
+  goToAboutUs(){
+    this.router.navigate(['aboutus']);
+  }
 }
