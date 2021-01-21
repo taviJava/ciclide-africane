@@ -1,33 +1,38 @@
-<div class="container sub">
+
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 pull-right" style="z-index:1020;">
-      <div id="carousel-example-generic" class="carousel slide">
-        <ol class="carousel-indicators">
-          <li data-target="#carousel-example-generic" data-slide-to="0" class=""></li>
-          <li data-target="#carousel-example-generic" data-slide-to="1" class="active"></li>
-        </ol>
-        <div class="carousel-inner">
-          <div class="item">
-            <img src="https://via.placeholder.com/650x300/87CEFA/000000" alt="item">
-            <div class="carousel-caption">
-              <p>Item 1</p>
+      <div class="container-fluid">
+        <ngb-carousel *ngIf="images">
+          <ng-template ngbSlide>
+            <div class="wrapper">
+              <img [src]="images[0]" alt="Random first slide">
             </div>
-          </div>
-          <div class="item active">
-            <img src="https://via.placeholder.com/650x300/FF7F50/000000" alt="item">
             <div class="carousel-caption">
-              <p>Item 2</p>
+              <h3>First Slide</h3>
+              <p> Angular 10 Carousel Example </p>
             </div>
-          </div>
-        </div>
-        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-          <span class="icon-prev"></span>
-        </a>
-        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-          <span class="icon-next"></span>
-        </a>
+          </ng-template>
+          <ng-template ngbSlide>
+            <div class="wrapper">
+              <img [src]="images[1]" alt="Random second slide" >
+            </div>
+            <div class="carousel-caption">
+              <h3>Second Slide</h3>
+              <p> Check out Techiediaries</p>
+            </div>
+          </ng-template>
+          <ng-template ngbSlide>
+            <div class="wrapper">
+              <img [src]="images[2]"  alt="Random third slide">
+            </div>
+            <div class="carousel-caption">
+              <h3>Third Slide</h3>
+              <p>for full tutorial...</p>
+            </div>
+          </ng-template>
+        </ngb-carousel>
+
       </div>
-      <hr>
     </div>
 
     <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
@@ -37,9 +42,7 @@
 
          <p> Ne specializam in cresterea, reproducerea, si comercializarea de ciclide africane din Lacul Malawi.</p>
       </div>
-      <p>
-
-        Cui ne adresam?</p>
+      <p>Cui ne adresam?</p>
 
       <p>  Ne adresam indeosebi proprietarilor de magazine "pet-shop" si distribuitorilor, dar si persoanelor fizice care solicita comenzi semnificative pentru proiecte de amploare. NU vindem "en detail", va rugam sa va adresati distribuitorilor nostri (pagina distribuitori).
       </p>
@@ -59,4 +62,4 @@
       </p>
     </div>
   </div>
-</div>
+
