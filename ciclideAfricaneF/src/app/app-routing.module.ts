@@ -13,6 +13,7 @@ import {TestComponent} from './test/test/test.component';
 import {Test3Component} from './test/test3/test3.component';
 import {Test2Component} from './test/test2/test2.component';
 import {AddContactComponent} from './contact/component/add-contact/add-contact.component';
+import {AddHomePageComponent} from './home-page/component/add-homepage/add-home-page.component';
 
 const routes: Routes = [{path: '', component: HomePageComponent},
   {path: 'addGallery', component: GalleryAddComponent},
@@ -27,6 +28,7 @@ const routes: Routes = [{path: '', component: HomePageComponent},
   {path: 'test', component: TestComponent},
   {path: 'test2', component: Test2Component},
   {path: 'test3', component: Test3Component},
+  {path: 'addHomepage', component: AddHomePageComponent},
 ];
 
 @NgModule({

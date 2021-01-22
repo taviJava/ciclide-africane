@@ -3,9 +3,11 @@ package com.tavi.cilideafricaneb.demo.service;
 import com.tavi.cilideafricaneb.demo.persistance.dto.GaleryDto;
 import com.tavi.cilideafricaneb.demo.persistance.dto.SpeciesDto;
 import com.tavi.cilideafricaneb.demo.persistance.model.GaleryModel;
+import com.tavi.cilideafricaneb.demo.persistance.model.HomePageModel;
 import com.tavi.cilideafricaneb.demo.persistance.model.Photo;
 import com.tavi.cilideafricaneb.demo.persistance.model.SpeciesModel;
 import com.tavi.cilideafricaneb.demo.repository.GaleryRepository;
+import com.tavi.cilideafricaneb.demo.repository.HomePageRepository;
 import com.tavi.cilideafricaneb.demo.repository.PhotoRepository;
 import com.tavi.cilideafricaneb.demo.repository.SpeciesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,8 @@ public class PhotoService {
     private GaleryRepository galeryRepository;
     @Autowired
     private PhotoRepository photoRepository;
+    @Autowired
+    private HomePageRepository homePageRepository;
 
     public Photo storePhotosSpecies(MultipartFile file) throws IOException {
         List<SpeciesModel> clientModelList = speciesRepository.findAll();
@@ -40,6 +44,16 @@ public class PhotoService {
         GaleryModel galeryModel = galeryRepository.findAll().get(galeryRepository.findAll().size()-1);
         Photo photo = new Photo(fileName, file.getContentType(), file.getBytes());
             photo.setGalery(galeryModel);
+        return photoRepository.save(photo);
+    }
+
+    public Photo storePhotosHomepage(MultipartFile file) throws IOException {
+        List<HomePageModel> homePageModelList = homePageRepository.findAll();
+        HomePageModel homePageModel = homePageModelList.get(homePageModelList.size() - 1);
+        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+        Photo photo = new Photo(fileName, file.getContentType(), file.getBytes());
+        photo.setHomePage(homePageModel);
+
         return photoRepository.save(photo);
     }
     public Photo getPhoto(String id) {
@@ -65,6 +79,15 @@ public class PhotoService {
             galeryModel = galeryModelOptional.get();
         }
         return galeryModel.getPhotos().stream();
+    }
+
+    public Stream<Photo> getAllHomepagephotos(long id) {
+        HomePageModel homePageModel=new HomePageModel();
+        Optional<HomePageModel> homePageModelOptional = homePageRepository.findById(id);
+        if (homePageModelOptional.isPresent()) {
+            homePageModel = homePageModelOptional.get();
+        }
+        return (Stream<Photo>) homePageModel.getPhoto();
     }
 }
 
