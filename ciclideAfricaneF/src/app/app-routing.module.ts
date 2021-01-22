@@ -8,10 +8,11 @@ import {GalleryListComponent} from './gallery/components/gallery-list/gallery-li
 import {UserRegisterComponent} from './users/components/user-register/user-register.component';
 import {UserLoginComponent} from './users/components/user-login/user-login.component';
 import {ContactComponent} from './contact/component/contact/contact.component';
-import {AboutusComponent} from "./aboutus/aboutus/aboutus.component";
-import {TestComponent} from "./test/test/test.component";
-import {Test3Component} from "./test/test3/test3.component";
-import {Test2Component} from "./test/test2/test2.component";
+import {AboutusComponent} from './aboutus/aboutus/aboutus.component';
+import {TestComponent} from './test/test/test.component';
+import {Test3Component} from './test/test3/test3.component';
+import {Test2Component} from './test/test2/test2.component';
+import {AddContactComponent} from './contact/component/add-contact/add-contact.component';
 
 const routes: Routes = [{path: '', component: HomePageComponent},
   {path: 'addGallery', component: GalleryAddComponent},
@@ -21,6 +22,7 @@ const routes: Routes = [{path: '', component: HomePageComponent},
   {path: 'user/register', component: UserRegisterComponent},
   {path: 'user/login', component: UserLoginComponent},
   {path: 'contact', component: ContactComponent},
+  {path: 'addContact', component: AddContactComponent},
   {path: 'aboutus', component: AboutusComponent},
   {path: 'test', component: TestComponent},
   {path: 'test2', component: Test2Component},
