@@ -21,6 +21,7 @@ import { TestComponent } from './test/test/test.component';
 import { Test2Component } from './test/test2/test2.component';
 import { Test3Component } from './test/test3/test3.component';
 import { SearchSpeciesComponent } from './species/search-species/search-species.component';
+import {ContactComponent} from './contact/component/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { SearchSpeciesComponent } from './species/search-species/search-species.
     TestComponent,
     Test2Component,
     Test3Component,
-    SearchSpeciesComponent
+    SearchSpeciesComponent,
+    ContactComponent
   ],
     imports: [
         BrowserModule,

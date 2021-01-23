@@ -28,6 +28,10 @@ export class SearchSpeciesComponent implements OnInit {
   }
   // tslint:disable-next-line:typedef
   getSpecies(keyword: string){
+    if (this.keyword1.length > 0){
+      this.router.navigate(['search/' + this.keyword1]);
+      keyword = this.keyword1;
+    }
     this.speciesService.search(keyword).subscribe(result => {
       this.species = [];
       // JSON.parse(result) as Species[]
@@ -57,6 +61,6 @@ export class SearchSpeciesComponent implements OnInit {
   }
   // tslint:disable-next-line:typedef
   goToSearch(){
-    this.router.navigate(['search/' + this.keyword]);
+    this.ngOnInit();
   }
 }

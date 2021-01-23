@@ -5,6 +5,29 @@
     <button (click)="goToGalery()" type="submit" class="btn btn-outline-light mr-1">Galerie</button>
     <button (click)="goToContact()" type="submit" class="btn btn-outline-light mr-1">Contact</button>
     <button type="submit" class="btn btn-outline-light">Linkuri</button>
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Dropdown button
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+      </div>
+    </div>
+    <div class="btn-group" dropdown>
+      <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
+        Button dropdown <span class="caret"></span>
+      </button>
+      <ul *dropdownMenu class="dropdown-menu" role="menu">
+        <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
+        <li role="menuitem"><a class="dropdown-item" href="#">Another action</a></li>
+        <li role="menuitem"><a class="dropdown-item" href="#">Something else here</a></li>
+        <li class="divider dropdown-divider"></li>
+        <li role="menuitem"><a class="dropdown-item" href="#">Separated link</a>
+        </li>
+      </ul>
+    </div>
 
     <form class="form-inline ml-auto" (ngSubmit)="goToSearch()">
       <input type="text" class="form-control mr-sm-2" [(ngModel)]="keyword" placeholder="Cauta" [ngModelOptions]="{standalone: true}">

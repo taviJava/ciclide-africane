@@ -5,7 +5,7 @@ import {SpeciesService} from '../service/species.service';
 import {Species} from '../model/species';
 import {Observable} from 'rxjs';
 import {HttpEventType, HttpResponse} from '@angular/common/http';
-import {AuthService} from "../../users/service/auth.service";
+import {AuthService} from '../../users/service/auth.service';
 
 @Component({
   selector: 'app-add-species',
