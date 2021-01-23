@@ -29,6 +29,7 @@ public class Photo {
     @OneToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties("photo")
     private HomePageModel homePage;
+
     @OneToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties("photo")
     private ContactModel contactModel;

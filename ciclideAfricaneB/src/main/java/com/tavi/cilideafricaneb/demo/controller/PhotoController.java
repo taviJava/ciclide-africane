@@ -73,6 +73,7 @@ public class PhotoController {
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + photo.getName() + "\"")
                 .body(photo.getData());
     }
+
     @GetMapping("/galery/photos/{id}")
     public ResponseEntity<List<ResponseFile>> getListFilesGalery(@PathVariable(name = "id") Long id) {
         List<ResponseFile> files = photoService.getAllGaleryphotos(id).map(dbFile -> {
@@ -89,4 +90,27 @@ public class PhotoController {
         }).collect(Collectors.toList());
         return ResponseEntity.status(HttpStatus.OK).body(files);
     }
+    @PostMapping("/photos/homepage")
+    public ResponseEntity<ResponseMessage> uploadFileHomePage(@RequestParam("photo") MultipartFile file) {
+        String message;
+        try {
+            photoService.storePhotosHomepage(file);
+            message = "Uploaded the file successfully: " + file.getOriginalFilename();
+            return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
+        } catch (Exception e) {
+            message = "Could not upload the file: " + file.getOriginalFilename() + "!";
+            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
+        }
+    }
+    @GetMapping("/photos/homepage/{id}")
+    public ResponseEntity<byte[]> getFileHomepage(@PathVariable String id) {
+        Photo photo = photoService.getPhoto(id);
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + photo.getName() + "\"")
+                .body(photo.getData());
+    }
+
+
+
 }

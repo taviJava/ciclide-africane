@@ -1,0 +1,51 @@
+<div class="card md-9 personal-info" style="width: 800px">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+      <div class="form-group">
+        <label for="companyInformation">Informatii Companie</label>
+        <input type="text" [(ngModel)]="contact.companyInformation"
+               class="form-control"
+               id="companyInformation"
+               name="companyInformation"
+               placeholder="Introduceti informatiile companiei"
+               required #companyInformation="ngModel">
+      </div>
+      <div [hidden]="!companyInformation.pristine" class="alert alert-danger">Informatii Companie este obligatoriu</div>
+      <div class="form-group">
+        <label for="description">Descriere</label>
+        <input type="text" [(ngModel)]="contact.description"
+               class="form-control"
+               id="description"
+               name="description"
+               placeholder="Introduceti descrierea"
+               required #description="ngModel">
+      </div>
+      <div [hidden]="!description.pristine" class="alert alert-danger">Descrierea este obligatorie</div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" [(ngModel)]="contact.email"
+               class="form-control"
+               id="email"
+               name="email"
+               placeholder="Introduceti email"
+               required #email="ngModel">
+      </div>
+      <div [hidden]="!email.pristine" class="alert alert-danger">Email ul este obligatoriu</div>
+      <div class="form-group">
+        <label for="associate">Adresa</label>
+        <input type="text" [(ngModel)]="contact.address"
+               class="form-control"
+               id="associate"
+               name="associate"
+               placeholder="Introduceti adresa"
+               required #address="ngModel">
+      </div>
+      <div [hidden]="!address.pristine" class="alert alert-danger">Adresa este obligatorie</div>
+      <button (click)="getContact()"
+              class="btn btn-secondary mx-1">Inapoi
+      </button>
+      <button type="submit" [disabled]="!contactForm.form.valid"
+              class="btn btn-info">Submit</button>
+    </form>
+  </div>
+</div>
