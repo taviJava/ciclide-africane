@@ -4,29 +4,19 @@
     <button (click)="goToSpecies()" type="submit" class="btn btn-outline-light mr-1">Specii</button>
     <button (click)="goToGalery()" type="submit" class="btn btn-outline-light mr-1">Galerie</button>
     <button (click)="goToContact()" type="submit" class="btn btn-outline-light mr-1">Contact</button>
-    <button type="submit" class="btn btn-outline-light">Linkuri</button>
+    <button type="submit" class="btn btn-outline-light mr-1">Linkuri</button>
     <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Dropdown button
+      <button class="btn btn-outline-light" type="submit"
+              data-toggle="dropdown" aria-controls="collapseExample" [attr.aria-expanded]="!isCollapsed" (click)="isCollapsed = !isCollapsed">
+        Administrator
       </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
+      <div class="dropdown-menu" [ngbCollapse]="isCollapsed">
+        <a class="dropdown-item" href="#">Administreaza Homepage</a>
+        <a class="dropdown-item" href="#">Administreaza Contact</a>
+        <a class="dropdown-item" href="#">Administreaza Linkuri</a>
+        <a class="dropdown-item" href='addSpecies'>Administreaza Specii</a>
+        <a class="dropdown-item" href='addGallery'>Administreaza Galerie</a>
       </div>
-    </div>
-    <div class="btn-group" dropdown>
-      <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
-        Button dropdown <span class="caret"></span>
-      </button>
-      <ul *dropdownMenu class="dropdown-menu" role="menu">
-        <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
-        <li role="menuitem"><a class="dropdown-item" href="#">Another action</a></li>
-        <li role="menuitem"><a class="dropdown-item" href="#">Something else here</a></li>
-        <li class="divider dropdown-divider"></li>
-        <li role="menuitem"><a class="dropdown-item" href="#">Separated link</a>
-        </li>
-      </ul>
     </div>
 
     <form class="form-inline ml-auto" (ngSubmit)="goToSearch()">
