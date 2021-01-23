@@ -3,8 +3,7 @@ import {Species} from '../model/species';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {SpeciesService} from '../service/species.service';
-import {Observable} from "rxjs";
-import {AuthService} from "../../users/service/auth.service";
+
 
 @Component({
   selector: 'app-species-list',
@@ -20,8 +19,7 @@ export class SpeciesListComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private router: Router,
               private modalService: NgbModal,
-              private speciesService: SpeciesService,
-              private authService: AuthService) { }
+              private speciesService: SpeciesService) { }
 
   ngOnInit(): void {
     this.species = [];
@@ -34,7 +32,6 @@ export class SpeciesListComponent implements OnInit {
       // JSON.parse(result) as Species[]
       this.species = JSON.parse(result) as Species[];
       for (const spec of this.species){
-        console.log(spec);
         spec.photos = this.speciesService.getSpeciesphotos(spec.id);
       }
     });

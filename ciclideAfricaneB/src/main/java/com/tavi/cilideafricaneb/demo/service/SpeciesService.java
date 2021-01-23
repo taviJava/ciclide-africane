@@ -5,6 +5,7 @@ import com.tavi.cilideafricaneb.demo.persistance.files.ResponseFile;
 import com.tavi.cilideafricaneb.demo.persistance.model.SpeciesModel;
 import com.tavi.cilideafricaneb.demo.repository.SpeciesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -20,8 +21,7 @@ import java.util.stream.Collectors;
 public class SpeciesService {
     @Autowired
     private SpeciesRepository speciesRepository;
-    @Autowired
-    private PhotoService photoService;
+
 
     public void save(SpeciesDto speciesDto){
         speciesRepository.save(getModel(speciesDto));
@@ -38,6 +38,17 @@ public class SpeciesService {
 
     public List<SpeciesDto> getAll(){
         List<SpeciesModel> speciesModels = speciesRepository.findAll();
+        List<SpeciesDto> speciesDtos = new ArrayList<>();
+        for (SpeciesModel speciesModel: speciesModels){
+            speciesDtos.add(getDto(speciesModel));
+        }
+        return speciesDtos;
+    }
+
+    public List<SpeciesDto> search(String keyword){
+        System.out.println(keyword);
+
+        List<SpeciesModel> speciesModels = speciesRepository.findByNameContaining(keyword);
         List<SpeciesDto> speciesDtos = new ArrayList<>();
         for (SpeciesModel speciesModel: speciesModels){
             speciesDtos.add(getDto(speciesModel));

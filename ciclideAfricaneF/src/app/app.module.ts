@@ -20,6 +20,7 @@ import { AboutusComponent } from './aboutus/aboutus/aboutus.component';
 import { TestComponent } from './test/test/test.component';
 import { Test2Component } from './test/test2/test2.component';
 import { Test3Component } from './test/test3/test3.component';
+import { SearchSpeciesComponent } from './species/search-species/search-species.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { Test3Component } from './test/test3/test3.component';
     AboutusComponent,
     TestComponent,
     Test2Component,
-    Test3Component
+    Test3Component,
+    SearchSpeciesComponent
   ],
     imports: [
         BrowserModule,

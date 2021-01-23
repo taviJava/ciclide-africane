@@ -1,7 +1,5 @@
 package com.tavi.cilideafricaneb.demo.service;
 
-import com.tavi.cilideafricaneb.demo.persistance.dto.GaleryDto;
-import com.tavi.cilideafricaneb.demo.persistance.dto.SpeciesDto;
 import com.tavi.cilideafricaneb.demo.persistance.model.GaleryModel;
 import com.tavi.cilideafricaneb.demo.persistance.model.Photo;
 import com.tavi.cilideafricaneb.demo.persistance.model.SpeciesModel;
@@ -27,7 +25,7 @@ public class PhotoService {
     private PhotoRepository photoRepository;
 
     public Photo storePhotosSpecies(MultipartFile file) throws IOException {
-        List<SpeciesModel> clientModelList = speciesRepository.findAll();
+        List<SpeciesModel> clientModelList = (List<SpeciesModel>)speciesRepository.findAll();
         SpeciesModel speciesModel = clientModelList.get(clientModelList.size() - 1);
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         Photo photo = new Photo(fileName, file.getContentType(), file.getBytes());

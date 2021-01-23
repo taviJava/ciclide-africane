@@ -47,7 +47,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable().
                 authorizeRequests()
                 .antMatchers("/login","/register","/photos/*","/photos/", "/species/photos/*",
-                        "/galery123/photos/*","/photos/galery","/galery/photos/*").permitAll()
+                        "/galery123/photos/*","/photos/galery","/galery/photos/*", "/find/search/*/*","/species",
+                "/species/","/species/*").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);

@@ -7,7 +7,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-
+  keyword = '';
   constructor(private router: Router) {
   }
 
@@ -31,5 +31,9 @@ export class NavBarComponent implements OnInit {
   // tslint:disable-next-line:typedef
   goToAboutUs(){
     this.router.navigate(['aboutus']);
+  }
+  // tslint:disable-next-line:typedef
+  goToSearch(){
+    this.router.navigate(['search/' + this.keyword]);
   }
 }

@@ -16,6 +16,9 @@ export class SpeciesService {
   public findAll(): Observable<any> {
     return this.http.get<any>(this.speciesUrl, {responseType: 'text' as 'json' });
   }
+  public search(keyword): Observable<any> {
+    return this.http.get<any>(`http://localhost:8080/find/search/${keyword}/list`, {responseType: 'text' as 'json' });
+  }
 
   public save(species: Species): Observable<any> {
     return this.http.post<any>(this.speciesUrl, species , {responseType: 'text' as 'json' });

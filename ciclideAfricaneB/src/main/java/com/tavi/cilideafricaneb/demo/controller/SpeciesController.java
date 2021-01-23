@@ -1,6 +1,7 @@
 package com.tavi.cilideafricaneb.demo.controller;
 
 import com.tavi.cilideafricaneb.demo.persistance.dto.SpeciesDto;
+import com.tavi.cilideafricaneb.demo.persistance.model.SpeciesModel;
 import com.tavi.cilideafricaneb.demo.service.SpeciesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +28,10 @@ public class SpeciesController {
     @GetMapping("/species")
     public List<SpeciesDto> getAll(){
         return speciesService.getAll();
+    }
+    @GetMapping("/find/search/{keyword}/list")
+    public List<SpeciesDto> search(@PathVariable(name = "keyword") String keyword){
+        return speciesService.search(keyword);
     }
     @GetMapping("/species/{id}")
     public SpeciesDto getOne(@PathVariable(name = "id") long id){
