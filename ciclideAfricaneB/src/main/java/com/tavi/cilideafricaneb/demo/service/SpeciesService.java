@@ -77,7 +77,7 @@ public class SpeciesService {
             speciesModel.setBehavior(speciesDto.getBehavior());
             speciesModel.setFeed(speciesDto.getFeed());
             speciesModel.setGroup(speciesDto.getGroup());
-            speciesModel.setName(speciesDto.getAquarium());
+            speciesModel.setName(speciesDto.getName());
             speciesModel.setSize(speciesDto.getSize());
             speciesModel.setReproduction(speciesDto.getReproduction());
         return speciesModel;

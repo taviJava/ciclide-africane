@@ -1,0 +1,89 @@
+{
+  "_args": [
+    [
+      "@ngx-gallery/core@5.0.0-beta.0",
+      "C:\\Users\\Tavi\\Proiecte Intellij\\ciclide_africane\\ciclideAfricaneF"
+    ]
+  ],
+  "_from": "@ngx-gallery/core@5.0.0-beta.0",
+  "_id": "@ngx-gallery/core@5.0.0-beta.0",
+  "_inBundle": false,
+  "_integrity": "sha512-K6zh7fCHf1cV6Y6TaEHUZ1jcXZz+8s9YG0TzocKTxl5KUqb/dV8DzVy6iatYtrx/zaiU35EQ5R9Ws9ZnwDlaQw==",
+  "_location": "/@ngx-gallery/core",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "@ngx-gallery/core@5.0.0-beta.0",
+    "name": "@ngx-gallery/core",
+    "escapedName": "@ngx-gallery%2fcore",
+    "scope": "@ngx-gallery",
+    "rawSpec": "5.0.0-beta.0",
+    "saveSpec": null,
+    "fetchSpec": "5.0.0-beta.0"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@ngx-gallery/core/-/core-5.0.0-beta.0.tgz",
+  "_spec": "5.0.0-beta.0",
+  "_where": "C:\\Users\\Tavi\\Proiecte Intellij\\ciclide_africane\\ciclideAfricaneF",
+  "author": {
+    "name": "Murhaf Sousli",
+    "url": "http://github.com/murhafsousli"
+  },
+  "bugs": {
+    "url": "http://github.com/murhafsousli/ngx-gallery/issues"
+  },
+  "dependencies": {
+    "tslib": "^1.9.0"
+  },
+  "description": "Angular gallery directive that hooks the lightbox with the images automatically.",
+  "es2015_ivy_ngcc": "__ivy_ngcc__/fesm2015/ngx-gallery-core.js",
+  "es2015": "fesm2015/ngx-gallery-core.js",
+  "esm2015": "esm2015/ngx-gallery-core.js",
+  "esm5": "esm5/ngx-gallery-core.js",
+  "fesm2015_ivy_ngcc": "__ivy_ngcc__/fesm2015/ngx-gallery-core.js",
+  "fesm2015": "fesm2015/ngx-gallery-core.js",
+  "fesm5": "fesm5/ngx-gallery-core.js",
+  "homepage": "http://github.com/murhafsousli/ngx-gallery",
+  "keywords": [
+    "angular",
+    "ionic",
+    "gallery",
+    "images",
+    "lightbox",
+    "modal",
+    "slider",
+    "overlay",
+    "carousel"
+  ],
+  "license": "MIT",
+  "main": "bundles/ngx-gallery-core.umd.js",
+  "metadata": "ngx-gallery-core.metadata.json",
+  "module": "fesm5/ngx-gallery-core.js",
+  "name": "@ngx-gallery/core",
+  "peerDependencies": {
+    "@angular/common": ">=6.0.0",
+    "@angular/core": ">=6.0.0",
+    "@angular/animations": ">=6.0.0",
+    "@angular/platform-browser": ">=6.0.0",
+    "rxjs": ">=6.0.0"
+  },
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/murhafsousli/ngx-gallery.git"
+  },
+  "sideEffects": false,
+  "typings": "ngx-gallery-core.d.ts",
+  "version": "5.0.0-beta.0",
+  "__processed_by_ivy_ngcc__": {
+    "es2015": "11.1.0",
+    "fesm2015": "11.1.0",
+    "typings": "11.1.0"
+  },
+  "scripts": {
+    "prepublishOnly": "node --eval \"console.error('ERROR: Trying to publish a package that has been compiled by NGCC. This is not allowed.\\nPlease delete and rebuild the package, without compiling with NGCC, before attempting to publish.\\nNote that NGCC may have been run by importing this package into another project that is being built with Ivy enabled.\\n')\" && exit 1"
+  }
+}

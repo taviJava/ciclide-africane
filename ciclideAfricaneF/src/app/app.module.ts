@@ -22,6 +22,12 @@ import { Test2Component } from './test/test2/test2.component';
 import { Test3Component } from './test/test3/test3.component';
 import { SearchSpeciesComponent } from './species/search-species/search-species.component';
 import {ContactComponent} from './contact/component/contact/contact.component';
+import {GalleryModule} from '@ngx-gallery/core';
+import {LightboxModule} from '@ngx-gallery/lightbox';
+import {GallerizeModule} from '@ngx-gallery/gallerize';
+import {MatButtonModule} from '@angular/material/button';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -41,16 +47,22 @@ import {ContactComponent} from './contact/component/contact/contact.component';
     SearchSpeciesComponent,
     ContactComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        NgbModule,
-        FormsModule,
-        HttpClientModule,
-        Ng2SearchPipeModule,
-        NgxPaginationModule,
-        ReactiveFormsModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgbModule,
+    FormsModule,
+    HttpClientModule,
+    Ng2SearchPipeModule,
+    NgxPaginationModule,
+    ReactiveFormsModule,
+    GalleryModule,
+    LightboxModule,
+    GallerizeModule,
+    MatButtonModule,
+    MatToolbarModule,
+    BrowserAnimationsModule,
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

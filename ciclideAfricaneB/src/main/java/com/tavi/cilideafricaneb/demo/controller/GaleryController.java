@@ -20,7 +20,7 @@ public class GaleryController {
     public void update(@RequestBody GaleryDto galeryDto){
         galeryService.update(galeryDto);
     }
-    @DeleteMapping("/galery/{id}")
+    @DeleteMapping("/galery123/{id}")
     public void delete(@PathVariable(name = "id") long id){
         galeryService.delete(id);
     }

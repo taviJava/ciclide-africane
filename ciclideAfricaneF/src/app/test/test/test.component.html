@@ -1,5 +1,22 @@
+<app-nav-bar></app-nav-bar>
+
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
 
+<div class="container">
+  <title>Galerie</title>
 
+  <div class="lightbox-example">
+    <button mat-raised-button color="primary" [hidden]="true" (click)="lightbox.open(0)">Open Lightbox</button>
+
+
+    <button mat-raised-button color="accent" [hidden]="true" (click)="lightbox.open(0, 'lightbox', {panelClass: 'fullscreen'})">Open Lightbox in fullscreen mode</button>
+  </div>
+  <div class="row" gallerize>
+    <div class="col-md-4 " *ngFor="let gallery of galleryList"><img class="img-responsive"  *ngIf=" gallery.photos | async as photos " [src]=photos[0].url></div>
+  </div>
+</div>
 
 

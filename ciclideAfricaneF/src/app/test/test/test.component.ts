@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
+import {Gallery, GalleryItem, ImageItem, ImageSize, ThumbnailsPosition} from '@ngx-gallery/core';
+import {Lightbox} from '@ngx-gallery/lightbox';
+import {Galery} from '../../gallery/model/galery';
+import {GalleryService} from '../../gallery/service/gallery.service';
 
 @Component({
   selector: 'app-test',
@@ -8,17 +12,27 @@ import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
   providers: [NgbCarouselConfig]
 })
 export class TestComponent implements OnInit {
-  name = 'Angular ';
-
-  images = [700, 800, 807].map((n) => `https://picsum.photos/id/${n}/900/500`);
-  constructor(config: NgbCarouselConfig) {
-    config.interval = 2000;
-    config.keyboard = true;
-    config.pauseOnHover = true;
+  items: GalleryItem[];
+  galleryList: Galery[];
+  constructor(public gallery: Gallery,
+              public lightbox: Lightbox,
+              private galleryService: GalleryService) {
   }
 
   ngOnInit(): void {
-
+    this.galleryList = [];
+    this.findAll();
   }
-
+  // tslint:disable-next-line:typedef
+  findAll() {
+    this.galleryService.findAll().subscribe(data => {
+      this.galleryList = [];
+      this.galleryList = JSON.parse(data) as Galery[];
+      for (const gal of this.galleryList) {
+        console.log(gal.id);
+        gal.photos = this.galleryService.getGalleryphotos(gal.id);
+      }
+    } );
+  }
 }
+

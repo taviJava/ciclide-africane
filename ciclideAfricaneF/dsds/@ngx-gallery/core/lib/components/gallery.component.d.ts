@@ -1,0 +1,76 @@
+import { OnInit, OnChanges, OnDestroy, SimpleChanges, TemplateRef, EventEmitter } from '@angular/core';
+import { Gallery } from '../services/gallery.service';
+import { GalleryRef } from '../services/gallery-ref';
+import { GalleryError, GalleryItem, GalleryState } from '../models/gallery.model';
+import * as ɵngcc0 from '@angular/core';
+export declare class GalleryComponent implements OnInit, OnChanges, OnDestroy {
+    private _gallery;
+    galleryRef: GalleryRef;
+    id: string;
+    items: GalleryItem[];
+    nav: boolean;
+    dots: boolean;
+    loop: boolean;
+    thumb: boolean;
+    zoomOut: number;
+    counter: boolean;
+    dotsSize: number;
+    autoPlay: boolean;
+    gestures: boolean;
+    thumbWidth: number;
+    thumbHeight: number;
+    disableThumb: boolean;
+    panSensitivity: number;
+    playerInterval: number;
+    itemTemplate: TemplateRef<any>;
+    thumbTemplate: TemplateRef<any>;
+    thumbMode: 'strict' | 'free';
+    imageSize: 'cover' | 'contain';
+    dotsPosition: 'top' | 'bottom';
+    counterPosition: 'top' | 'bottom';
+    slidingDirection: 'horizontal' | 'vertical';
+    loadingStrategy: 'preload' | 'lazy' | 'default';
+    thumbPosition: 'top' | 'left' | 'right' | 'bottom';
+    /** Destroy gallery ref on component destroy event */
+    destroyRef: boolean;
+    /** Skip initializing the config with components inputs (Lightbox mode) */
+    skipInitConfig: boolean;
+    itemClick: EventEmitter<number>;
+    thumbClick: EventEmitter<number>;
+    playingChange: EventEmitter<GalleryState>;
+    indexChange: EventEmitter<GalleryState>;
+    itemsChange: EventEmitter<GalleryState>;
+    error: EventEmitter<GalleryError>;
+    private _itemClick$;
+    private _thumbClick$;
+    private _itemChange$;
+    private _indexChange$;
+    private _playingChange$;
+    private _playerListener$;
+    constructor(_gallery: Gallery);
+    private getConfig;
+    onAction(i: string | number): void;
+    ngOnChanges(changes: SimpleChanges): void;
+    ngOnInit(): void;
+    ngOnDestroy(): void;
+    onItemClick(i: number): void;
+    onThumbClick(i: number): void;
+    onError(err: GalleryError): void;
+    load(items: GalleryItem[]): void;
+    add(item: GalleryItem, active?: boolean): void;
+    addImage(data: any, active?: boolean): void;
+    addVideo(data: any, active?: boolean): void;
+    addIframe(data: any, active?: boolean): void;
+    addYoutube(data: any, active?: boolean): void;
+    remove(i: number): void;
+    next(): void;
+    prev(): void;
+    set(i: number): void;
+    reset(): void;
+    play(interval?: number): void;
+    stop(): void;
+    static ɵfac: ɵngcc0.ɵɵFactoryDef<GalleryComponent, never>;
+    static ɵcmp: ɵngcc0.ɵɵComponentDefWithMeta<GalleryComponent, "gallery", never, { "nav": "nav"; "dots": "dots"; "loop": "loop"; "thumb": "thumb"; "zoomOut": "zoomOut"; "counter": "counter"; "dotsSize": "dotsSize"; "autoPlay": "autoPlay"; "gestures": "gestures"; "thumbWidth": "thumbWidth"; "thumbHeight": "thumbHeight"; "disableThumb": "disableThumb"; "panSensitivity": "panSensitivity"; "playerInterval": "playerInterval"; "itemTemplate": "itemTemplate"; "thumbTemplate": "thumbTemplate"; "thumbMode": "thumbMode"; "imageSize": "imageSize"; "dotsPosition": "dotsPosition"; "counterPosition": "counterPosition"; "slidingDirection": "slidingDirection"; "loadingStrategy": "loadingStrategy"; "thumbPosition": "thumbPosition"; "destroyRef": "destroyRef"; "skipInitConfig": "skipInitConfig"; "id": "id"; "items": "items"; }, { "itemClick": "itemClick"; "thumbClick": "thumbClick"; "playingChange": "playingChange"; "indexChange": "indexChange"; "itemsChange": "itemsChange"; "error": "error"; }, never, ["*"]>;
+}
+
+//# sourceMappingURL=gallery.component.d.ts.map

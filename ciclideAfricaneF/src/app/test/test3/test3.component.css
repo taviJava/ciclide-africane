@@ -1,22 +1,28 @@
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
-
-img{
-  margin-top: 0px;
-  width: 1370px;
-  height: 570px;
-
-}
-ngb-carousel{
-  width: fit-content;
-  height: fit-content;
-  background-color: dimgray;
-  fill-opacity: 0.2;
-}
-.container{
-
-  padding: 0;
+body {
+  font-family: Roboto, Arial, sans-serif;
   margin: 0;
-  background-color: dimgray;
-  position: absolute;
 }
 
+.basic-container {
+  padding: 5px;
+}
+
+.version-info {
+  font-size: 8pt;
+  float: right;
+}
+
+.container
+img {
+  width: 200px;
+}
+
+
+.g-overlay {
+  min-width: 320px;
+}
+p {
+  font-family: Lato;
+}

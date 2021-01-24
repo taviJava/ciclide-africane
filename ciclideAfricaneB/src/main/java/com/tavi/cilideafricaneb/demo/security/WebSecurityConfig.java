@@ -48,8 +48,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 authorizeRequests()
                 .antMatchers("/login","/register","/photos/*","/photos/", "/species/photos/*",
                         "/galery123/photos/*","/photos/galery","/galery/photos/*", "/find/search/*/*","/species",
-                "/species/","/species/*").permitAll()
-                .anyRequest().authenticated()
+                "/species/","/species/*","galery123").permitAll()
+//                .anyRequest().authenticated()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
