@@ -1,0 +1,73 @@
+{
+  "_args": [
+    [
+      "ng-image-slider@2.6.4",
+      "C:\\Users\\Tavi\\Proiecte Intellij\\ciclide_africane\\ciclideAfricaneF"
+    ]
+  ],
+  "_from": "ng-image-slider@2.6.4",
+  "_id": "ng-image-slider@2.6.4",
+  "_inBundle": false,
+  "_integrity": "sha512-7FxHi0I0Z9hOkKAWmofcBbDOB7j8W5e6j6TY/gTyOyb06zbgbFSYyunNbxoiY+anEn+N2UL+sQxnYw9zCKsm5A==",
+  "_location": "/ng-image-slider",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "ng-image-slider@2.6.4",
+    "name": "ng-image-slider",
+    "escapedName": "ng-image-slider",
+    "rawSpec": "2.6.4",
+    "saveSpec": null,
+    "fetchSpec": "2.6.4"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/ng-image-slider/-/ng-image-slider-2.6.4.tgz",
+  "_spec": "2.6.4",
+  "_where": "C:\\Users\\Tavi\\Proiecte Intellij\\ciclide_africane\\ciclideAfricaneF",
+  "author": {
+    "name": "Sanjay V",
+    "email": "skumarverma45@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/sanjayV/ng-image-slider/issues"
+  },
+  "dependencies": {
+    "tslib": "^1.10.0"
+  },
+  "description": "Angular Image slider with lightbox. An Angular responsive image slider with lightbox popup. Also support youtube url, image base64 string and mp4 video urls and base64 string.",
+  "es2015": "fesm2015/ng-image-slider.js",
+  "esm2015": "esm2015/ng-image-slider.js",
+  "esm5": "esm5/ng-image-slider.js",
+  "fesm2015": "fesm2015/ng-image-slider.js",
+  "fesm5": "fesm5/ng-image-slider.js",
+  "homepage": "https://github.com/sanjayV/ng-image-slider",
+  "keywords": [
+    "Angular",
+    "Angular image slider",
+    "Angular video slider",
+    "Angular Carousel",
+    "responsive slider",
+    "slideshow",
+    "carousel",
+    "slider"
+  ],
+  "license": "MIT",
+  "main": "bundles/ng-image-slider.umd.js",
+  "metadata": "ng-image-slider.metadata.json",
+  "module": "fesm5/ng-image-slider.js",
+  "name": "ng-image-slider",
+  "peerDependencies": {
+    "@angular/common": "^9.1.12",
+    "@angular/core": "^9.1.12"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanjayV/ng-image-slider.git"
+  },
+  "sideEffects": false,
+  "typings": "ng-image-slider.d.ts",
+  "version": "2.6.4"
+}
