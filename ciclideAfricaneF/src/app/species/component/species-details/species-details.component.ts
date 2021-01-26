@@ -1,13 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-
+import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-species-details',
   templateUrl: './species-details.component.html',
-  styleUrls: ['./species-details.component.css']
+  styleUrls: ['./species-details.component.css'],
+  providers: [NgbCarouselConfig]
 })
 export class SpeciesDetailsComponent implements OnInit {
-
-  constructor() { }
+  images = [700, 800, 807].map((n) => `https://picsum.photos/id/${n}/900/500`);
+  constructor(config: NgbCarouselConfig) {
+    config.interval = 2000;
+    config.keyboard = true;
+    config.pauseOnHover = true;
+  }
 
   ngOnInit(): void {
   }
