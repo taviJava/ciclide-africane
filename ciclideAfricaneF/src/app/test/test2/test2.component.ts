@@ -12,10 +12,6 @@ import {SpeciesService} from '../../species/service/species.service';
 })
 export class Test2Component implements OnInit {
   species: Species[];
-  closeResult = '';
-  searchValue = '';
-  p = 1;            // pt paginare si urmatoarea la fel
-  numberOfItemsPerP = 10;
   constructor(private route: ActivatedRoute,
               private router: Router,
               private modalService: NgbModal,
@@ -37,34 +33,10 @@ export class Test2Component implements OnInit {
     });
   }
   // tslint:disable-next-line:typedef
-  add(){
-    this.router.navigate(['addSpecies']);
-  }
-  // tslint:disable-next-line:typedef
-  delete(id: number) {
-    this.speciesService.delete(id ).subscribe(data => {
-      this.ngOnInit();
-    });
-  }
-  // tslint:disable-next-line:typedef
-  open(content, id) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-      this.delete(id);
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
+  goToSpeciesDetails(id: number){
+    this.router.navigate(['species/details/' + id]);
   }
 
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
-  }
 }
 
 

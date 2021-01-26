@@ -38,4 +38,8 @@ export class NavBarComponent implements OnInit {
   goToSearch(){
     this.router.navigate(['search/' + this.keyword]);
   }
+  // tslint:disable-next-line:typedef
+  goToLinks(){
+    this.router.navigate(['link']);
+  }
 }

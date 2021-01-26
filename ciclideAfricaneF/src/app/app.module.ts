@@ -28,6 +28,8 @@ import {GallerizeModule} from '@ngx-gallery/gallerize';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {LinksComponent} from './links/component/links/links.component';
+import { SpeciesDetailsComponent } from './species/component/species-details/species-details.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     Test2Component,
     Test3Component,
     SearchSpeciesComponent,
-    ContactComponent
+    ContactComponent,
+    LinksComponent,
+    SpeciesDetailsComponent
   ],
   imports: [
     BrowserModule,
