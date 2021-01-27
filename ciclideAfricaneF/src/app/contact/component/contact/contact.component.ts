@@ -9,7 +9,7 @@ import {ContactService} from '../../service/contact.service';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
-  contact: Contact[];
+  contact: Contact = new Contact();
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -17,11 +17,20 @@ export class ContactComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.contact = [];
+    this.contact = new Contact();
+    this.getContact();
   }
 
 // tslint:disable-next-line:typedef
   add() {
     this.router.navigate(['addContact']);
   }
+  // tslint:disable-next-line:typedef
+  getContact(){
+    this.contactService.getContact().subscribe(data => {
+      this.contact = new Contact();
+      this.contact = JSON.parse(data) as Contact;
+    });
+  }
+
 }

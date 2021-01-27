@@ -3,6 +3,7 @@ package com.tavi.cilideafricaneb.demo.persistance.dto;
 public class ContactDto {
     private long id;
     private String companyInformation;
+    private String phone;
     private String address;
     private String email;
     private String description;
@@ -45,5 +46,13 @@ public class ContactDto {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

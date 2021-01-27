@@ -25,8 +25,8 @@ export class ContactService {
     return this.http.put<any>(this.contactUrl, contact );
   }
 
-  public getById(id: number): Observable<any> {
-    return this.http.get(`${this.contactUrl}/${id}` , {responseType: 'text' as 'json' });
+  public getContact(): Observable<any> {
+    return this.http.get(this.contactUrl , {responseType: 'text' as 'json' });
   }
   // tslint:disable-next-line:typedef
   public delete(id: number ) {

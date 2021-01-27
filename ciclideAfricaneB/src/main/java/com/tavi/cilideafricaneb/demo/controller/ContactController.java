@@ -26,7 +26,7 @@ public class ContactController {
         contactService.delete(id);
     }
     @GetMapping("/contact")
-    public List<ContactDto> getAll(){
-        return contactService.getAll();
+    public ContactDto getone(){
+        return contactService.getAll().get(0);
     }
 }

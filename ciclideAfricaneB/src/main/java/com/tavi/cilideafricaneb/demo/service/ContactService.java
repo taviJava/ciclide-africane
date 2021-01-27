@@ -50,6 +50,7 @@ public class ContactService {
         contactModel.setDescription(contactDto.getDescription());
         contactModel.setEmail(contactDto.getAddress());
         contactModel.setAddress(contactDto.getAddress());
+        contactModel.setPhone(contactDto.getPhone());
         contactRepository.save(contactModel);
         return contactModel;
     }
@@ -61,6 +62,7 @@ public class ContactService {
         contactDto.setDescription(contactModel.getDescription());
         contactDto.setEmail(contactModel.getEmail());
         contactDto.setAddress(contactModel.getAddress());
+        contactDto.setPhone(contactModel.getPhone());
         return contactDto;
     }
 }

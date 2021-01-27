@@ -16,11 +16,11 @@
   <!--Contact heading-->
   <h2 class="h1 m-0">Contact </h2>
   <!--Contact description-->
-  <p class="pb-4">Ne puteţi contacta prin e-mail:
+  <p >Ne puteţi contacta: </p>
 
-    vanzari AT ciclideafricane.ro pentru informaţii despre stocuri şi preţuri
-    webmaster AT ciclideafricane.ro pentru probleme legate de site
-    contact AT ciclideafricane.ro pentru probleme generale legate de activitatea noastră</p>
+  <p><strong>&#183;</strong>  vanzari AT ciclideafricane.ro pentru informaţii despre stocuri şi preţuri </p>
+  <p><strong>&#183;</strong>  webmaster AT ciclideafricane.ro pentru probleme legate de site </p>
+  <p><strong>&#183;</strong>  contact AT ciclideafricane.ro pentru probleme generale legate de activitatea noastră</p>
 
   <div class="row">
 
@@ -32,39 +32,38 @@
 
         <div class="card-header p-0">
           <div class="bg-primary text-white text-center py-2">
-            <h3><i class="fa fa-envelope"></i> Write to us:</h3>
-            <p class="m-0">We'll write rarely, but only the best content.</p>
+            <h3><i class="fa fa-envelope"></i> Contactati-ne:</h3>
           </div>
         </div>
         <div class="card-body p-3">
 
           <!--Body-->
           <div class="form-group">
-            <label>Your name</label>
+            <label for="inlineFormInputGroupUsername">Numele dumneavoastra</label>
             <div class="input-group">
               <div class="input-group-addon bg-light"><i class="fa fa-user text-primary"></i></div>
-              <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Username">
+              <input type="text" class="form-control" id="inlineFormInputGroupUsername" >
             </div>
           </div>
           <div class="form-group">
-            <label>Your email</label>
+            <label for="inlineFormInputGroupUsername2">Email</label>
             <div class="input-group mb-2 mb-sm-0">
               <div class="input-group-addon bg-light"><i class="fa fa-envelope text-primary"></i></div>
-              <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Username">
+              <input type="text" class="form-control" id="inlineFormInputGroupUsername2" >
             </div>
           </div>
           <div class="form-group">
-            <label>Service</label>
+            <label for="inlineFormInputGroupUsername3">Oras</label>
             <div class="input-group mb-2 mb-sm-0">
               <div class="input-group-addon bg-light"><i class="fa fa-tag prefix text-primary"></i></div>
-              <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Username">
+              <input type="text" class="form-control" id="inlineFormInputGroupUsername3" >
             </div>
           </div>
           <div class="form-group">
-            <label>Message</label>
+            <label for="inlineFormInputGroupUsername4">Mesaj</label>
             <div class="input-group mb-2 mb-sm-0">
               <div class="input-group-addon bg-light"><i class="fa fa-pencil text-primary"></i></div>
-              <textarea class="form-control"></textarea>
+              <textarea class="form-control" id="inlineFormInputGroupUsername4"></textarea>
             </div>
           </div>
 
@@ -92,19 +91,18 @@
       <div class="row text-center">
         <div class="col-md-4">
           <a class="bg-primary px-3 py-2 rounded text-white mb-2 d-inline-block"><i class="fa fa-map-marker"></i></a>
-          <p>Str. General Dragalina, Nr. 14, parter
-            Craiova, Dolj,<br> Romania</p>
+          <p>{{contact.address}}
 
         </div>
 
         <div class="col-md-4">
           <a class="bg-primary px-3 py-2 rounded text-white mb-2 d-inline-block"><i class="fa fa-phone"></i></a>
-          <p>+ 01 234 567 89, <br> Mon - Fri, 8:00-22:00</p>
+          <p>{{contact.phone}}, <br> Luni - Vineri, 8:00-22:00</p>
         </div>
 
         <div class="col-md-4">
           <a class="bg-primary px-3 py-2 rounded text-white mb-2 d-inline-block"><i class="fa fa-envelope"></i></a>
-          <p>ciclideafricane.ro </p>
+          <p>{{contact.email}} </p>
         </div>
       </div>
 

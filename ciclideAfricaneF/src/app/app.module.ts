@@ -30,6 +30,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {LinksComponent} from './links/component/links/links.component';
 import { SpeciesDetailsComponent } from './species/component/species-details/species-details.component';
+import {AddContactComponent} from './contact/component/add-contact/add-contact.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { SpeciesDetailsComponent } from './species/component/species-details/spe
     SearchSpeciesComponent,
     ContactComponent,
     LinksComponent,
-    SpeciesDetailsComponent
+    SpeciesDetailsComponent,
+    AddContactComponent,
   ],
   imports: [
     BrowserModule,

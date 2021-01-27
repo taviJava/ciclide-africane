@@ -14,7 +14,8 @@ import {Test3Component} from './test/test3/test3.component';
 import {Test2Component} from './test/test2/test2.component';
 import {SearchSpeciesComponent} from './species/search-species/search-species.component';
 import {LinksComponent} from './links/component/links/links.component';
-import {SpeciesDetailsComponent} from "./species/component/species-details/species-details.component";
+import {SpeciesDetailsComponent} from './species/component/species-details/species-details.component';
+import {AddContactComponent} from './contact/component/add-contact/add-contact.component';
 
 const routes: Routes = [{path: '', component: HomePageComponent},
   {path: 'addGallery', component: GalleryAddComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [{path: '', component: HomePageComponent},
   {path: 'user/register', component: UserRegisterComponent},
   {path: 'user/login', component: UserLoginComponent},
   {path: 'contact', component: ContactComponent},
+  {path: 'addContact', component: AddContactComponent},
   {path: 'aboutus', component: AboutusComponent},
   {path: 'test', component: TestComponent},
   {path: 'test2', component: Test2Component},
