@@ -5,22 +5,13 @@
 <!------ Include the above in your HEAD tag ---------->
 
 
-<div class="btn-group" style="padding-right: 300px">
-  <button (click)="add()" class="btn btn-success " > Adauga Contact </button>
-</div>
-<div class="my-5"></div>
-
 <!-- Contact -->
 <section class="container">
 
   <!--Contact heading-->
   <h2 class="h1 m-0">Contact </h2>
+  <br>
   <!--Contact description-->
-  <p >Ne puteţi contacta: </p>
-
-  <p><strong>&#183;</strong>  vanzari AT ciclideafricane.ro pentru informaţii despre stocuri şi preţuri </p>
-  <p><strong>&#183;</strong>  webmaster AT ciclideafricane.ro pentru probleme legate de site </p>
-  <p><strong>&#183;</strong>  contact AT ciclideafricane.ro pentru probleme generale legate de activitatea noastră</p>
 
   <div class="row">
 
@@ -82,13 +73,20 @@
     <!--Grid column-->
     <div class="col-lg-7">
 
-      <!--Google map-->
-      <div class="mb-4">
 
+      <div class="mb-4">
+        <p >Ne puteţi contacta: </p>
+        <br>
+
+        <p><strong>&#183;</strong>  vanzari AT ciclideafricane.ro pentru informaţii despre stocuri şi preţuri </p>
+        <p><strong>&#183;</strong>  webmaster AT ciclideafricane.ro pentru probleme legate de site </p>
+        <p><strong>&#183;</strong>  contact AT ciclideafricane.ro pentru probleme generale legate de activitatea noastră</p>
       </div>
 
       <!--Buttons-->
-      <div class="row text-center">
+      <div class="row text-center" style="margin-top: 180px">
+
+
         <div class="col-md-4">
           <a class="bg-primary px-3 py-2 rounded text-white mb-2 d-inline-block"><i class="fa fa-map-marker"></i></a>
           <p>{{contact.address}}
