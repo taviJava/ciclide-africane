@@ -46,6 +46,34 @@ public class PhotoController {
             return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
         }
     }
+    @PostMapping("/photos/link")
+    public ResponseEntity<ResponseMessage> uploadFileLink(@RequestParam("photo") MultipartFile file) {
+        String message;
+        try {
+            photoService.storePhotosLink(file);
+            message = "Uploaded the file successfully: " + file.getOriginalFilename();
+            return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
+        } catch (Exception e) {
+            message = "Could not upload the file: " + file.getOriginalFilename() + "!";
+            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
+        }
+    }
+    @GetMapping("/link/photos/{id}")
+    public ResponseEntity<List<ResponseFile>> getListFilesLink(@PathVariable(name = "id") Long id) {
+        List<ResponseFile> files = photoService.getAllLinkphotos(id).map(dbFile -> {
+            String fileDownloadUri = ServletUriComponentsBuilder
+                    .fromCurrentContextPath()
+                    .path("/photos/")
+                    .path(dbFile.getId())
+                    .toUriString();
+            return new ResponseFile(
+                    dbFile.getName(),
+                    fileDownloadUri,
+                    dbFile.getType(),
+                    dbFile.getData().length);
+        }).collect(Collectors.toList());
+        return ResponseEntity.status(HttpStatus.OK).body(files);
+    }
 
     @GetMapping("/species/photos/{id}")
     public ResponseEntity<List<ResponseFile>> getListFiles(@PathVariable(name = "id") Long id) {
@@ -63,6 +91,8 @@ public class PhotoController {
         }).collect(Collectors.toList());
         return ResponseEntity.status(HttpStatus.OK).body(files);
     }
+
+
 
 
     @GetMapping("/photos/{id}")

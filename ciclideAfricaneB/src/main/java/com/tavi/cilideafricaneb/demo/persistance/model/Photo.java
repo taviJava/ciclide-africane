@@ -34,6 +34,11 @@ public class Photo {
     @JsonIgnoreProperties("photo")
     private ContactModel contactModel;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("photo")
+    private LinkModel linkModel;
+
+
     public Photo(String name, String type, byte[] data) {
         this.name = name;
         this.type = type;
@@ -107,5 +112,13 @@ public class Photo {
 
     public void setContactModel(ContactModel contactModel) {
         this.contactModel = contactModel;
+    }
+
+    public LinkModel getLinkModel() {
+        return linkModel;
+    }
+
+    public void setLinkModel(LinkModel linkModel) {
+        this.linkModel = linkModel;
     }
 }
