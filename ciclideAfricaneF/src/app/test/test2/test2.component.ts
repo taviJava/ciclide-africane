@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ModalDismissReasons, NgbCarouselConfig, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { NgbCarouselConfig, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {Species} from '../../species/model/species';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SpeciesService} from '../../species/service/species.service';

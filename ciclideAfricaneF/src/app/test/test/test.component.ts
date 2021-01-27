@@ -29,7 +29,6 @@ export class TestComponent implements OnInit {
       this.galleryList = [];
       this.galleryList = JSON.parse(data) as Galery[];
       for (const gal of this.galleryList) {
-        console.log(gal.id);
         gal.photos = this.galleryService.getGalleryphotos(gal.id);
       }
     } );
