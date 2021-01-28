@@ -7,19 +7,19 @@
         <div class="card-body">
           <nav class="navbar navbar-expand-md navbar-light bg-light">
             <div class="btn-group" style="padding-right: 300px">
-              <button (click)="save()" class="btn btn-success " > Add </button>
+              <button (click)="save()" class="btn btn-success "> Add</button>
             </div>
             <div class="navbar-nav" style="padding-right: 340px">
-              <h4  class="nav-item text-primary text-center"><strong>Galerie</strong></h4>
+              <h4 class="nav-item text-primary text-center"><strong>Link</strong></h4>
             </div>
-
           </nav>
-
           <div class="row" style="margin-top: 20px">
-            <div class="col-sm-4"  *ngFor="let link of links  | paginate : {itemsPerPage: numberOfItemsPerP, currentPage: p}">
+            <div class="col-sm-4"
+                 *ngFor="let link of links  | paginate : {itemsPerPage: numberOfItemsPerP, currentPage: p}">
               <div class="card text-black-50 bg-light mb-4">
-                <div class="card-body" >
-                  <img *ngIf=" link.photos | async as photos " [src]=photos.url  height="250px"  class="card-img-top" alt="...">
+                <div class="card-body">
+                  <img *ngIf=" link.photos | async as photos " [src]=photos[0].url height="250px" class="card-img-top"
+                       alt="...">
                   <div style="height: 100px">
                     <h5 class="card-title">{{link.description}}</h5>
 

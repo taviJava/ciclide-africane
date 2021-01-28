@@ -1,22 +1,60 @@
 <app-nav-bar></app-nav-bar>
-
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-
 <div class="container">
-  <title>Galerie</title>
+  <div class="row">
+    <div class="col-md-12">
 
-  <div class="lightbox-example">
-    <button mat-raised-button color="primary" [hidden]="true" (click)="lightbox.open(0)">Open Lightbox</button>
+      <div class="card my-5">
+        <div class="card-body">
+          <nav class="navbar navbar-expand-md navbar-light bg-light">
+            <div class="btn-group" style="padding-right: 300px">
+              <button (click)="save()" class="btn btn-success "> Add</button>
+            </div>
+            <div class="navbar-nav" style="padding-right: 340px">
+              <h4 class="nav-item text-primary text-center"><strong>Homepage</strong></h4>
+            </div>
+          </nav>
+          <div class="row" style="margin-top: 20px">
+            <div class="col-sm-4"
+                 *ngFor="let home of homePage  | paginate : {itemsPerPage: numberOfItemsPerP, currentPage: p}">
+              <div class="card text-black-50 bg-light mb-4">
+                <div class="card-body">
+                  <img *ngIf=" home.photos | async as photos " [src]=photos[0].url height="250px" class="card-img-top"
+                       alt="...">
+                  <div style="height: 100px">
+                    <h5 class="card-title">{{home.description}}</h5>
 
+                  </div>
+                  <div class="btn-group">
+                    <button (click)="open(content, home.id)" class="btn btn-danger"> Delete
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
 
-    <button mat-raised-button color="accent" [hidden]="true" (click)="lightbox.open(0, 'lightbox', {panelClass: 'fullscreen'})">Open Lightbox in fullscreen mode</button>
-  </div>
-  <div class="row" gallerize>
-    <div class="col-md-4 " *ngFor="let gallery of galleryList"><img class="img-responsive"  *ngIf=" gallery.photos | async as photos " [src]=photos[0].url></div>
+        </div>
+      </div>
+      <ng-template #content let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Confirm dialog</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-12 text-center">
+              Are you sure you want to delete this item?
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" (click)="modal.close('Delete click')">Delete</button>
+        </div>
+      </ng-template>
+    </div>
   </div>
 </div>
-
 
