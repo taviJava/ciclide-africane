@@ -141,6 +141,15 @@ public class PhotoController {
                 .body(photo.getData());
     }
 
+    @GetMapping("/photos/link/{id}")
+    public ResponseEntity<byte[]> getFilelink(@PathVariable String id) {
+        Photo photo = photoService.getPhoto(id);
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + photo.getName() + "\"")
+                .body(photo.getData());
+    }
+
 
 
 }

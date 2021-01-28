@@ -1,0 +1,68 @@
+<app-nav-bar></app-nav-bar>
+<div class="card md-9 personal-info" style="width: 800px">
+  <div class="card-body">
+    <div class="text-center">
+      <div *ngIf="!previewUrl">
+        <img src="https://www.hopkinsmedicine.org/-/media/feature/noimageavailable.ashx" class="avatar img-circle" alt="avatar">
+      </div>
+      <div *ngIf="previewUrl">
+          <img [src]="previewUrl"  class="avatar img-circle" alt="avatar" />
+
+      </div>
+      <p></p>
+      <p *ngIf="!previewUrl"  class="stea2" >*</p>
+      <p *ngIf="!previewUrl" >Trebuie sa selectezi o fotografie...</p>
+      <h6 *ngIf="previewUrl">Fotografia selectata...</h6>
+      <div class="btn-group">
+        <label class="btn btn-danger mr-1" > Adauga foto
+          <input  type="file" name="image"  (change)="selectFile($event)" />
+        </label>
+      </div>
+
+    </div>
+    <div *ngIf="currentFile" class="progress">
+      <div
+        class="progress-bar progress-bar-info progress-bar-striped"
+        role="progressbar"
+        attr.aria-valuenow="{{ progress }}"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        [ngStyle]="{ width: progress + '%' }"
+      >
+        {{ progress }}%
+      </div>
+    </div>
+    </div>
+  </div>
+
+
+<form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+      <div class="form-group">
+        <label for="name">Informatii Companie</label>
+        <input type="text" [(ngModel)]="link.name"
+               class="form-control"
+               id="name"
+               name="name"
+               placeholder="Introduceti informatiile companiei"
+               required #name="ngModel">
+      </div>
+      <div [hidden]="!name.pristine" class="alert alert-danger">Informatii Companie este obligatoriu</div>
+      <div class="form-group">
+        <label for="description">Descriere</label>
+        <input type="text" [(ngModel)]="link.description"
+               class="form-control"
+               id="description"
+               name="description"
+               placeholder="Introduceti descrierea"
+               required #description="ngModel">
+      </div>
+      <div [hidden]="!description.pristine" class="alert alert-danger">Descrierea este obligatorie</div>
+
+      <button (click)="getLink()"
+              class="btn btn-secondary mx-1">Inapoi
+      </button>
+      <button type="submit" [disabled]="!contactForm.form.valid"
+              class="btn btn-info">Submit
+      </button>
+    </form>
+

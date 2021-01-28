@@ -13,12 +13,9 @@ export class SearchSpeciesComponent implements OnInit {
   keyword1 = '';
   species: Species[];
   keyword: string;
-  closeResult = '';
-  searchValue = '';
-  p = 1;            // pt paginare si urmatoarea la fel
-  numberOfItemsPerP = 10;
   constructor(private route: ActivatedRoute,
               private router: Router,
+              private modalService: NgbModal,
               private speciesService: SpeciesService) { }
 
   ngOnInit(): void {
@@ -62,5 +59,9 @@ export class SearchSpeciesComponent implements OnInit {
   // tslint:disable-next-line:typedef
   goToSearch(){
     this.ngOnInit();
+  }
+  // tslint:disable-next-line:typedef
+  goToSpeciesDetails(id: number){
+    this.router.navigate(['species/details/' + id]);
   }
 }

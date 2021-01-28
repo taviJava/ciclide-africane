@@ -16,6 +16,11 @@ import {SearchSpeciesComponent} from './species/search-species/search-species.co
 import {LinksComponent} from './links/component/links/links.component';
 import {SpeciesDetailsComponent} from './species/component/species-details/species-details.component';
 import {AddContactComponent} from './contact/component/add-contact/add-contact.component';
+import {AddLinkComponent} from './links/component/add-link/add-link.component';
+import {AddHomePageComponent} from './home-page/component/add-homepage/add-home-page.component';
+import {AdmSpeciesListComponent} from "./species/component/adm-species-list/adm-species-list.component";
+import {AdmGalleryComponent} from "./gallery/components/adm-gallery/adm-gallery.component";
+import {AdmLinksComponent} from "./links/component/adm-links/adm-links.component";
 
 const routes: Routes = [{path: '', component: HomePageComponent},
   {path: 'addGallery', component: GalleryAddComponent},
@@ -32,7 +37,12 @@ const routes: Routes = [{path: '', component: HomePageComponent},
   {path: 'test3', component: Test3Component},
   {path: 'search/:key', component: SearchSpeciesComponent},
   {path: 'link', component: LinksComponent},
-  {path: 'species/details/:id', component: SpeciesDetailsComponent}
+  {path: 'species/details/:id', component: SpeciesDetailsComponent},
+  {path: 'addlink', component: AddLinkComponent},
+  {path: 'addhomepage', component: AddHomePageComponent},
+  {path: 'speciesAdm', component: AdmSpeciesListComponent},
+  {path: 'galleryAdm', component: AdmGalleryComponent},
+  {path: 'linksAdm', component: AdmLinksComponent}
 ];
 
 @NgModule({

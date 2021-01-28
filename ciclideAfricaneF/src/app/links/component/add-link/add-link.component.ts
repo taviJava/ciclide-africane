@@ -1,48 +1,53 @@
 import {Component, OnInit} from '@angular/core';
-import {HomePage} from '../../model/home-page';
+import {Link} from '../../model/link';
 import {ActivatedRoute, Router} from '@angular/router';
-import {HomePageService} from '../../service/home-page.service';
+import {LinkService} from '../../service/link.service';
 import {HttpEventType, HttpResponse} from '@angular/common/http';
-
+import {Observable} from 'rxjs';
 
 @Component({
-  selector: 'app-add-home-page',
-  templateUrl: './add-home-page.component.html',
-  styleUrls: ['./add-home-page.component.css']
+  selector: 'app-add-link',
+  templateUrl: './add-link.component.html',
+  styleUrls: ['./add-link.component.css']
 })
-export class AddHomePageComponent implements OnInit {
-  homepage: HomePage = new HomePage();
-  selectedFiles: FileList;
-  currentFile: File;
+export class AddLinkComponent implements OnInit {
+  link: Link = new Link();
+  selectedPhotos: FileList;
+  pozeLista: File[] = [];
+  currentPhoto: File;
   progress = 0;
   message = '';
+  photos: Observable<any>;
+  selectedFiles: FileList;
+  currentFile: File;
+  // preview photo
   fileData: File = null;
   previewUrl: any = null;
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private homePageService: HomePageService) {
+              private linkService: LinkService) {
   }
 
   ngOnInit(): void {
-  this.homepage = new HomePage();
   }
-
-  // tslint:disable-next-line:typedef
+// tslint:disable-next-line:typedef
   onSubmit() {
-    this.homePageService.save(this.homepage).subscribe(data => {
+    this.linkService.save(this.link).subscribe(data => {
       this.upload();
       setTimeout(() =>
         {
-          this.getHomePage();
+          this.getLink();
         },
         5000);
     });
   }
 
   // tslint:disable-next-line:typedef
-  getHomePage() {
-    this.router.navigate(['']);
+  getLink() {
+    this.router.navigate(['link']);
   }
+  // tavi
+
   // tslint:disable-next-line:typedef
   selectFile(event) {
     this.selectedFiles = event.target.files;
@@ -82,7 +87,7 @@ export class AddHomePageComponent implements OnInit {
   upload() {
     this.progress = 0;
     this.currentFile = this.selectedFiles.item(0);
-    this.homePageService.upload(this.currentFile).subscribe(
+    this.linkService.upload(this.currentFile).subscribe(
       event => {
         if (event.type === HttpEventType.UploadProgress) {
           this.progress = Math.round(100 * event.loaded / event.total);
@@ -97,4 +102,5 @@ export class AddHomePageComponent implements OnInit {
         this.currentFile = undefined;
       });
   }
+
 }

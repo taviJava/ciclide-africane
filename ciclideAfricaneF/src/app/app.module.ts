@@ -31,6 +31,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {LinksComponent} from './links/component/links/links.component';
 import { SpeciesDetailsComponent } from './species/component/species-details/species-details.component';
 import {AddContactComponent} from './contact/component/add-contact/add-contact.component';
+import { AddLinkComponent } from './links/component/add-link/add-link.component';
+import {AddHomePageComponent} from './home-page/component/add-homepage/add-home-page.component';
+import { AdmSpeciesListComponent } from './species/component/adm-species-list/adm-species-list.component';
+import { AdmGalleryComponent } from './gallery/components/adm-gallery/adm-gallery.component';
+import { AdmLinksComponent } from './links/component/adm-links/adm-links.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +57,11 @@ import {AddContactComponent} from './contact/component/add-contact/add-contact.c
     LinksComponent,
     SpeciesDetailsComponent,
     AddContactComponent,
+    AddLinkComponent,
+    AddHomePageComponent,
+    AdmSpeciesListComponent,
+    AdmGalleryComponent,
+    AdmLinksComponent
   ],
   imports: [
     BrowserModule,
