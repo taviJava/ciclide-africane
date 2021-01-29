@@ -3,15 +3,18 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Species} from '../../species/model/species';
 import {Contact} from '../model/contact';
+import {Message} from '../model/message';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContactService {
   private contactUrl: string;
+  private messageUrl: string;
 
   constructor(private http: HttpClient) {
     this.contactUrl = 'http://localhost:8080/contact';
+    this.messageUrl = 'http://localhost:8080/message';
   }
   public findAll(): Observable<any> {
     return this.http.get<any>(this.contactUrl, {responseType: 'text' as 'json' });
@@ -20,7 +23,9 @@ export class ContactService {
   public save(contact: Contact): Observable<any> {
     return this.http.post<any>(this.contactUrl, contact , {responseType: 'text' as 'json' });
   }
-
+  public sendMessage(message: Message): Observable<any> {
+    return this.http.post<any>(this.messageUrl, message , {responseType: 'text' as 'json' });
+  }
   public update(contact: Contact): Observable<any> {
     return this.http.put<any>(this.contactUrl, contact );
   }

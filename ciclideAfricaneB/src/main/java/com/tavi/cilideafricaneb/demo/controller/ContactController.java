@@ -29,4 +29,5 @@ public class ContactController {
     public ContactDto getone(){
         return contactService.getAll().get(0);
     }
+
 }
