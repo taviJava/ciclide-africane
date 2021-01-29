@@ -16,13 +16,13 @@ public class SendEmailService  {
 
 
 
-    public void sendEmail( long id, String name, String message, String email) {
+    public void sendEmail( long id, String name, String message, String email, String city) {
 
         SimpleMailMessage msg = new SimpleMailMessage();
         msg.setTo("lrusanescu@yahoo.com");
 
         msg.setSubject("Mesaj nou pe ciclideafricane.ro de la "+ name + "");
-        msg.setText(""+ message + "\n \n Trimis de: "+ name +" \n \n Email: "+ email +""   );
+        msg.setText(""+ message + "\n \n Trimis de: "+ name +" din: "+ city + " \n \n Email: "+ email +""   );
 
         mailSender.send(msg);
 

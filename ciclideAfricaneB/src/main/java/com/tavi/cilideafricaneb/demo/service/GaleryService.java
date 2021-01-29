@@ -15,6 +15,7 @@ public class GaleryService {
     private GaleryRepository galeryRepository;
 
     public void save(GaleryDto galeryDto){
+
         galeryRepository.save(getModel(galeryDto));
     }
 

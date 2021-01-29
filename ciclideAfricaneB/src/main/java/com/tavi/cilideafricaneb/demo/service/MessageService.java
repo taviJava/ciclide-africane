@@ -34,7 +34,7 @@ public class MessageService {
         int messageNumberAfter = messageRepository.findAll().size();
         System.out.println(messageNumberAfter);
         if (messageNumberAfter > messagesNumberBefore){
-            sendEmailService.sendEmail(messageDto.getId(),messageDto.getName(),messageDto.getMessage(), messageDto.getEmail());
+            sendEmailService.sendEmail(messageDto.getId(),messageDto.getName(),messageDto.getMessage(), messageDto.getEmail(), messageDto.getCity());
         }
     }
 }
