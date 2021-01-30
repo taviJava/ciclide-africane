@@ -1,0 +1,53 @@
+<app-nav-bar></app-nav-bar>
+<div class="card my-5">
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th class="align-middle" scope="col">Oras</th>
+        <th class="align-middle" scope="col">Nume</th>
+        <th class="align-middle" scope="col">Adresa</th>
+        <th class="align-middle" scope="col">Telefon</th>
+        <th class="align-middle" scope="col">
+          <div class="row d-flex align-items-center">
+            <div class="col">
+              <button (click)="goToAdd()" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i></button>
+            </div>
+          </div>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let distr of distributors">
+        <td>{{ distr.city }}</td>
+        <td>{{ distr.name }}</td>
+        <td>{{distr.address}}</td>
+        <td>{{distr.phone}}</td>
+        <td>
+          <div class="btn-group">
+            <button (click)="open(content,distr.id)" class="btn btn-danger"><i class="fa fa-eraser" aria-hidden="true"></i></button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Confirm dialog</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-12 text-center">
+        Confirmati stergerea?
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="modal.close('Delete click')">Sterge</button>
+  </div>
+</ng-template>

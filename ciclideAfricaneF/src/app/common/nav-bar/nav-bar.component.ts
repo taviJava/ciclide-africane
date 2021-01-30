@@ -42,4 +42,12 @@ export class NavBarComponent implements OnInit {
   goToLinks(){
     this.router.navigate(['link']);
   }
+  // tslint:disable-next-line:typedef
+  goToDistr(){
+    this.router.navigate(['distributors']);
+  }
+  // tslint:disable-next-line:typedef
+  goToHome(){
+    this.router.navigate(['']);
+  }
 }

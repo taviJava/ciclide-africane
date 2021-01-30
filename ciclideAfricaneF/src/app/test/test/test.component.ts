@@ -42,10 +42,10 @@ export class TestComponent implements OnInit {
   findAll() {
     this.homepageService.findAll().subscribe(data => {
       this.homePage = [];
-      this.homePage = JSON.parse(data) as Link[];
+      this.homePage = JSON.parse(data) as HomePage[];
       for (const home of this.homePage) {
         console.log(home.id);
-        home.photos = this.homepageService.getHomepagephotos(home.id);
+        home.photo = this.homepageService.getHomepagephotos(home.id);
       }
     } )
     ;

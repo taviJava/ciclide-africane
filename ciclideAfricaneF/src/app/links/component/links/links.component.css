@@ -60,3 +60,7 @@ body{
 .container{
   margin-top: 20px;
 }
+img{
+  height: 300px;
+  width: 400px;
+}

@@ -1,0 +1,54 @@
+<div class="card my-5">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #groupAdd="ngForm">
+      <div class="form-group">
+        <label for="name">Nume Distribuitor</label>
+        <input type="text" [(ngModel)]="distributor.name"
+               class="form-control"
+               id="name"
+               name="name"
+               placeholder="Introdu numele distribuitorului"
+               required #name="ngModel">
+      </div>
+      <div [hidden]="!name.pristine" class="alert alert-danger">Numele este obligatoriu</div>
+      <div class="form-group">
+        <label for="city">Oras Distribuitor</label>
+        <input type="text" [(ngModel)]="distributor.city"
+               class="form-control"
+               id="city"
+               name="city"
+               placeholder="Introdu orasul distribuitorului"
+               required #city="ngModel">
+      </div>
+      <div [hidden]="!city.pristine" class="alert alert-danger">Orasul este obligatoriu</div>
+      <div class="form-group">
+        <label for="address">Adresa Distribuitor</label>
+        <input type="text" [(ngModel)]="distributor.address"
+               class="form-control"
+               id="address"
+               name="address"
+               placeholder="Introdu adresa distribuitorului"
+               required #address="ngModel">
+      </div>
+      <div [hidden]="!address.pristine" class="alert alert-danger">Adresa este obligatoriu</div>
+      <div class="form-group">
+        <label for="phone">Telefon Distribuitor</label>
+        <input type="number" [(ngModel)]="distributor.phone"
+               class="form-control"
+               id="phone"
+               name="phone"
+               placeholder="Enter the group name"
+               required #phone="ngModel">
+      </div>
+      <div [hidden]="!phone.pristine" class="alert alert-danger">Telefonul este obligatoriu</div>
+      <div class="btn-group">
+        <a (click)="goToDistrList()"
+           class="btn btn-secondary mx-1">Inapoi
+        </a>
+        <button type="submit" [disabled]="!groupAdd.form.valid"
+                class="btn btn-info">Adauga
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

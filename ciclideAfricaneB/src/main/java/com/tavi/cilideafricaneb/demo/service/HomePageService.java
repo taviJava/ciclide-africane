@@ -17,6 +17,7 @@ public class HomePageService {
     private HomePageRepository homePageRepository;
 
     public void save(HomePageDto homePageDto) {
+        homePageRepository.deleteAll();
         HomePageModel homePageModel = new HomePageModel();
         homePageModel.setDescription(homePageDto.getDescription());
         homePageModel.setPhoto(homePageDto.getPhoto());

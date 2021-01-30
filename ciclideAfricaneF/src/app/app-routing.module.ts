@@ -21,6 +21,9 @@ import {AddHomePageComponent} from './home-page/component/add-homepage/add-home-
 import {AdmSpeciesListComponent} from './species/component/adm-species-list/adm-species-list.component';
 import {AdmGalleryComponent} from './gallery/components/adm-gallery/adm-gallery.component';
 import {AdmLinksComponent} from './links/component/adm-links/adm-links.component';
+import {DistributorsAdmAddComponent} from './distributors/component/distributors-adm-add/distributors-adm-add.component';
+import {DistributorsAdmListComponent} from './distributors/component/distributors-adm-list/distributors-adm-list.component';
+import {DistributorsListComponent} from "./distributors/component/distributors-list/distributors-list.component";
 
 const routes: Routes = [{path: '', component: HomePageComponent},
   {path: 'addGallery', component: GalleryAddComponent},
@@ -44,6 +47,9 @@ const routes: Routes = [{path: '', component: HomePageComponent},
   {path: 'galleryAdm', component: AdmGalleryComponent},
   {path: 'linksAdm', component: AdmLinksComponent},
   {path: 'homepage', component: HomePageComponent},
+  {path: 'distributors', component: DistributorsListComponent},
+  {path: 'distributorsAdm', component: DistributorsAdmListComponent},
+  {path: 'distributorsAdmAdd', component: DistributorsAdmAddComponent}
 ];
 
 @NgModule({

@@ -1,0 +1,23 @@
+<app-nav-bar></app-nav-bar>
+<div class="card my-5">
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th class="align-middle" scope="col">Oras</th>
+        <th class="align-middle" scope="col">Nume</th>
+        <th class="align-middle" scope="col">Adresa</th>
+        <th class="align-middle" scope="col">Telefon</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let distr of distributors">
+        <td>{{ distr.city }}</td>
+        <td>{{ distr.name }}</td>
+        <td>{{distr.address}}</td>
+        <td>{{distr.phone}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

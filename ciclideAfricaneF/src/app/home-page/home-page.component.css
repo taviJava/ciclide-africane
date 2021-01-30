@@ -1,7 +1,17 @@
-.poza{
-  height: 600px;
-  width: 1400px;
+img {
+  min-height: 100%;
+  min-width: 1024px;
+  width: 100%;
+  height: 575px;
+  background-position: center;
+  top: 0;
+  left: 0;
+}
+
+section{
+  margin-top: -600px;
   position: absolute;
-  background-image: url("https://www.hollywoodfishfarm.co.nz/wp-content/uploads/2015/10/malawi-cichlids-1024x768.jpg") ;
+}
+.poza{
 
 }
