@@ -39,6 +39,7 @@ import { AdmLinksComponent } from './links/component/adm-links/adm-links.compone
 import { DistributorsListComponent } from './distributors/component/distributors-list/distributors-list.component';
 import { DistributorsAdmListComponent } from './distributors/component/distributors-adm-list/distributors-adm-list.component';
 import { DistributorsAdmAddComponent } from './distributors/component/distributors-adm-add/distributors-adm-add.component';
+import {UserComponent} from './users/components/user/user.component';
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import { DistributorsAdmAddComponent } from './distributors/component/distributo
     AdmLinksComponent,
     DistributorsListComponent,
     DistributorsAdmListComponent,
-    DistributorsAdmAddComponent
+    DistributorsAdmAddComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

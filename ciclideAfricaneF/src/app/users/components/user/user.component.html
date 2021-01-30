@@ -1,0 +1,59 @@
+
+<div class="card my-5">
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th class="align-middle" scope="col">#</th>
+        <th class="align-middle" scope="col">Email</th>
+        <th class="align-middle" scope="col">Role</th>
+        <th class="align-middle" scope="col">
+          <div class="row d-flex align-items-center">
+            <div class="col">
+              Operations
+            </div>
+            <div class="col">
+              <button (click)=()" class="btn btn-success">Add User</button>
+            </div>
+          </div>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+          </div>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let userr of user">
+        <td>{{ userr.id }}</td>
+        <td>{{userr.email}}</td>
+        <td>{{userr.role}}</td>
+        <td>
+          <div class="btn-group">
+            <button (click)="open(content,userr.id)" class="btn btn-danger">Delete</button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Confirm dialog</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-12 text-center">
+        Are you sure you want to delete this item?
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="modal.close('Delete click')">Delete</button>
+  </div>
+</ng-template>

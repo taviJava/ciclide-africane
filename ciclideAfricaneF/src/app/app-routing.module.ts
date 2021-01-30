@@ -24,6 +24,7 @@ import {AdmLinksComponent} from './links/component/adm-links/adm-links.component
 import {DistributorsAdmAddComponent} from './distributors/component/distributors-adm-add/distributors-adm-add.component';
 import {DistributorsAdmListComponent} from './distributors/component/distributors-adm-list/distributors-adm-list.component';
 import {DistributorsListComponent} from "./distributors/component/distributors-list/distributors-list.component";
+import {UserComponent} from './users/components/user/user.component';
 
 const routes: Routes = [{path: '', component: HomePageComponent},
   {path: 'addGallery', component: GalleryAddComponent},
@@ -49,7 +50,8 @@ const routes: Routes = [{path: '', component: HomePageComponent},
   {path: 'homepage', component: HomePageComponent},
   {path: 'distributors', component: DistributorsListComponent},
   {path: 'distributorsAdm', component: DistributorsAdmListComponent},
-  {path: 'distributorsAdmAdd', component: DistributorsAdmAddComponent}
+  {path: 'distributorsAdmAdd', component: DistributorsAdmAddComponent},
+  {path: 'user', component: UserComponent},
 ];
 
 @NgModule({
