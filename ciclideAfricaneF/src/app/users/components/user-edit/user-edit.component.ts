@@ -9,8 +9,9 @@ import {User} from '../../model/user';
   styleUrls: ['./user-edit.component.css']
 })
 export class UserEditComponent implements OnInit {
-  user: User;
+  user: User = new User();
   id: number;
+  roles: string[] = [];
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -18,6 +19,16 @@ export class UserEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.roles.push('Administrator');
+    this.roles.push('Standard');
+    this.user = new User();
+    this.id = this.route.snapshot.params.id;
+    this.userService.getById(this.id).subscribe(data =>
+    {
+      this.user = new User();
+      this.user = JSON.parse(data) as User;
+      console.log(this.user);
+    });
   }
 
   // tslint:disable-next-line:typedef

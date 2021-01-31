@@ -50,4 +50,8 @@ export class NavBarComponent implements OnInit {
   goToHome(){
     this.router.navigate(['']);
   }
+  // tslint:disable-next-line:typedef
+  goToUsers(){
+    this.router.navigate(['user']);
+  }
 }

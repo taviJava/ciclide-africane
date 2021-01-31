@@ -53,7 +53,7 @@ const routes: Routes = [{path: '', component: HomePageComponent},
   {path: 'distributorsAdm', component: DistributorsAdmListComponent},
   {path: 'distributorsAdmAdd', component: DistributorsAdmAddComponent},
   {path: 'user', component: UserComponent},
-  {path: 'edituser', component: UserEditComponent},
+  {path: 'edituser/:id', component: UserEditComponent},
 ];
 
 @NgModule({

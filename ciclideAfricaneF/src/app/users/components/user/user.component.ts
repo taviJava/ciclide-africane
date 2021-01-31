@@ -40,7 +40,7 @@ export class UserComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   editUsers(id: number) {
-    this.router.navigate(['edituser' + id]);
+    this.router.navigate(['edituser/' + id]);
   }
 
   // tslint:disable-next-line:typedef

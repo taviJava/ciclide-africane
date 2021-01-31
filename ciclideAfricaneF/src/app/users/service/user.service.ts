@@ -24,7 +24,7 @@ export class UserService {
   }
 
   public getById(id: number): Observable<any> {
-    return this.http.get(`${this.userUrl}/${id}` , {responseType: 'text' as 'json' });
+    return this.http.get(`http://localhost:8080/userbyid/${id}` , {responseType: 'text' as 'json' });
   }
   public getByEmail(email: string): Observable<any> {
     return this.http.get(`${this.userUrl}/${email}` , {responseType: 'text' as 'json' });

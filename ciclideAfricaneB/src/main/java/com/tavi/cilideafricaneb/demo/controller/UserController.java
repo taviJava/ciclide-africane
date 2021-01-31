@@ -51,7 +51,7 @@ public class UserController {
     public void update(@RequestBody UserDto userDto){
         userService.update(userDto);
     }
-    @DeleteMapping("/users{id}")
+    @DeleteMapping("/users/{id}")
     public void delete(@PathVariable(name = "id") long id){
         userService.delete(id);
     }
@@ -62,5 +62,9 @@ public class UserController {
     @GetMapping("/users/{email}")
     public UserDto getByEmail(@PathVariable(name = "email") String email){
         return userService.getByEmail(email);
+    }
+    @GetMapping("/userbyid/{id}")
+    public UserDto getById(@PathVariable(name = "id") long id){
+        return userService.getOne(id);
     }
 }

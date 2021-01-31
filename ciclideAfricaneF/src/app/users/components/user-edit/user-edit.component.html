@@ -1,34 +1,30 @@
-<div class="card my-5">
-  <div class="card-body">
-    <form (ngSubmit)="onSubmit()" #userEdit="ngForm">
-      <div class="form-group">
-        <label for="email">email</label>
-        <input type="text" [(ngModel)]="user.email"
-               class="form-control"
-               id="email"
-               name="email"
-               placeholder="Enter your email"
-               required #email="ngModel">
+<app-nav-bar></app-nav-bar>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card my-5">
+        <div class="card-body">
+          <form (ngSubmit)="onSubmit()" #roleAdd="ngForm">
+            <div class="form-group">
+              <label for="role">Selecteaza noul rol pentru userul: {{user.email}}</label>
+
+              <select type="text" [(ngModel)]="user.role"
+                      class="form-control"
+                      id="role"
+                      name="role"
+                      required #roleAdd="ngModel">
+
+                <option *ngFor="let role of roles" [ngValue]="role">{{role}}</option>
+              </select>
+              <div class="btn-group" style="padding-top: 15px">
+                <button type="submit" [disabled]="!roleAdd.form.valid"
+                        class="btn btn-info">Submit
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
-      <div [hidden]="!email.pristine" class="alert alert-danger">email is required</div>
-      <div class="form-group">
-        <label for="role">role</label>
-        <input type="text" [(ngModel)]="user.role"
-               class="form-control"
-               id="role"
-               name="role"
-               placeholder="Enter your phone number"
-               required #role="ngModel">
-        <div [hidden]="!role.pristine" class="alert alert-danger">role is required</div>
-      </div>
-      <div class="btn-group">
-        <a (click)="getUser()"
-           class="btn btn-secondary mx-1">Back
-        </a>
-        <button type="submit" [disabled]="!userEdit.form.valid"
-                class="btn btn-info">Submit
-        </button>
-      </div>
-    </form>
+    </div>
   </div>
 </div>
