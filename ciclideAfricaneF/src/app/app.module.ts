@@ -40,6 +40,7 @@ import { DistributorsListComponent } from './distributors/component/distributors
 import { DistributorsAdmListComponent } from './distributors/component/distributors-adm-list/distributors-adm-list.component';
 import { DistributorsAdmAddComponent } from './distributors/component/distributors-adm-add/distributors-adm-add.component';
 import {UserComponent} from './users/components/user/user.component';
+import { UserEditComponent } from './users/components/user-edit/user-edit.component';
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import {UserComponent} from './users/components/user/user.component';
     DistributorsListComponent,
     DistributorsAdmListComponent,
     DistributorsAdmAddComponent,
-    UserComponent
+    UserComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,

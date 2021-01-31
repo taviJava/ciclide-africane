@@ -26,12 +26,23 @@ export class UserComponent implements OnInit {
   }
 
   // tslint:disable-next-line:typedef
+  add() {
+    this.router.navigate(['user/register']);
+  }
+
+  // tslint:disable-next-line:typedef
   getUsers() {
     this.userService.findAll().subscribe(data => {
       this.user = new User();
       this.user = data;
     });
   }
+
+  // tslint:disable-next-line:typedef
+  editUsers(id: number) {
+    this.router.navigate(['edituser' + id]);
+  }
+
   // tslint:disable-next-line:typedef
   delete(id: number) {
     this.userService.delete(id).subscribe(data => {

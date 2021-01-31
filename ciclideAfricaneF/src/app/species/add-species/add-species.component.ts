@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {SpeciesService} from '../service/species.service';
@@ -30,34 +30,39 @@ export class AddSpeciesComponent implements OnInit {
   previewUrl: any = null;
   previewsUrl: any[] = [];
   uploadedFilePath: string = null;
+
   constructor(private route: ActivatedRoute,
               private router: Router,
               private speciesService: SpeciesService,
-              private authService: AuthService) { }
+              private authService: AuthService) {
+  }
 
   ngOnInit(): void {
     this.species = new Species();
   }
+
 // tslint:disable-next-line:typedef
-onSubmit(){
+  onSubmit() {
     this.speciesService.save(this.species).subscribe(result => {
       this.uploadPhotos();
-      setTimeout(() =>
-        {
+      setTimeout(() => {
           this.goToSpeciesList();
         },
         5000);
     });
-}
+  }
+
 // tslint:disable-next-line:typedef
-goToSpeciesList(){
+  goToSpeciesList() {
     this.router.navigate(['speciesList']);
-}
+  }
+
   // tslint:disable-next-line:typedef
   selectFile(event) {
     this.selectedFiles = event.target.files;
     this.fileProgress(event);
   }
+
   // tslint:disable-next-line:typedef
   fileProgress(fileInput: any) {
     this.fileData = (fileInput.target.files[0] as File);
@@ -65,9 +70,10 @@ goToSpeciesList(){
     this.preview(this.fileData);
     this.preview2(this.pozeLista);
   }
+
 // tslint:disable-next-line:typedef
   preview2(pozeLista: File[]) {
-    for (const fileData of pozeLista){
+    for (const fileData of pozeLista) {
       const mimeType = this.fileData.type;
       if (mimeType.match(/image\/*/) == null) {
         return;
@@ -81,6 +87,7 @@ goToSpeciesList(){
       };
     }
   }
+
   // tslint:disable-next-line:typedef
   preview(fileData: File) {
     // Show preview
@@ -96,6 +103,7 @@ goToSpeciesList(){
       this.previewUrl = reader.result;
     };
   }
+
   // mai multe foto
 
   selectPhoto(event): void {
@@ -121,6 +129,7 @@ goToSpeciesList(){
       event.srcElement.percentage = null;
     }
   }
+
   uploadPhotos(): void {
     this.message = '';
 
@@ -128,8 +137,9 @@ goToSpeciesList(){
       this.upload2(i, this.selectedFiles[i]);
     }
   }
+
   upload2(idx, file): void {
-    this.progressInfos[idx] = { value: 0, fileName: file.name };
+    this.progressInfos[idx] = {value: 0, fileName: file.name};
 
     this.speciesService.upload(file).subscribe(
       event => {
