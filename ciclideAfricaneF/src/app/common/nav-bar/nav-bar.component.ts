@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {AuthService} from "../../users/service/auth.service";
+import {AuthService} from '../../users/service/auth.service';
 
 
 @Component({
@@ -62,5 +62,10 @@ export class NavBarComponent implements OnInit {
       }
     }
     return true;
+  }
+  // tslint:disable-next-line:typedef
+  logOut(){
+    this.auth.logout();
+    this.router.navigate(['']);
   }
 }

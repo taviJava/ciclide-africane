@@ -7,7 +7,7 @@
     <button (click)="goToContact()" type="submit" class="btn btn-outline-light mr-1">Contact</button>
     <button (click)="goToLinks()" type="submit" class="btn btn-outline-light mr-1">Linkuri</button>
     <button (click)="goToDistr()" type="submit" class="btn btn-outline-light mr-1">Distribuitori</button>
-    <div class="dropdown" >
+    <div class="dropdown" *ngIf="adm()">
       <button class="btn btn-outline-light" type="submit"
               data-toggle="dropdown" aria-controls="collapseExample" [attr.aria-expanded]="!isCollapsed" (mouseenter)="isCollapsed = !isCollapsed">
         Administrator
@@ -20,6 +20,7 @@
         <a class="dropdown-item" href='galleryAdm'>Administreaza Galerie</a>
         <a class="dropdown-item" href='distributorsAdm'>Administreaza Distribuitori</a>
         <a class="dropdown-item" href='user'>Administreaza Useri</a>
+        <a class="dropdown-item" (click)="logOut()">Log Out</a>
       </div>
     </div>
 

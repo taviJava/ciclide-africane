@@ -1,17 +1,13 @@
 import { Injectable } from '@angular/core';
 import {AuthService} from './auth.service';
-import {HttpErrorResponse, HttpEvent, HttpHandler, HttpHeaders, HttpRequest} from '@angular/common/http';
-import {BehaviorSubject, Observable, of, throwError} from 'rxjs';
-import {catchError, filter, finalize, switchMap, take} from 'rxjs/operators';
+import { HttpHandler, HttpRequest} from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpInterceptorService {
-  private AUTH_HEADER = 'Authorization';
-  private token = 'secrettoken';
-  private refreshTokenInProgress = false;
-  private refreshTokenSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+
   constructor(public auth: AuthService) {}
 
   // tslint:disable-next-line:typedef

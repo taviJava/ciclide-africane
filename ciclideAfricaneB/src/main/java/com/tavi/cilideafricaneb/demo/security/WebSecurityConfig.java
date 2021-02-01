@@ -50,7 +50,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/galery123/photos/**","/photos/galery","/galery/photos/**", "/find/search/**/**","/species",
                 "/species/","/species/**","/galery123","/galery123/**","/distributors","/distributors/**",
                 "/homepage", "/homepage/**","/link","/link/**","/message","/users/**").permitAll()
-
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);

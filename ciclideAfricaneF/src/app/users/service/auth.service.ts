@@ -34,7 +34,7 @@ export class AuthService {
   // tslint:disable-next-line:typedef
   registerSuccessfulLogin(username) {
     sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, username);
-    sessionStorage.setItem(this.TOKEN_SESSION_ATTRIBUTE_NAME, this.TOKEN_SESSION_ATTRIBUTE_NAME);
+    sessionStorage.setItem(this.TOKEN_SESSION_ATTRIBUTE_NAME, username);
     this.userService.getByEmail(username).subscribe(data => {
       this.user = new User();
       this.user = JSON.parse(data) as User;
