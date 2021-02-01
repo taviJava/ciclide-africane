@@ -22,7 +22,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-//@JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
+@JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class UserController {
     @Autowired
     private UserService userService;

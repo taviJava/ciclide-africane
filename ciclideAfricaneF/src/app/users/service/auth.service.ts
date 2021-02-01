@@ -3,7 +3,6 @@ import {User} from '../model/user';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {UserService} from './user.service';
-import {map} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -63,5 +62,11 @@ export class AuthService {
     }
     this.isLoggedIn.next(true);
     return true;
+  }
+  // tslint:disable-next-line:typedef
+  isUserAdm(){
+    if (this.user.role === 'Administrator'){
+     return true;
+   }
   }
 }

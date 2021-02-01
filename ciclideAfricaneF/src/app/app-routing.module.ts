@@ -23,9 +23,11 @@ import {AdmGalleryComponent} from './gallery/components/adm-gallery/adm-gallery.
 import {AdmLinksComponent} from './links/component/adm-links/adm-links.component';
 import {DistributorsAdmAddComponent} from './distributors/component/distributors-adm-add/distributors-adm-add.component';
 import {DistributorsAdmListComponent} from './distributors/component/distributors-adm-list/distributors-adm-list.component';
-import {DistributorsListComponent} from "./distributors/component/distributors-list/distributors-list.component";
+import {DistributorsListComponent} from './distributors/component/distributors-list/distributors-list.component';
 import {UserComponent} from './users/components/user/user.component';
 import {UserEditComponent} from './users/components/user-edit/user-edit.component';
+import {CanActivateService} from './users/service/can-activate.service';
+
 
 const routes: Routes = [{path: '', component: HomePageComponent},
   {path: 'addGallery', component: GalleryAddComponent},

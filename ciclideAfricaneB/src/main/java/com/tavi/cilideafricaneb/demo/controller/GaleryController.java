@@ -16,7 +16,7 @@ public class GaleryController {
     public void save(@RequestBody GaleryDto galeryDto){
         galeryService.save(galeryDto);
     }
-    @PutMapping("/galery")
+    @PutMapping("/galery123")
     public void update(@RequestBody GaleryDto galeryDto){
         galeryService.update(galeryDto);
     }
@@ -28,7 +28,7 @@ public class GaleryController {
     public List<GaleryDto> getAll(){
         return galeryService.getAll();
     }
-    @GetMapping("/galery/{id}")
+    @GetMapping("/galery123/{id}")
     public GaleryDto getOne(@PathVariable(name = "id") long id){
         return galeryService.getOne(id);
     }

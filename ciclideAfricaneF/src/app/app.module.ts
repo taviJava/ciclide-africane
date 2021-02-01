@@ -41,6 +41,7 @@ import { DistributorsAdmListComponent } from './distributors/component/distribut
 import { DistributorsAdmAddComponent } from './distributors/component/distributors-adm-add/distributors-adm-add.component';
 import {UserComponent} from './users/components/user/user.component';
 import { UserEditComponent } from './users/components/user-edit/user-edit.component';
+import {UserService} from './users/service/user.service';
 
 
 @NgModule({
@@ -90,12 +91,12 @@ import { UserEditComponent } from './users/components/user-edit/user-edit.compon
     MatToolbarModule,
     BrowserAnimationsModule,
   ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: HttpInterceptorService,
-      multi: true
-    }],
+  providers: [UserService,
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

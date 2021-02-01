@@ -46,13 +46,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable().
                 authorizeRequests()
-                .antMatchers("/login","/register","/photos/*","/photos/", "/species/photos/*",
-                        "/galery123/photos/*","/photos/galery","/galery/photos/*", "/find/search/*/*","/species",
-                "/species/","/species/*","galery123").permitAll()
-//                .anyRequest().authenticated()
+                .antMatchers("/login","/register","/photos/**","/photos/", "/species/photos/**",
+                        "/galery123/photos/**","/photos/galery","/galery/photos/**", "/find/search/**/**","/species",
+                "/species/","/species/**","/galery123","/galery123/**","/distributors","/distributors/**",
+                "/homepage", "/homepage/**","/link","/link/**","/message","/users/**").permitAll()
+
+                .anyRequest().authenticated()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(authenticationTokenFilterBean(),
+                UsernamePasswordAuthenticationFilter.class);
     }
 
     @Bean

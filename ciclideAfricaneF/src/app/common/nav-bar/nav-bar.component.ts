@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {AuthService} from "../../users/service/auth.service";
 
 
 @Component({
@@ -10,7 +11,7 @@ import {Router} from '@angular/router';
 export class NavBarComponent implements OnInit {
   keyword = '';
   isCollapsed = true;
-  constructor(private router: Router) {
+  constructor(private router: Router, public auth: AuthService) {
   }
 
   ngOnInit(): void {
@@ -53,5 +54,13 @@ export class NavBarComponent implements OnInit {
   // tslint:disable-next-line:typedef
   goToUsers(){
     this.router.navigate(['user']);
+  }
+  adm(): boolean {
+    if (!this.auth.isUserLoggedIn()) {
+      if (!this.auth.isUserAdm()){
+        return false;
+      }
+    }
+    return true;
   }
 }
