@@ -12,11 +12,11 @@ import java.util.List;
 public class DistributorController {
     @Autowired
     private DistributorService distributorService;
-    @PostMapping("/distributors")
+    @PostMapping("/admdistributors")
     public void add(@RequestBody DistributorDto distributorDto){
         distributorService.add(distributorDto);
     }
-    @DeleteMapping("/distributors/{id}")
+    @DeleteMapping("/admdistributors/{id}")
     public void delete(@PathVariable(name = "id") long id){
         distributorService.delete(id);
     }

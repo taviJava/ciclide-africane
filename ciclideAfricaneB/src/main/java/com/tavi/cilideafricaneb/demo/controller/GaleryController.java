@@ -12,15 +12,15 @@ public class GaleryController {
     @Autowired
     private GaleryService galeryService;
 
-    @PostMapping("/galery123")
+    @PostMapping("/admgalery123")
     public void save(@RequestBody GaleryDto galeryDto){
         galeryService.save(galeryDto);
     }
-    @PutMapping("/galery123")
+    @PutMapping("/admgalery123")
     public void update(@RequestBody GaleryDto galeryDto){
         galeryService.update(galeryDto);
     }
-    @DeleteMapping("/galery123/{id}")
+    @DeleteMapping("/admgalery123/{id}")
     public void delete(@PathVariable(name = "id") long id){
         galeryService.delete(id);
     }

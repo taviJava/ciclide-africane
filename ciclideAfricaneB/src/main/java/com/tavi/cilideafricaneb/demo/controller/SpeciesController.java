@@ -13,15 +13,15 @@ public class SpeciesController {
     @Autowired
     private SpeciesService speciesService;
 
-    @PostMapping("/species")
+    @PostMapping("/admspecies")
     public void save(@RequestBody SpeciesDto speciesDto){
         speciesService.save(speciesDto);
     }
-    @PutMapping("/species")
+    @PutMapping("/admspecies")
     public void update(@RequestBody SpeciesDto speciesDto){
         speciesService.update(speciesDto);
     }
-    @DeleteMapping("/species/{id}")
+    @DeleteMapping("/admspecies/{id}")
     public void delete(@PathVariable(name = "id") long id){
         speciesService.delete(id);
     }

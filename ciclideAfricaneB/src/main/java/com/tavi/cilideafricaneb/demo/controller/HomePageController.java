@@ -14,7 +14,7 @@ public class HomePageController {
     @Autowired
     private HomePageService homePageService;
 
-    @PostMapping("/homepage")
+    @PostMapping("/admhomepage")
     public void save(@RequestBody HomePageDto homePageDto) {
         homePageService.save(homePageDto);
     }
@@ -30,12 +30,12 @@ public class HomePageController {
 
     }
 
-    @PutMapping("/homepage/{id}")
+    @PutMapping("/admhomepage/{id}")
     public void update(@RequestBody HomePageDto homePageDto) {
         homePageService.update(homePageDto);
     }
 
-    @DeleteMapping("/homepage/{id}")
+    @DeleteMapping("/admhomepage/{id}")
     public void delete(@PathVariable(name = "id") Long id) {
         homePageService.delete(id);
 

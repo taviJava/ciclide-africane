@@ -13,15 +13,15 @@ public class ContactController {
     @Autowired
     private ContactService contactService;
 
-    @PostMapping("/contact")
+    @PostMapping("/admcontact")
     public void save(@RequestBody ContactDto contactDto ){
         contactService.save(contactDto);
     }
-    @PutMapping("/contact")
+    @PutMapping("/admcontact")
     public void update(@RequestBody ContactDto contactDto ){
         contactService.update(contactDto);
     }
-    @DeleteMapping("/contact/{id}")
+    @DeleteMapping("/admcontact/{id}")
     public void delete(@PathVariable(name = "id") long id){
         contactService.delete(id);
     }

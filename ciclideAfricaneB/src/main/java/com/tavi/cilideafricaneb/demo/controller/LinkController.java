@@ -14,12 +14,12 @@ public class LinkController {
     @Autowired
     private LinkService linkService;
 
-    @PostMapping("/link")
+    @PostMapping("/admlink")
     public void save(@RequestBody LinkDto linkDto) {
         linkService.save(linkDto);
     }
 
-    @DeleteMapping("/link/{id}")
+    @DeleteMapping("/admlink/{id}")
     public void delete(@PathVariable(name = "id") long id) {
         linkService.delete(id);
     }
