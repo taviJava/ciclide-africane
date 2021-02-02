@@ -43,7 +43,7 @@ export class AddSpeciesComponent implements OnInit {
 
 // tslint:disable-next-line:typedef
   onSubmit() {
-    this.speciesService.save(this.species).subscribe(result => {
+    this.speciesService.save(this.species, this.authService.getToken()).subscribe(result => {
       this.uploadPhotos();
       setTimeout(() => {
           this.goToSpeciesList();

@@ -91,12 +91,13 @@ import {UserService} from './users/service/user.service';
     MatToolbarModule,
     BrowserAnimationsModule,
   ],
-  providers: [UserService,
-  {
-    provide: HTTP_INTERCEPTORS,
-    useClass: HttpInterceptorService,
-    multi: true
-  }],
+  providers: [
+  // {
+  //   provide: HTTP_INTERCEPTORS,
+  //   useClass: HttpInterceptorService,
+  //   multi: true
+  // }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

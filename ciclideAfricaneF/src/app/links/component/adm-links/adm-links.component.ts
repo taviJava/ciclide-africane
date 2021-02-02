@@ -3,6 +3,7 @@ import {Link} from '../../model/link';
 import {LinkService} from '../../service/link.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {AuthService} from '../../../users/service/auth.service';
 
 @Component({
   selector: 'app-adm-links',
@@ -17,7 +18,8 @@ export class AdmLinksComponent implements OnInit {
   constructor(private linkService: LinkService,
               private route: ActivatedRoute,
               private router: Router,
-              private modalService: NgbModal) { }
+              private modalService: NgbModal,
+              private auth: AuthService) { }
 
   ngOnInit(): void {
     this.links = [];
@@ -44,7 +46,7 @@ export class AdmLinksComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   delete(id: number) {
-    this.linkService.delete(id).subscribe(data => {
+    this.linkService.delete(id, this.auth.getToken()).subscribe(data => {
       this.ngOnInit();
     });
   }

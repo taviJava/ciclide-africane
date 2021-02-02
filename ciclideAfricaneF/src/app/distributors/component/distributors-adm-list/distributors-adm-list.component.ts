@@ -3,6 +3,7 @@ import {Distributor} from '../../model/distributor';
 import {DistributorsService} from '../../service/distributors.service';
 import {Router} from '@angular/router';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {AuthService} from '../../../users/service/auth.service';
 
 @Component({
   selector: 'app-distributors-adm-list',
@@ -15,7 +16,8 @@ export class DistributorsAdmListComponent implements OnInit {
   closeResult = '';
   constructor(private distributorService: DistributorsService,
               private router: Router,
-              private modalService: NgbModal) { }
+              private modalService: NgbModal,
+              private auth: AuthService) { }
 
   ngOnInit(): void {
     this.distributors = [];
@@ -30,7 +32,7 @@ export class DistributorsAdmListComponent implements OnInit {
   }
   // tslint:disable-next-line:typedef
   delete(id: number){
-    this.distributorService.delete(id).subscribe(result => {
+    this.distributorService.delete(id , this.auth.getToken()).subscribe(result => {
       this.ngOnInit();
     });
   }

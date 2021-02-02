@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {LinkService} from '../../service/link.service';
 import {HttpEventType, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {AuthService} from "../../../users/service/auth.service";
 
 @Component({
   selector: 'app-add-link',
@@ -25,14 +26,15 @@ export class AddLinkComponent implements OnInit {
   previewUrl: any = null;
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private linkService: LinkService) {
+              private linkService: LinkService,
+              private auth: AuthService) {
   }
 
   ngOnInit(): void {
   }
 // tslint:disable-next-line:typedef
   onSubmit() {
-    this.linkService.save(this.link).subscribe(data => {
+    this.linkService.save(this.link, this.auth.getToken()).subscribe(data => {
       this.upload();
       setTimeout(() =>
         {

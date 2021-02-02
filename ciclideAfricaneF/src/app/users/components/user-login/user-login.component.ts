@@ -30,10 +30,11 @@ export class UserLoginComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   handleLogin() {
-    console.log('test1');
     this.authenticationService.authentication(this.user).subscribe(result => {
-      console.log('test2');
       this.authenticationService.TOKEN_SESSION_ATTRIBUTE_NAME = result.token;
+      this.authenticationService.USER_NAME_SESSION_ATTRIBUTE_NAME = this.user.email;
+      console.log(this.authenticationService.USER_NAME_SESSION_ATTRIBUTE_NAME);
+      console.log(result.token);
       this.authenticationService.registerSuccessfulLogin(this.user.email);
       this.invalidLogin = false;
       this.loginSuccess = true;

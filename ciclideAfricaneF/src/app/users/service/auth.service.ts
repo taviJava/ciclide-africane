@@ -9,7 +9,7 @@ import {UserService} from './user.service';
 })
 export class AuthService {
   USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser';
-  TOKEN_SESSION_ATTRIBUTE_NAME = 'authenticatedUserToken';
+  TOKEN_SESSION_ATTRIBUTE_NAME = 'authenticatedToken';
   USER_DATA_SESSION_ATTRIBUTE_NAME = 'authenticatedUserData';
 
 
@@ -19,23 +19,24 @@ export class AuthService {
   public isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public ret = false;
   public isPrivilege: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public token: string;
 
   constructor(private http: HttpClient, public userService: UserService) {
   }
   authentication(user: User): Observable<any> {
     return this.http.post<any>(`http://localhost:8080/login`, user);
   }
+  // // tslint:disable-next-line:typedef
+  // createBasicAuthToken(username: string, password: string) {
+  //   return this.TOKEN_SESSION_ATTRIBUTE_NAME;
+  // }
 
 
-  // tslint:disable-next-line:typedef
-  createBasicAuthToken() {
-    return 'Bearer ' + this.TOKEN_SESSION_ATTRIBUTE_NAME;
-  }
   // tslint:disable-next-line:typedef
   registerSuccessfulLogin(username) {
-    sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, username);
-    sessionStorage.setItem(this.TOKEN_SESSION_ATTRIBUTE_NAME, username);
-    this.userService.getByEmail(username).subscribe(data => {
+     sessionStorage.setItem('email', this.TOKEN_SESSION_ATTRIBUTE_NAME);
+     sessionStorage.setItem('token', this.TOKEN_SESSION_ATTRIBUTE_NAME);
+     this.userService.getByEmail(username, this.getToken() ).subscribe(data => {
       this.user = new User();
       this.user = JSON.parse(data) as User;
       this.isLoggedIn.next(true);
@@ -44,18 +45,23 @@ export class AuthService {
 
   // tslint:disable-next-line:typedef
   logout() {
-    sessionStorage.removeItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
-    this.TOKEN_SESSION_ATTRIBUTE_NAME = 'null';
-    sessionStorage.removeItem(this.TOKEN_SESSION_ATTRIBUTE_NAME);
-    sessionStorage.removeItem(this.USER_DATA_SESSION_ATTRIBUTE_NAME);
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('email');
     this.isLoggedIn.next(false);
     this.username = null;
     this.password = null;
   }
-
+  // tslint:disable-next-line:typedef
+  getToken(){
+    return sessionStorage.getItem('token');
+  }
+  // tslint:disable-next-line:typedef
+  getUserLoggedIn(){
+    return sessionStorage.getItem('email');
+  }
   // tslint:disable-next-line:typedef
   isUserLoggedIn() {
-    const user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
+    const user = this.getUserLoggedIn();
     if (user === null) {
       this.isLoggedIn.next(false);
       return false;

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Contact} from '../../model/contact';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ContactService} from '../../service/contact.service';
+import {AuthService} from "../../../users/service/auth.service";
 
 @Component({
   selector: 'app-add-contact',
@@ -13,7 +14,8 @@ export class AddContactComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private contactService: ContactService) {
+              private contactService: ContactService,
+              private auth: AuthService) {
   }
 
   ngOnInit(): void {
@@ -22,7 +24,7 @@ export class AddContactComponent implements OnInit {
 
 // tslint:disable-next-line:typedef
   onSubmit() {
-    this.contactService.save(this.contact).subscribe(data => {
+    this.contactService.save(this.contact , this.auth.getToken()).subscribe(data => {
       this.getContact();
     });
   }
