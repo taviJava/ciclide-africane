@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpEvent, HttpRequest} from '@angular/common/http';
+import {HttpClient, HttpEvent, HttpHeaders, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Link} from '../model/link';
 
@@ -9,22 +9,28 @@ import {Link} from '../model/link';
 export class LinkService {
   private photoUrl: string;
   private linkUrl: string;
+  private linkUrlAdm: string;
 
   constructor(private http: HttpClient) {
     this.linkUrl = 'http://localhost:8080/link';
     this.photoUrl = 'http://localhost:8080/photos/link';
+    this.linkUrlAdm = 'http://localhost:8080/admlink';
   }
   public findAll(): Observable<any> {
     return this.http.get<any>(this.linkUrl, {responseType: 'text' as 'json'} );
   }
 
   // tslint:disable-next-line:typedef
-  public save(link: Link): Observable<any> {
-    return this.http.post<any>(this.linkUrl, link, {responseType: 'text' as 'json'});
+  public save(link: Link, token: string): Observable<any> {
+    const tokenStr = 'Bearer ' + token;
+    const headers = new HttpHeaders().set('Authorization', tokenStr);
+    return this.http.post<any>(this.linkUrlAdm, link, {headers, responseType: 'text' as 'json'});
   }
   // tslint:disable-next-line:typedef
-  public delete(id: number) {
-    return this.http.delete(`${this.linkUrl}/${id}`);
+  public delete(id: number, token: string) {
+    const tokenStr = 'Bearer ' + token;
+    const headers = new HttpHeaders().set('Authorization', tokenStr);
+    return this.http.delete(`${this.linkUrlAdm}/${id}`, {headers, responseType: 'text' as 'json'});
   }
   public upload(photo: File): Observable<HttpEvent<any>> {
     const formData: FormData = new FormData();

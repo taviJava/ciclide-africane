@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpEvent, HttpHeaders, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Galery} from '../model/galery';
+import {User} from "../../users/model/user";
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +10,12 @@ import {Galery} from '../model/galery';
 export class GalleryService {
   private galleryUrl: string;
   private photoUrl: string;
+  private galleryUrlAdm: string;
 
   constructor(private http: HttpClient) {
     this.galleryUrl = 'http://localhost:8080/galery123';
     this.photoUrl = 'http://localhost:8080/photos/galery';
+    this.galleryUrlAdm = 'http://localhost:8080/admgalery123';
 
   }
 
@@ -21,13 +24,17 @@ export class GalleryService {
   }
 
   // tslint:disable-next-line:typedef
-  public save(galery: Galery): Observable<any> {
-    return this.http.post<any>(this.galleryUrl, galery, {responseType: 'text' as 'json'});
+  public save(galery: Galery, token: string): Observable<any> {
+    const tokenStr = 'Bearer ' + token;
+    const headers = new HttpHeaders().set('Authorization', tokenStr);
+    return this.http.post<any>(this.galleryUrlAdm, galery, { headers, responseType: 'text' as 'json' });
   }
 
   // tslint:disable-next-line:typedef
-  public update(galery: Galery) {
-    return this.http.put<Galery>(this.galleryUrl, galery, {responseType: 'text' as 'json'});
+  public update(galery: Galery, token: string) {
+    const tokenStr = 'Bearer ' + token;
+    const headers = new HttpHeaders().set('Authorization', tokenStr);
+    return this.http.put<Galery>(this.galleryUrlAdm, galery, { headers, responseType: 'text' as 'json' });
   }
 
   public getById(id: number ): Observable<any> {
@@ -35,8 +42,10 @@ export class GalleryService {
   }
 
   // tslint:disable-next-line:typedef
-  public delete(id: number) {
-    return this.http.delete(`${this.galleryUrl}/${id}`);
+  public delete(id: number, token: string) {
+    const tokenStr = 'Bearer ' + token;
+    const headers = new HttpHeaders().set('Authorization', tokenStr);
+    return this.http.delete(`${this.galleryUrlAdm}/${id}`, { headers, responseType: 'text' as 'json' });
   }
 
   public upload(photo: File): Observable<HttpEvent<any>> {

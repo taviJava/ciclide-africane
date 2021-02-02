@@ -3,6 +3,7 @@ import {Species} from '../../model/species';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {SpeciesService} from '../../service/species.service';
+import {AuthService} from "../../../users/service/auth.service";
 
 @Component({
   selector: 'app-adm-species-list',
@@ -18,7 +19,8 @@ export class AdmSpeciesListComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private router: Router,
               private modalService: NgbModal,
-              private speciesService: SpeciesService) { }
+              private speciesService: SpeciesService,
+              private auth: AuthService) { }
 
   ngOnInit(): void {
     this.species = [];
@@ -41,7 +43,7 @@ export class AdmSpeciesListComponent implements OnInit {
   }
   // tslint:disable-next-line:typedef
   delete(id: number) {
-    this.speciesService.delete(id ).subscribe(data => {
+    this.speciesService.delete(id , this.auth.getToken() ).subscribe(data => {
       this.ngOnInit();
     });
   }

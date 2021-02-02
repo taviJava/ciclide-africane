@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Galery} from '../../model/galery';
 import {GalleryService} from '../../service/gallery.service';
-import {Gallery, GalleryItem} from '@ngx-gallery/core';
+import {Gallery, GalleryItem, ImageSize, ThumbnailsPosition} from '@ngx-gallery/core';
 import {Lightbox} from '@ngx-gallery/lightbox';
 
 @Component({
@@ -18,6 +18,14 @@ export class GalleryListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // Get a lightbox gallery ref
+    const lightboxRef = this.gallery.ref('lightbox');
+
+    // Add custom gallery config to the lightbox (optional)
+    lightboxRef.setConfig({
+      imageSize: ImageSize.Cover,
+      thumbPosition: ThumbnailsPosition.Top
+    });
     this.galleryList = [];
     this.findAll();
   }

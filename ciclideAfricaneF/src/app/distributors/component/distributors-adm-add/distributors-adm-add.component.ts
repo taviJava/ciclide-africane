@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Distributor} from '../../model/distributor';
 import {DistributorsService} from '../../service/distributors.service';
 import {Router} from '@angular/router';
+import {AuthService} from '../../../users/service/auth.service';
 
 @Component({
   selector: 'app-distributors-adm-add',
@@ -11,14 +12,15 @@ import {Router} from '@angular/router';
 export class DistributorsAdmAddComponent implements OnInit {
   distributor: Distributor = new Distributor();
   constructor(private distrService: DistributorsService,
-              private router: Router) { }
+              private router: Router,
+              private auth: AuthService) { }
 
   ngOnInit(): void {
     this.distributor = new Distributor();
   }
 // tslint:disable-next-line:typedef
 onSubmit(){
-    this.distrService.save(this.distributor).subscribe(result => {
+    this.distrService.save(this.distributor , this.auth.getToken()).subscribe(result => {
       this.router.navigate(['distributorsAdm']);
     });
 }

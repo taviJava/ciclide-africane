@@ -38,7 +38,7 @@ export class UserRegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.users = [];
-    this.userService.findAll().subscribe( data => {
+    this.userService.findAll(this.authService.TOKEN_SESSION_ATTRIBUTE_NAME).subscribe( data => {
       this.users = [];
       this.users = data;
     });

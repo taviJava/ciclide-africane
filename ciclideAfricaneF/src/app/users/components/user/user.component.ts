@@ -4,6 +4,7 @@ import {UserService} from '../../service/user.service';
 import {Contact} from '../../../contact/model/contact';
 import {User} from '../../model/user';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {AuthService} from "../../service/auth.service";
 
 @Component({
   selector: 'app-user',
@@ -11,17 +12,18 @@ import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  user: User = new User();
+  user: User[] = [];
   closeResult = '';
 
   constructor(private route: ActivatedRoute,
               private router: Router,
               private userService: UserService,
-              private modalService: NgbModal) {
+              private modalService: NgbModal,
+              private auth: AuthService) {
   }
 
   ngOnInit(): void {
-    this.user = new User();
+    this.user = [];
     this.getUsers();
   }
 
@@ -32,9 +34,9 @@ export class UserComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   getUsers() {
-    this.userService.findAll().subscribe(data => {
-      this.user = new User();
-      this.user = data;
+    this.userService.findAll(this.auth.getToken()).subscribe(data => {
+      this.user = [];
+      this.user = JSON.parse(data) as User[];
     });
   }
 
@@ -45,7 +47,7 @@ export class UserComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   delete(id: number) {
-    this.userService.delete(id).subscribe(data => {
+    this.userService.delete(id , this.auth.getToken()).subscribe(data => {
       this.ngOnInit();
     });
   }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {AuthService} from './auth.service';
-import { HttpHandler, HttpRequest} from '@angular/common/http';
+import {HttpEvent, HttpHandler, HttpHeaders, HttpRequest} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 
 @Injectable({
@@ -10,34 +11,46 @@ export class HttpInterceptorService {
 
   constructor(public auth: AuthService) {}
 
-  // tslint:disable-next-line:typedef
-  intercept(req: HttpRequest<any>, next: HttpHandler) {
-
-    if (sessionStorage.getItem('username') && sessionStorage.getItem('token')) {
-      req = req.clone({
-        setHeaders: {
-          Authorization: sessionStorage.getItem('token')
-        }
-      });
-    }
-
-    return next.handle(req);
-
-  }
-
-
-// intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-  //   if (this.auth.isUserLoggedIn() && req.url.indexOf('login') === -1) {
+  // intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  //   if (this.auth.isUserLoggedIn() && req.url.indexOf('basicauth') === -1) {
   //     const authReq = req.clone({
-  //       headers: new HttpHeaders({
-  //         Authorization: `Bearer ${this.auth.TOKEN_SESSION_ATTRIBUTE_NAME}`
-  //       })
+  //       headers: new HttpHeaders().set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0YXZpLnpvcmlsYUBnbWFpbC5jb20iLCJzY29wZXMiOiJST0xFX0FETUlOIiwiaWF0IjoxNjEyMjA4MDMwLCJleHAiOjE2MTIyMjYwMzB9.Br8NBG7dsT5doS6ItLJMaJgkvTqMGxZCcsI-P9qBBa8')
   //     });
   //     return next.handle(authReq);
   //   } else {
   //     return next.handle(req);
   //   }
   // }
+
+  // tslint:disable-next-line:typedef
+  // intercept(req: HttpRequest<any>, next: HttpHandler) {
+  //
+  //   if (sessionStorage.getItem('username') && sessionStorage.getItem('token')) {
+  //     req = req.clone({
+  //       setHeaders: {
+  //          Authorization: sessionStorage.getItem('token')
+  //         // Authorization: this.auth.createBasicAuthToken()
+  //       }
+  //     });
+  //   }
+  //
+  //   return next.handle(req);
+  //
+  // }
+
+
+// intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+//     if (this.auth.isUserLoggedIn() && req.url.indexOf('login') === -1) {
+//       const authReq = req.clone({
+//         headers: new HttpHeaders({
+//           Authorization: `Bearer ${this.auth.TOKEN_SESSION_ATTRIBUTE_NAME}`
+//         })
+//       });
+//       return next.handle(authReq);
+//     } else {
+//       return next.handle(req);
+//     }
+//   }
 
 
 

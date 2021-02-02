@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Galery} from "../../model/galery";
-import {ActivatedRoute, Router} from "@angular/router";
-import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {GalleryService} from "../../service/gallery.service";
-import {AuthService} from "../../../users/service/auth.service";
+import {Galery} from '../../model/galery';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {GalleryService} from '../../service/gallery.service';
+import {AuthService} from '../../../users/service/auth.service';
 
 @Component({
   selector: 'app-adm-gallery',
@@ -20,7 +20,8 @@ export class AdmGalleryComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private router: Router,
               private modalService: NgbModal,
-              private galleryService: GalleryService) {
+              private galleryService: GalleryService,
+              private auth: AuthService) {
   }
 
   ngOnInit(): void {
@@ -48,7 +49,7 @@ export class AdmGalleryComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   delete(id: number) {
-    this.galleryService.delete(id).subscribe(data => {
+    this.galleryService.delete(id, this.auth.getToken()).subscribe(data => {
       this.ngOnInit();
     });
   }

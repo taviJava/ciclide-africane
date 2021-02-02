@@ -3,6 +3,7 @@ import {HomePage} from '../../model/home-page';
 import {ActivatedRoute, Router} from '@angular/router';
 import {HomePageService} from '../../service/home-page.service';
 import {HttpEventType, HttpResponse} from '@angular/common/http';
+import {AuthService} from "../../../users/service/auth.service";
 
 
 @Component({
@@ -20,7 +21,7 @@ export class AddHomePageComponent implements OnInit {
   previewUrl: any = null;
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private homePageService: HomePageService) {
+              private homePageService: HomePageService, private auth: AuthService) {
   }
 
   ngOnInit(): void {

@@ -46,7 +46,7 @@ export class GalleryAddComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   onSubmit() {
-    this.galleryService.save(this.galery).subscribe(data => {
+    this.galleryService.save(this.galery , this.authService.getToken()).subscribe(data => {
       this.uploadPhotos();
       setTimeout(() => {
           this.getGallery();

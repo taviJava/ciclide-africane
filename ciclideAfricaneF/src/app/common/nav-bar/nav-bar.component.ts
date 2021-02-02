@@ -66,6 +66,6 @@ export class NavBarComponent implements OnInit {
   // tslint:disable-next-line:typedef
   logOut(){
     this.auth.logout();
-    this.router.navigate(['']);
+    this.router.navigate(['user/login']);
   }
 }

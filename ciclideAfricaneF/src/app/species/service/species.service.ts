@@ -9,9 +9,11 @@ import {Species} from '../model/species';
 export class SpeciesService {
   private speciesUrl: string;
   private photoUrl: string;
+  private speciesUrlAdm: string;
   constructor(private http: HttpClient) {
     this.speciesUrl = 'http://localhost:8080/species';
     this.photoUrl = 'http://localhost:8080/photos';
+    this.speciesUrlAdm = 'http://localhost:8080/admspecies';
   }
   public findAll(): Observable<any> {
     return this.http.get<any>(this.speciesUrl, {responseType: 'text' as 'json' });
@@ -20,20 +22,26 @@ export class SpeciesService {
     return this.http.get<any>(`http://localhost:8080/find/search/${keyword}/list`, {responseType: 'text' as 'json' });
   }
 
-  public save(species: Species): Observable<any> {
-    return this.http.post<any>(this.speciesUrl, species , {responseType: 'text' as 'json' });
+  public save(species: Species, token: string): Observable<any> {
+    const tokenStr = 'Bearer ' + token;
+    const headers = new HttpHeaders().set('Authorization', tokenStr);
+    return this.http.post<any>(this.speciesUrlAdm, species , {headers, responseType: 'text' as 'json' });
   }
 
-  public update(species: Species): Observable<any> {
-    return this.http.put<any>(this.speciesUrl, species );
+  public update(species: Species, token: string): Observable<any> {
+    const tokenStr = 'Bearer ' + token;
+    const headers = new HttpHeaders().set('Authorization', tokenStr);
+    return this.http.put<any>(this.speciesUrlAdm, species, {headers, responseType: 'text' as 'json' } );
   }
 
-  public getById(id: number): Observable<any> {
+  public getById(id: number ): Observable<any> {
     return this.http.get(`${this.speciesUrl}/${id}` , {responseType: 'text' as 'json' });
   }
   // tslint:disable-next-line:typedef
-  public delete(id: number ) {
-    return this.http.delete(`${this.speciesUrl}/${id}` , {responseType: 'text' as 'json' });
+  public delete(id: number, token: string ) {
+    const tokenStr = 'Bearer ' + token;
+    const headers = new HttpHeaders().set('Authorization', tokenStr);
+    return this.http.delete(`${this.speciesUrlAdm}/${id}` , {headers, responseType: 'text' as 'json' });
   }
 
   public upload(photo: File): Observable<HttpEvent<any>> {
