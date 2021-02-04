@@ -1,14 +1,14 @@
-body{
-  background-color: #dee9ff;
-}
 
-.registration-form{
-  padding: 50px 0;
+
+.registration-form {
+  padding: 20px 0;
+  background-color: #dee9ff;
+  height: 600px;
 }
 
 .registration-form form{
   background-color: #fff;
-  max-width: 600px;
+  max-width: 500px;
   margin: auto;
   padding: 50px 70px;
   border-top-left-radius: 30px;
@@ -45,7 +45,6 @@ body{
   color: white;
   margin-top: 20px;
 }
-
 
 
 
