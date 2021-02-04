@@ -8,10 +8,14 @@ import {AuthService} from './auth.service';
 export class CanActivateService implements CanActivate{
   constructor(public auth: AuthService, public router: Router) {}
   canActivate(): boolean {
-    if (!this.auth.isUserLoggedIn() && !this.auth.isUserAdm()) {
-      this.router.navigate(['']);
-      return false;
-    }
-    return true;
+      if (!this.auth.isUserLoggedIn()) {
+        this.router.navigate(['']);
+        return false;
+      }
+      if (!this.auth.isUserAdm()){
+        this.router.navigate(['']);
+        return false;
+      }
+      return true;
   }
 }

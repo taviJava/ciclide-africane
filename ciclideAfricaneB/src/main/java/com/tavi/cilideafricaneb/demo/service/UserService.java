@@ -17,7 +17,7 @@ public class UserService extends UserDetailService {
     private UserRepository userRepository;
 
     public void add(UserDto userDto){
-     userRepository.save(getModel(new UserModel(),userDto));
+        userRepository.save(getModel(new UserModel(),userDto));
     }
     public void update(UserDto userDto){
         Optional<UserModel> userModelOptional = userRepository.findById(userDto.getId());

@@ -44,6 +44,6 @@ getSpecies(id: number){
 }
 // tslint:disable-next-line:typedef
 goToSpecies(){
-    this.router.navigate(['test2']);
+    this.router.navigate(['speciesList']);
 }
 }

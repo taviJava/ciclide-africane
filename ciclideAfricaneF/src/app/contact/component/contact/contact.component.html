@@ -29,7 +29,7 @@
         <div class="card-body p-3">
 
           <!--Body-->
-          <form (ngSubmit)="send()" #sendMessage="ngForm">
+          <form (ngSubmit)="send(content)" #sendMessage="ngForm">
           <div class="form-group">
             <label for="inlineFormInputGroupUsername">Numele dumneavoastra</label>
             <div class="input-group">
@@ -64,7 +64,7 @@
           </div>
 
           <div class="text-center">
-            <button class="btn btn-primary btn-block rounded-0 py-2" type="submit">Submit</button>
+            <button class="btn btn-primary btn-block rounded-0 py-2" type="submit">Trimite</button>
           </div>
           </form>
         </div>
@@ -117,3 +117,18 @@
 </section>
 <!-- Contact -->
 
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Confirm dialog</h4>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-12 text-center">
+        {{message}}
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="goToHomePage(modal.dismiss())">ok</button>
+  </div>
+</ng-template>

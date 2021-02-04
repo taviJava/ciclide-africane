@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -42,9 +43,16 @@ public class UserDetailService implements UserDetailsService {
         return new User(userName, password, authorities);
     }
     public UserModel register(UserDto userDto) {
+        List<UserModel> userModels = userRepository.findAll();
+        if (userModels.size() > 0){
+            userDto.setRole("Standard");
+        }else{
+            userDto.setRole("Admin");
+        }
         UserModel newUser = new UserModel();
         newUser.setEmail(userDto.getEmail());
-        newUser.setRole(Role.valueOf("Admin"));
+
+        newUser.setRole(Role.valueOf(userDto.getRole()));
         newUser.setPassword(bcryptEncoder.encode(userDto.getPassword()));
         return userRepository.save(newUser);
     }

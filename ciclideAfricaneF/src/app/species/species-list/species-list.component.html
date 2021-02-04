@@ -19,7 +19,11 @@
       </div>
     </div>
   </div>
-
+  <ul class="pagination pagination-sm">
+    <li [hidden]="hidePrev()"  class="page-item"><button class="page-link btn btn-outline-light" (click)="prev()">Înapoi</button></li>
+    <li ><a class="page-link  btn-outline-light" >{{p+1}}</a></li>
+    <li [hidden]="hideNext()" class="page-item"><button class="page-link btn btn-outline-light" (click)="next()">Înainte</button></li>
+  </ul>
 </div>
 
 

@@ -22,23 +22,20 @@ export class AuthService {
   public token: string;
 
   constructor(private http: HttpClient, public userService: UserService) {
+    this.user.role = 'null';
   }
   authentication(user: User): Observable<any> {
     return this.http.post<any>(`http://localhost:8080/login`, user);
   }
-  // // tslint:disable-next-line:typedef
-  // createBasicAuthToken(username: string, password: string) {
-  //   return this.TOKEN_SESSION_ATTRIBUTE_NAME;
-  // }
-
 
   // tslint:disable-next-line:typedef
   registerSuccessfulLogin(username) {
-     sessionStorage.setItem('email', this.TOKEN_SESSION_ATTRIBUTE_NAME);
+     sessionStorage.setItem('email', this.USER_NAME_SESSION_ATTRIBUTE_NAME);
      sessionStorage.setItem('token', this.TOKEN_SESSION_ATTRIBUTE_NAME);
      this.userService.getByEmail(username, this.getToken() ).subscribe(data => {
       this.user = new User();
       this.user = JSON.parse(data) as User;
+      sessionStorage.setItem('role', this.user.role);
       this.isLoggedIn.next(true);
     });
   }
@@ -47,6 +44,7 @@ export class AuthService {
   logout() {
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('email');
+    sessionStorage.removeItem('role');
     this.isLoggedIn.next(false);
     this.username = null;
     this.password = null;
@@ -60,6 +58,10 @@ export class AuthService {
     return sessionStorage.getItem('email');
   }
   // tslint:disable-next-line:typedef
+  getAdm(){
+    return sessionStorage.getItem('role');
+  }
+  // tslint:disable-next-line:typedef
   isUserLoggedIn() {
     const user = this.getUserLoggedIn();
     if (user === null) {
@@ -71,8 +73,10 @@ export class AuthService {
   }
   // tslint:disable-next-line:typedef
   isUserAdm(){
-    if (this.user.role === 'Administrator'){
-     return true;
-   }
+    if (this.getAdm() === 'Admin'){
+      return true;
+   }else {
+      return false;
+    }
   }
 }

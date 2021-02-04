@@ -63,16 +63,16 @@ public class SpeciesService {
         return speciesDto;
     }
 
-//    public List<SpeciesDto> sortAndPage(int pageN,int pageS){
-//        Pageable pageable= PageRequest.of(pageN,pageS);
-//        List<SpeciesModel> speciesModels = speciesRepository.findAll(pageable).getContent();
-//        List<SpeciesDto> speciesDtos = new ArrayList<>();
-//        for (SpeciesModel speciesModel: speciesModels){
-//            speciesDtos.add(getDto(speciesModel));
-//
-//        }
-//        return speciesDtos;
-//    }
+    public List<SpeciesDto> sortAndPage(int pageN){
+        Pageable pageable= PageRequest.of(pageN,9);
+        List<SpeciesModel> speciesModels = speciesRepository.findAll(pageable).getContent();
+        List<SpeciesDto> speciesDtos = new ArrayList<>();
+        for (SpeciesModel speciesModel: speciesModels){
+            speciesDtos.add(getDto(speciesModel));
+
+        }
+        return speciesDtos;
+    }
 
 
     public void delete(long id) {

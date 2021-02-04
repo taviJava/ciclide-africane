@@ -12,6 +12,9 @@ import {SpeciesService} from '../service/species.service';
 })
 export class SpeciesListComponent implements OnInit {
   species: Species[];
+  speciesAll: Species[];
+  p = 0;
+  itemPerPage = 9;
   constructor(private route: ActivatedRoute,
               private router: Router,
               private modalService: NgbModal,
@@ -19,11 +22,13 @@ export class SpeciesListComponent implements OnInit {
 
   ngOnInit(): void {
     this.species = [];
+    this.speciesAll = [];
     this.getSpecies();
+    this.getSpeciesAll();
   }
   // tslint:disable-next-line:typedef
   getSpecies(){
-    this.speciesService.findAll().subscribe(result => {
+    this.speciesService.findAllPaginate(this.p).subscribe(result => {
       this.species = [];
       // JSON.parse(result) as Species[]
       this.species = JSON.parse(result) as Species[];
@@ -33,8 +38,35 @@ export class SpeciesListComponent implements OnInit {
     });
   }
   // tslint:disable-next-line:typedef
+  getSpeciesAll(){
+    this.speciesService.findAll().subscribe(result => {
+      this.speciesAll = [];
+      // JSON.parse(result) as Species[]
+      this.speciesAll = JSON.parse(result) as Species[];
+    });
+  }
+  // tslint:disable-next-line:typedef
   goToSpeciesDetails(id: number){
     this.router.navigate(['species/details/' + id]);
   }
-
+  // tslint:disable-next-line:typedef
+  next(){
+    this.p = this.p + 1;
+    this.ngOnInit();
+  }
+  // tslint:disable-next-line:typedef
+  prev(){
+    this.p = this.p - 1;
+    this.ngOnInit();
+  }
+  hidePrev(): boolean{
+    if (this.p === 0){
+      return true;
+    }
+  }
+  hideNext(): boolean{
+    if (this.itemPerPage > this.species.length){
+      return true;
+    }
+  }
 }

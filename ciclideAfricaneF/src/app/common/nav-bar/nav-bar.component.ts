@@ -57,9 +57,10 @@ export class NavBarComponent implements OnInit {
   }
   adm(): boolean {
     if (!this.auth.isUserLoggedIn()) {
-      if (!this.auth.isUserAdm()){
-        return false;
-      }
+      return false;
+    }
+    if (!this.auth.isUserAdm()){
+      return false;
     }
     return true;
   }
@@ -67,5 +68,15 @@ export class NavBarComponent implements OnInit {
   logOut(){
     this.auth.logout();
     this.router.navigate(['user/login']);
+  }
+
+  // tslint:disable-next-line:typedef
+  collapse(event) {
+    if ( event.type === 'mouseover'){
+      this.isCollapsed = false;
+    }
+    if (event.type === 'mouseout'){
+      this.isCollapsed = false;
+    }
   }
 }

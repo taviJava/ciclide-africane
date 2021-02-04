@@ -49,7 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login","/register","/photos/**","/photos/", "/species/photos/**",
                         "/galery123/photos/**","/photos/galery","/galery/photos/**", "/find/search/**/**","/species",
                 "/species/","/species/**","/galery123","/galery123/**","/distributors","/distributors/**",
-                "/homepage", "/homepage/**","/link","/link/**","/message","/contact").permitAll()
+                "/homepage", "/homepage/**","/link","/link/**","/message","/contact", "/speciespaginate/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);

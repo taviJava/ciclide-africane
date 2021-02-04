@@ -6,7 +6,7 @@ import com.tavi.cilideafricaneb.demo.repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+
 
 @Service
 public class MessageService {
@@ -26,7 +26,7 @@ public class MessageService {
     private void add(MessageDto messageDto){
         messageRepository.save(getModel(messageDto));
     }
-    public void sendMessage(MessageDto messageDto){
+    public String sendMessage(MessageDto messageDto){
 
         int messagesNumberBefore = messageRepository.findAll().size();
         System.out.println(messagesNumberBefore);
@@ -35,6 +35,7 @@ public class MessageService {
         System.out.println(messageNumberAfter);
         if (messageNumberAfter > messagesNumberBefore){
             sendEmailService.sendEmail(messageDto.getId(),messageDto.getName(),messageDto.getMessage(), messageDto.getEmail(), messageDto.getCity());
-        }
+            return "Mesajul a fost trimis cu succes! \n Mulțumim!";
+        }else return "Ne pare rau, mesajul nu s-a transmis";
     }
 }

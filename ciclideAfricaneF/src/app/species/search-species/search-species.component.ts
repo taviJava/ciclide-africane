@@ -3,6 +3,7 @@ import {Species} from '../model/species';
 import {ActivatedRoute, Router} from '@angular/router';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {SpeciesService} from '../service/species.service';
+import {AuthService} from "../../users/service/auth.service";
 
 @Component({
   selector: 'app-search-species',
@@ -13,10 +14,12 @@ export class SearchSpeciesComponent implements OnInit {
   keyword1 = '';
   species: Species[];
   keyword: string;
+  isCollapsed = true;
   constructor(private route: ActivatedRoute,
               private router: Router,
               private modalService: NgbModal,
-              private speciesService: SpeciesService) { }
+              private speciesService: SpeciesService,
+              private auth: AuthService) { }
 
   ngOnInit(): void {
     this.keyword = this.route.snapshot.params.key;
@@ -63,5 +66,45 @@ export class SearchSpeciesComponent implements OnInit {
   // tslint:disable-next-line:typedef
   goToSpeciesDetails(id: number){
     this.router.navigate(['species/details/' + id]);
+  }
+  // tslint:disable-next-line:typedef
+  goToLinks(){
+    this.router.navigate(['link']);
+  }
+  // tslint:disable-next-line:typedef
+  goToDistr(){
+    this.router.navigate(['distributors']);
+  }
+  // tslint:disable-next-line:typedef
+  goToHome(){
+    this.router.navigate(['']);
+  }
+  // tslint:disable-next-line:typedef
+  goToUsers(){
+    this.router.navigate(['user']);
+  }
+  adm(): boolean {
+    if (!this.auth.isUserLoggedIn()) {
+      return false;
+    }
+    if (!this.auth.isUserAdm()){
+      return false;
+    }
+    return true;
+  }
+  // tslint:disable-next-line:typedef
+  logOut(){
+    this.auth.logout();
+    this.router.navigate(['user/login']);
+  }
+
+  // tslint:disable-next-line:typedef
+  collapse(event) {
+    if ( event.type === 'mouseover'){
+      this.isCollapsed = false;
+    }
+    if (event.type === 'mouseout'){
+      this.isCollapsed = false;
+    }
   }
 }

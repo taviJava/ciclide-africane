@@ -92,11 +92,11 @@ import {UserService} from './users/service/user.service';
     BrowserAnimationsModule,
   ],
   providers: [
-  // {
-  //   provide: HTTP_INTERCEPTORS,
-  //   useClass: HttpInterceptorService,
-  //   multi: true
-  // }
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpInterceptorService,
+    multi: true
+  }
   ],
   bootstrap: [AppComponent]
 })

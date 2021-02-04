@@ -2,3 +2,9 @@
   text-align: center;
   text-decoration: black;
 }
+.pagination{
+  margin-top: 30px;
+}
+.container-fluid{
+  margin-bottom: 40px;
+}

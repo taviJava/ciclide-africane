@@ -9,10 +9,11 @@ import {HomePage} from '../model/home-page';
 export class HomePageService {
   private homepageUrl: string;
   private photoUrl: string;
-
+  private homepageUrlAdm: string;
   constructor(private http: HttpClient) {
     this.homepageUrl = 'http://localhost:8080/homepage';
     this.photoUrl = 'http://localhost:8080/photos/homepage';
+    this.homepageUrlAdm = 'http://localhost:8080/admhomepage';
   }
 
   public findAll(): Observable<any> {
@@ -21,12 +22,12 @@ export class HomePageService {
 
   // tslint:disable-next-line:typedef
   public save(homePage: HomePage): Observable<any> {
-    return this.http.post<any>(this.homepageUrl, homePage, {responseType: 'text' as 'json'});
+    return this.http.post<any>(this.homepageUrlAdm, homePage, {responseType: 'text' as 'json'});
   }
 
   // tslint:disable-next-line:typedef
   public delete(id: number) {
-    return this.http.delete(`${this.homepageUrl}/${id}`);
+    return this.http.delete(`${this.homepageUrlAdm}/${id}`);
   }
 
   public upload(photo: File): Observable<HttpEvent<any>> {

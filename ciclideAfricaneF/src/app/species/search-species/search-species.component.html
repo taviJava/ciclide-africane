@@ -1,13 +1,31 @@
 <div class="bs-example">
   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <button (click)="goToHome()" type="submit" class="btn btn-outline-light mr-1"><i class="fa fa-home" aria-hidden="true"></i></button>
     <button (click)="goToAboutUs()" type="submit" class="btn btn-outline-light mr-1">Despre noi</button>
     <button (click)="goToSpecies()" type="submit" class="btn btn-outline-light mr-1">Specii</button>
     <button (click)="goToGalery()" type="submit" class="btn btn-outline-light mr-1">Galerie</button>
     <button (click)="goToContact()" type="submit" class="btn btn-outline-light mr-1">Contact</button>
-    <button type="submit" class="btn btn-outline-light">Linkuri</button>
+    <button (click)="goToLinks()" type="submit" class="btn btn-outline-light mr-1">Linkuri</button>
+    <button (click)="goToDistr()" type="submit" class="btn btn-outline-light mr-1">Distribuitori</button>
+    <div class="dropdown" *ngIf="adm()">
+      <button class="btn btn-outline-light" type="submit"
+              data-toggle="dropdown" aria-controls="collapseExample" [attr.aria-expanded]="!isCollapsed" (mouseenter)="isCollapsed = !isCollapsed">
+        Administrator
+      </button>
+      <div class="dropdown-menu" [ngbCollapse]="isCollapsed" (mouseleave)="isCollapsed = !isCollapsed">
+        <a class="dropdown-item" href="addhomepage">Administreaza Homepage</a>
+        <a class="dropdown-item" href="addContact">Administreaza Contact</a>
+        <a class="dropdown-item" href="linksAdm">Administreaza Linkuri</a>
+        <a class="dropdown-item" href='speciesAdm'>Administreaza Specii</a>
+        <a class="dropdown-item" href='galleryAdm'>Administreaza Galerie</a>
+        <a class="dropdown-item" href='distributorsAdm'>Administreaza Distribuitori</a>
+        <a class="dropdown-item" href='user'>Administreaza Useri</a>
+        <a class="dropdown-item" (click)="logOut()">Log Out</a>
+      </div>
+    </div>
 
     <form class="form-inline ml-auto" (ngSubmit)="goToSearch()">
-      <input type="text" class="form-control mr-sm-2" [(ngModel)]="keyword1" placeholder="Cauta" [ngModelOptions]="{standalone: true}">
+      <input type="text" class="form-control mr-sm-2" [(ngModel)]="keyword" placeholder="Cauta" [ngModelOptions]="{standalone: true}">
       <button type="submit" class="btn btn-outline-light">Cauta</button>
     </form>
   </nav>

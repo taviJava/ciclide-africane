@@ -11,6 +11,7 @@ import com.tavi.cilideafricaneb.demo.security.UserDetailService;
 import com.tavi.cilideafricaneb.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -47,22 +48,27 @@ public class UserController {
         System.out.println(token);
         return ResponseEntity.ok(new AuthTokenData(token));
     }
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/users")
     public void update(@RequestBody UserDto userDto){
         userService.update(userDto);
     }
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/users/{id}")
     public void delete(@PathVariable(name = "id") long id){
         userService.delete(id);
     }
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/users")
     public List<UserDto> getAll(){
         return userService.getAll();
     }
+
     @GetMapping("/users/{email}")
     public UserDto getByEmail(@PathVariable(name = "email") String email){
         return userService.getByEmail(email);
     }
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/userbyid/{id}")
     public UserDto getById(@PathVariable(name = "id") long id){
         return userService.getOne(id);

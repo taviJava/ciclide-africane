@@ -10,13 +10,18 @@ export class SpeciesService {
   private speciesUrl: string;
   private photoUrl: string;
   private speciesUrlAdm: string;
+  private speciesUrlPaginate: string;
   constructor(private http: HttpClient) {
     this.speciesUrl = 'http://localhost:8080/species';
     this.photoUrl = 'http://localhost:8080/photos';
     this.speciesUrlAdm = 'http://localhost:8080/admspecies';
+    this.speciesUrlPaginate = 'http://localhost:8080/speciespaginate';
   }
   public findAll(): Observable<any> {
     return this.http.get<any>(this.speciesUrl, {responseType: 'text' as 'json' });
+  }
+  public findAllPaginate(pageNum: number): Observable<any> {
+    return this.http.get<any>(`${this.speciesUrlPaginate}/${pageNum}` , {responseType: 'text' as 'json' });
   }
   public search(keyword): Observable<any> {
     return this.http.get<any>(`http://localhost:8080/find/search/${keyword}/list`, {responseType: 'text' as 'json' });

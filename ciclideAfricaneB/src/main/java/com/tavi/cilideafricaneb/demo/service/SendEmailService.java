@@ -19,7 +19,8 @@ public class SendEmailService  {
     public void sendEmail( long id, String name, String message, String email, String city) {
 
         SimpleMailMessage msg = new SimpleMailMessage();
-        msg.setTo("lrusanescu@yahoo.com");
+//        msg.setTo("The.mirch@gmail.com");
+        msg.setTo("tavi.zorila@gmail.com");
 
         msg.setSubject("Mesaj nou pe ciclideafricane.ro de la "+ name + "");
         msg.setText(""+ message + "\n \n Trimis de: "+ name +" din: "+ city + " \n \n Email: "+ email +""   );
