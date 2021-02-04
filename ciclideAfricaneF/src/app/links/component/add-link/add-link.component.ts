@@ -21,9 +21,11 @@ export class AddLinkComponent implements OnInit {
   photos: Observable<any>;
   selectedFiles: FileList;
   currentFile: File;
+  progressInfos = [];
   // preview photo
   fileData: File = null;
   previewUrl: any = null;
+  previewsUrl: any[] = [];
   constructor(private route: ActivatedRoute,
               private router: Router,
               private linkService: LinkService,

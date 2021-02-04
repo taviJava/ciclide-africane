@@ -3,7 +3,7 @@
 img{
   margin-top: 0px;
   width: 1370px;
-  height: 570px;
+  height: 602px;
 
 }
 ngb-carousel{
@@ -13,7 +13,8 @@ ngb-carousel{
   fill-opacity: 0.2;
 }
 .container{
-
+  max-width: 100%;
+  overflow-x: hidden;
   padding: 0;
   margin: 0;
   background-color: dimgray;
