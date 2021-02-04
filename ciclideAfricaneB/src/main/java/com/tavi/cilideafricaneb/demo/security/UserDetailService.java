@@ -54,6 +54,20 @@ public class UserDetailService implements UserDetailsService {
 
         newUser.setRole(Role.valueOf(userDto.getRole()));
         newUser.setPassword(bcryptEncoder.encode(userDto.getPassword()));
-        return userRepository.save(newUser);
+        if (!ifUserIsRegistred(newUser.getEmail())){
+            return userRepository.save(newUser);
+        }
+        return newUser;
     }
+
+    private boolean ifUserIsRegistred(String email){
+        List<UserModel> userModels = userRepository.findAll();
+        for (UserModel userModel: userModels){
+            if (userModel.getEmail().equals(email)){
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

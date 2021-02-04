@@ -1,13 +1,8 @@
 <app-nav-bar></app-nav-bar>
-<head>
-  <title></title>
-  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-</head>
-<!------ Include the above in your HEAD tag
----------->
 <html>
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+</head>
 <div class="container">
   <div class="row centered-form">
     <div class="col-xs-12 col-sm-8 col-md-5 col-sm-offset-2 col-md-offset-4">
@@ -54,17 +49,17 @@
 
 
 
-            <p class="stea" >*</p> <p>These fields are required</p>
+            <p class="stea" >*</p> <p>Aceste campuri sunt obligatorii</p>
             <p></p>
             <div class="btn-group">
 
               <button *ngIf="!ifEmailExist()"  type="submit"  class="btn btn-primary " [disabled]="!formCompleted()">
-                Register
+                Salvează
               </button>
-              <button *ngIf="ifEmailExist()" class="btn btn-primary "
+              <button *ngIf="ifEmailExist()" type="button" class="btn btn-primary "
                       (click)=open(content)
                       [disabled]="!formCompleted()">
-                Register
+                Salvează
               </button>
             </div>
 
@@ -79,7 +74,7 @@
   <div class="modal-body">
     <div class="row">
       <div class="col-12 text-center">
-        Your email is already registered!!! If you forgot your password please click on: Forgot password
+        Acest email este deja înregistrat!!!
       </div>
     </div>
   </div>

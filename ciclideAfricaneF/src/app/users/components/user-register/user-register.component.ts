@@ -6,8 +6,6 @@ import {UserService} from '../../service/user.service';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {AuthService} from '../../service/auth.service';
 
-class AuthenticationService {
-}
 
 @Component({
   selector: 'app-user-register',
@@ -38,9 +36,9 @@ export class UserRegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.users = [];
-    this.userService.findAll(this.authService.TOKEN_SESSION_ATTRIBUTE_NAME).subscribe( data => {
+    this.userService.findAll(this.authService.getToken()).subscribe( data => {
       this.users = [];
-      this.users = data;
+      this.users = JSON.parse(data) as User[];
     });
     this.user = new User();
     this.myGroup = new FormGroup({
@@ -52,7 +50,7 @@ export class UserRegisterComponent implements OnInit {
       this.isLoggedIn = data;
       this.currentUser = new User();
       if (this.isLoggedIn) {
-        this.currentUser = JSON.parse(sessionStorage.getItem(this.authService.USER_DATA_SESSION_ATTRIBUTE_NAME));
+        this.currentUser.email = JSON.parse(sessionStorage.getItem('email'));
         if (this.currentUser === null) {
           this.currentUser = new User();
         }
@@ -69,7 +67,7 @@ export class UserRegisterComponent implements OnInit {
   }
   // tslint:disable-next-line:typedef
   getAll() {
-    this.router.navigate(['users']);
+    this.router.navigate(['user']);
   }
 
   // tslint:disable-next-line:typedef
