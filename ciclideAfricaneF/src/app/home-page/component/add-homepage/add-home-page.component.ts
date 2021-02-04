@@ -3,7 +3,7 @@ import {HomePage} from '../../model/home-page';
 import {ActivatedRoute, Router} from '@angular/router';
 import {HomePageService} from '../../service/home-page.service';
 import {HttpEventType, HttpResponse} from '@angular/common/http';
-import {AuthService} from "../../../users/service/auth.service";
+import {AuthService} from '../../../users/service/auth.service';
 
 
 @Component({
@@ -97,5 +97,12 @@ export class AddHomePageComponent implements OnInit {
         this.message = 'Could not upload the file!';
         this.currentFile = undefined;
       });
+  }
+  ifHasLenght(): boolean{
+    if (this.homepage.description.length > 68){
+      return true;
+    }else{
+      return false;
+    }
   }
 }

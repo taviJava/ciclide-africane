@@ -40,19 +40,19 @@
 
   <div class="form-group">
     <label for="description">Descriere</label>
-    <input type="text" [(ngModel)]="homepage.description"
+    <textarea type="text" [(ngModel)]="homepage.description"
            class="form-control"
            id="description"
            name="description"
            placeholder="Introduceti descrierea"
-           required #description="ngModel">
+              required #description="ngModel"></textarea>
   </div>
   <div [hidden]="!description.pristine" class="alert alert-danger">Descrierea este obligatorie</div>
 
   <button (click)="getHomePage()"
           class="btn btn-secondary mx-1">Inapoi
   </button>
-  <button type="submit" [disabled]="!contactForm.form.valid"
+  <button type="submit" [disabled]="!ifHasLenght()"
           class="btn btn-info">Submit
   </button>
 </form>

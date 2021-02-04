@@ -13,7 +13,7 @@ import {AuthService} from "../../users/service/auth.service";
 export class SearchSpeciesComponent implements OnInit {
   keyword1 = '';
   species: Species[];
-  keyword: string;
+  keyword: string = this.route.snapshot.params.key;
   isCollapsed = true;
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -22,7 +22,6 @@ export class SearchSpeciesComponent implements OnInit {
               private auth: AuthService) { }
 
   ngOnInit(): void {
-    this.keyword = this.route.snapshot.params.key;
     this.species = [];
     this.getSpecies(this.keyword);
   }
@@ -31,6 +30,7 @@ export class SearchSpeciesComponent implements OnInit {
     if (this.keyword1.length > 0){
       this.router.navigate(['search/' + this.keyword1]);
       keyword = this.keyword1;
+      this.keyword = this.keyword1;
     }
     this.speciesService.search(keyword).subscribe(result => {
       this.species = [];

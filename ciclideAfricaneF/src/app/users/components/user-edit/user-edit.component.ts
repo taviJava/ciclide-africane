@@ -21,7 +21,7 @@ export class UserEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.roles.push('Administrator');
+    this.roles.push('Admin');
     this.roles.push('Standard');
     this.user = new User();
     this.id = this.route.snapshot.params.id;

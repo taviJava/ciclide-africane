@@ -4,6 +4,7 @@
     <table class="table table-bordered table-striped">
       <thead class="thead-dark">
       <tr>
+        <th class="align-middle" scope="col">#</th>
         <th class="align-middle" scope="col">Oras</th>
         <th class="align-middle" scope="col">Nume</th>
         <th class="align-middle" scope="col">Adresa</th>
@@ -12,10 +13,11 @@
       </thead>
       <tbody>
       <tr *ngFor="let distr of distributors">
+        <td>{{ (distributors.indexOf(distr)+1)}}</td>
         <td>{{ distr.city }}</td>
         <td>{{ distr.name }}</td>
         <td>{{distr.address}}</td>
-        <td>{{distr.phone}}</td>
+        <td>0{{distr.phone}}</td>
       </tr>
       </tbody>
     </table>

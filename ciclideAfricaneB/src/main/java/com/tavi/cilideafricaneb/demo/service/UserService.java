@@ -23,7 +23,7 @@ public class UserService extends UserDetailService {
         Optional<UserModel> userModelOptional = userRepository.findById(userDto.getId());
         if (userModelOptional.isPresent()){
             UserModel userModel = userModelOptional.get();
-            getModel(userModel,userDto);
+            userRepository.save(getModel(userModel,userDto));
         }
     }
     public void delete (long id){
