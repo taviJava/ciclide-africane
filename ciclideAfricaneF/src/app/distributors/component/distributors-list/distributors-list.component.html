@@ -5,8 +5,8 @@
       <thead class="thead-dark">
       <tr>
         <th class="align-middle" scope="col">#</th>
-        <th class="align-middle" scope="col">Oras</th>
         <th class="align-middle" scope="col">Nume</th>
+        <th class="align-middle" scope="col">Oras</th>
         <th class="align-middle" scope="col">Adresa</th>
         <th class="align-middle" scope="col">Telefon</th>
       </tr>
@@ -14,8 +14,8 @@
       <tbody>
       <tr *ngFor="let distr of distributors">
         <td>{{ (distributors.indexOf(distr)+1)}}</td>
-        <td>{{ distr.city }}</td>
         <td>{{ distr.name }}</td>
+        <td>{{ distr.city }}</td>
         <td>{{distr.address}}</td>
         <td>0{{distr.phone}}</td>
       </tr>
